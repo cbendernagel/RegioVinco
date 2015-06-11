@@ -6,6 +6,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.image.PixelReader;
 import javafx.scene.image.WritableImage;
+import javafx.scene.layout.Background;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
@@ -142,11 +143,15 @@ public class RegioVincoGame extends PointAndClickGame {
 	controller = new RegioVincoController(this);
 
 	Button startButton = guiButtons.get(START_TYPE);
+        //MAKES THE FILL OF THE BUTTON EMPTY
+        startButton.setBackground(Background.EMPTY);
 	startButton.setOnAction(e -> {
 	    controller.processStartGameRequest();
 	});
 
 	Button exitButton = guiButtons.get(EXIT_TYPE);
+        //MAKES THE FILL OF THE BUTTON EMPTY
+        exitButton.setBackground(Background.EMPTY);
 	exitButton.setOnAction(e -> {
 	    controller.processExitGameRequest();
 	});
