@@ -268,7 +268,6 @@ public class RegioVincoDataModel extends PointAndClickGameDataModel {
 	    subRegionStack.add(subRegionText);
 	}
 	Collections.shuffle(subRegionStack);
-
 	int y = STACK_INIT_Y;
 	int yInc = STACK_INIT_Y_INC;
 	// NOW FIX THEIR Y LOCATIONS

@@ -14,8 +14,8 @@ public class RegioVincoController implements KeyPressHook {
 	game = initGame;
     }
     
-    public void processStartGameRequest() {
-	game.reset();
+    public void processStartGameRequest(){
+        game.reset();
     }
     
     public void processExitGameRequest() {

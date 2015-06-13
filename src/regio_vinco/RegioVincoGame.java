@@ -37,6 +37,7 @@ public class RegioVincoGame extends PointAndClickGame {
      */
     public RegioVincoGame(Stage initWindow) {
 	super(initWindow, APP_TITLE, TARGET_FRAME_RATE);
+        window.setMaximized(false);
 	initAudio();
     }
     
