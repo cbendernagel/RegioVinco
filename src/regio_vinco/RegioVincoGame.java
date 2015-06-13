@@ -100,8 +100,7 @@ public class RegioVincoGame extends PointAndClickGame {
 	backgroundLayer = new Pane();
 	addStackPaneLayer(backgroundLayer);
 	addGUIImage(backgroundLayer, BACKGROUND_TYPE, loadImage(BACKGROUND_FILE_PATH), BACKGROUND_X, BACKGROUND_Y);
-	
-	
+	backgroundLayer.setStyle("-fx-background-color: #000000;");
 	// THEN THE GAME LAYER
 	gameLayer = new Pane();
 	addStackPaneLayer(gameLayer);
