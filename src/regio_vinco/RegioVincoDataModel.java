@@ -285,10 +285,13 @@ public class RegioVincoDataModel extends PointAndClickGameDataModel {
 	for (MovableText mT : subRegionStack) {
 	    pixels.put(mT.getText().getText(), new ArrayList());
 	}
-
+        Color orangeChange = mapPixelReader.getColor(0, 0);
 	for (int i = 0; i < mapImage.getWidth(); i++) {
 	    for (int j = 0; j < mapImage.getHeight(); j++) {
 		Color c = mapPixelReader.getColor(i, j);
+                if (c.equals(orangeChange)){
+                    mapPixelWriter.setColor(i, j, Color.BLACK);
+                }
 		if (colorToSubRegionMappings.containsKey(c)) {
 		    String subRegion = colorToSubRegionMappings.get(c);
 		    ArrayList<int[]> subRegionPixels = pixels.get(subRegion);
