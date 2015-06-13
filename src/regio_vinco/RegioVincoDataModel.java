@@ -289,6 +289,7 @@ public class RegioVincoDataModel extends PointAndClickGameDataModel {
 	for (int i = 0; i < mapImage.getWidth(); i++) {
 	    for (int j = 0; j < mapImage.getHeight(); j++) {
 		Color c = mapPixelReader.getColor(i, j);
+                //CHECKS FOR OUTSIDE BORDER ORANGE, CHANGES IF TRUE
                 if (c.equals(orangeChange)){
                     mapPixelWriter.setColor(i, j, Color.BLACK);
                 }
