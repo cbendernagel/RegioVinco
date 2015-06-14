@@ -33,7 +33,7 @@ public class RegioVincoController implements KeyPressHook {
         if (keyCode == KeyCode.C)
         {
             try
-            {    
+            {   
                 game.beginUsingData();
                 RegioVincoDataModel dataModel = (RegioVincoDataModel)(game.getDataModel());
                 dataModel.removeAllButOneFromeStack(game);         

@@ -58,7 +58,12 @@ public class RegioVincoDataModel extends PointAndClickGameDataModel {
     }
 
     public void removeAllButOneFromeStack(RegioVincoGame game) {
-	while (subRegionStack.size() > 1) {
+        for (String s : redSubRegions) {
+		Color subRegionColor = subRegionToColorMappings.get(s);
+		changeSubRegionColorOnMap(game, s, subRegionColor);
+	    }
+	    redSubRegions.clear();
+        while (subRegionStack.size() > 1) {
 	    MovableText text = subRegionStack.removeFirst();
 	    String subRegionName = text.getText().getText();
 
@@ -209,7 +214,9 @@ public class RegioVincoDataModel extends PointAndClickGameDataModel {
 	// THIS GAME ONLY PLAYS AFGHANISTAN
 	regionName = "Afghanistan";
 	subRegionsType = "Provinces";
-
+        
+        
+        
 	// LET'S CLEAR THE DATA STRUCTURES
 	colorToSubRegionMappings.clear();
 	subRegionToColorMappings.clear();
@@ -275,6 +282,8 @@ public class RegioVincoDataModel extends PointAndClickGameDataModel {
 	    int tY = y + yInc;
 	    mT.getText().setY(tY);
 	    yInc -= 50;
+            mT.setVelocityY(0);
+            mT.setVelocityX(0);
 	}
 
 	// RELOAD THE MAP

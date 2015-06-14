@@ -67,6 +67,11 @@ public class RegioVinco extends Application {
     public static final int EXIT_X = 1050;
     public static final int EXIT_Y = 100;
     
+    // MAP AND REGION TITLE
+    public static final String REGION_SUB_REGION_TYPE = "REGION_SUB_REGION_TYPE";
+    public static final int REGION_SUB_REGION_X = 900;
+    public static final int REGION_SUB_REGION_Y = 200;
+    
     // THE GAME MAP LOCATION
     public static final String MAP_TYPE = "MAP_TYPE";
     public static final String SUB_REGION_TYPE = "SUB_REGION_TYPE";

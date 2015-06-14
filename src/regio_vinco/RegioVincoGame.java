@@ -48,6 +48,10 @@ public class RegioVincoGame extends PointAndClickGame {
     public Pane getGameLayer() {
 	return gameLayer;
     }
+    
+    public Pane getGuiLayer() {
+        return guiLayer;
+    }
 
     /**
      * Initializes audio for the game.
