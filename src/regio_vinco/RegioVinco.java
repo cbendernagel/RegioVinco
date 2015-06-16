@@ -44,7 +44,7 @@ public class RegioVinco extends Application {
     // LOCATION IS PROVIDED HERE AS WELL. NOTE THAT IT MIGHT BE A 
     // GOOD IDEA TO LOAD ALL OF THESE SETTINGS FROM A FILE, BUT ALAS,
     // THERE ARE ONLY SO MANY HOURS IN A DAY
-    public static final int TARGET_FRAME_RATE = 30;
+    public static final int TARGET_FRAME_RATE = 50;
     public static final String APP_TITLE = "Regio Vinco";
     
     // BACKGROUND IMAGE
@@ -85,7 +85,7 @@ public class RegioVinco extends Application {
     
     // THIS IS THE X WHERE WE'LL DRAW ALL THE STACK NODES
     public static final int STACK_X = 900;
-    public static final int STACK_INIT_Y = 600;
+    public static final int STACK_INIT_Y = 650;
     public static final int STACK_INIT_Y_INC = 50;
 
     public static final Color REGION_NAME_COLOR = RegioVincoDataModel.makeColor(240, 240, 240);

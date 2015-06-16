@@ -12,6 +12,7 @@ import javafx.scene.image.WritableImage;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
+import javafx.scene.text.TextAlignment;
 import pacg.PointAndClickGame;
 import pacg.PointAndClickGameDataModel;
 import static regio_vinco.RegioVinco.*;
@@ -38,6 +39,18 @@ public class RegioVincoDataModel extends PointAndClickGameDataModel {
     private HashMap<String, ArrayList<int[]>> pixels;
     private LinkedList<String> redSubRegions;
     private LinkedList<MovableText> subRegionStack;
+    
+    //GAME STATISTICS AND TEXT BOXES
+    private Text regionsFound;
+    private Text regionsLeft;
+    private Text incorrectGuesses;
+    private Text gameTimer;
+    private int regionsFoundInt;
+    private int regionsLeftInt;
+    private int incorrectGuessesInt;
+    
+    //START TIMER
+    private long startTimer;
 
     /**
      * Default constructor, it initializes all data structures for managing the
@@ -165,13 +178,20 @@ public class RegioVincoDataModel extends PointAndClickGameDataModel {
 	    redSubRegions.clear();
 
 	    startTextStackMovingDown();
+            
+            regionsFoundInt++;
+            regionsLeftInt--;
 
 	    if (subRegionStack.isEmpty()) {
+                Pane gameLayer = game.getGameLayer();
+                gameLayer.getChildren().clear();
+                for(int i = 0; i < mapImage.getWidth(); i++)
 		this.endGameAsWin();
 		game.getAudio().stop(TRACKED_SONG);
-		game.getAudio().play(AFGHAN_ANTHEM, false);
+		game.getAudio().play(AFGHAN_ANTHEM, false);  
 	    }
 	} else {
+            incorrectGuessesInt++;
 	    if (!redSubRegions.contains(clickedSubRegion)) {
 		// BOO WRONG ANSWER
 		game.getAudio().play(FAILURE, false);
@@ -187,7 +207,7 @@ public class RegioVincoDataModel extends PointAndClickGameDataModel {
 	// AND START THE REST MOVING DOWN
 	for (MovableText mT : subRegionStack) {
 	    mT.setVelocityY(SUB_STACK_VELOCITY);
-	}
+        }
     }
 
     public void changeSubRegionColorOnMap(RegioVincoGame game, String subRegion, Color color) {
@@ -211,11 +231,17 @@ public class RegioVincoDataModel extends PointAndClickGameDataModel {
     @Override
     public void reset(PointAndClickGame game) {
 
+        //RESET ALL STATISTICS
+        regionsFoundInt = 0;
+        incorrectGuessesInt = 0;
+        regionsLeftInt = 0;
+        
+
+        Pane statistics = new Pane();
+        
 	// THIS GAME ONLY PLAYS AFGHANISTAN
 	regionName = "Afghanistan";
 	subRegionsType = "Provinces";
-        
-        
         
 	// LET'S CLEAR THE DATA STRUCTURES
 	colorToSubRegionMappings.clear();
@@ -260,15 +286,32 @@ public class RegioVincoDataModel extends PointAndClickGameDataModel {
 	colorToSubRegionMappings.put(makeColor(138, 138, 138), "Nimruz");
 	colorToSubRegionMappings.put(makeColor(136, 136, 136), "Helmand");
 	colorToSubRegionMappings.put(makeColor(134, 134, 134), "Kandahar");
-
+        
+        regionsLeftInt = colorToSubRegionMappings.size();
+        
 	// REST THE MOVABLE TEXT
 	Pane gameLayer = ((RegioVincoGame)game).getGameLayer();
+        
+        
 	gameLayer.getChildren().clear();
+        Text regionText = new Text(regionName + " " + subRegionsType);
+        regionText.setX(900);
+        regionText.setY(200);
+        regionText.setFill(Color.YELLOW);
+        regionText.resize(100, 50);
+        regionText.setStyle("-fx-font: 15px Tahoma");
+        regionText.setTextAlignment(TextAlignment.CENTER);
+        gameLayer.getChildren().add(regionText); 
+        
+        regionsFound = new Text();
+        regionsLeft = new Text();
+        incorrectGuesses = new Text();
+        gameTimer = new Text();
+        
 	for (Color c : colorToSubRegionMappings.keySet()) {
 	    String subRegion = colorToSubRegionMappings.get(c);
 	    subRegionToColorMappings.put(subRegion, c);
 	    Text textNode = new Text(subRegion);
-	    gameLayer.getChildren().add(textNode);
 	    MovableText subRegionText = new MovableText(textNode);
 	    subRegionText.getText().setFill(REGION_NAME_COLOR);
 	    textNode.setX(STACK_X);
@@ -276,18 +319,17 @@ public class RegioVincoDataModel extends PointAndClickGameDataModel {
 	}
 	Collections.shuffle(subRegionStack);
 	int y = STACK_INIT_Y;
-	int yInc = STACK_INIT_Y_INC;
 	// NOW FIX THEIR Y LOCATIONS
 	for (MovableText mT : subRegionStack) {
-	    int tY = y + yInc;
-	    mT.getText().setY(tY);
-	    yInc -= 50;
-            mT.setVelocityY(0);
-            mT.setVelocityX(0);
+	    mT.getText().setY(y);
+            gameLayer.getChildren().add(mT.getText());
+            y -= STACK_INIT_Y_INC;
 	}
 
 	// RELOAD THE MAP
 	((RegioVincoGame) game).reloadMap();
+        
+        
 
 	// LET'S RECORD ALL THE PIXELS
 	pixels = new HashMap();
@@ -300,7 +342,7 @@ public class RegioVincoDataModel extends PointAndClickGameDataModel {
 		Color c = mapPixelReader.getColor(i, j);
                 //CHECKS FOR OUTSIDE BORDER ORANGE, CHANGES IF TRUE
                 if (c.equals(orangeChange)){
-                    mapPixelWriter.setColor(i, j, Color.BLACK);
+                    mapPixelWriter.setColor(i, j, Color.TRANSPARENT);
                 }
 		if (colorToSubRegionMappings.containsKey(c)) {
 		    String subRegion = colorToSubRegionMappings.get(c);
@@ -312,7 +354,34 @@ public class RegioVincoDataModel extends PointAndClickGameDataModel {
 		}
 	    }
 	}
-
+        
+        //CREATING TEXT BOXES FOR STATISTICS
+        regionsFound.setText("Regions Found: " + regionsFoundInt);
+        regionsFound.setX(300);
+        regionsFound.setY(650);
+        regionsFound.setFill(Color.WHITE);
+        
+        regionsLeft.setText("Regions Left: " + regionsLeftInt);
+        regionsLeft.setX(500);
+        regionsLeft.setY(650);
+        regionsLeft.setFill(Color.WHITE);
+        
+        incorrectGuesses.setText("Incorrect Guesses: " + incorrectGuessesInt);
+        incorrectGuesses.setX(700);
+        incorrectGuesses.setY(650);
+        incorrectGuesses.setFill(Color.WHITE);
+        
+        startTimer = GregorianCalendar.getInstance().getTimeInMillis()/1000;
+        gameTimer.setText("Time Elapsed: " + "00:" + startTimer);
+        gameTimer.setX(100);
+        gameTimer.setY(650);
+        gameTimer.setFill(Color.WHITE);
+        
+        gameLayer.getChildren().add(regionsFound);
+        gameLayer.getChildren().add(regionsLeft);
+        gameLayer.getChildren().add(incorrectGuesses);
+        gameLayer.getChildren().add(gameTimer);
+        
 	// RESET THE AUDIO
 	AudioManager audio = ((RegioVincoGame) game).getAudio();
 	audio.stop(AFGHAN_ANTHEM);
@@ -342,7 +411,10 @@ public class RegioVincoDataModel extends PointAndClickGameDataModel {
      */
     @Override
     public void updateAll(PointAndClickGame game, double percentage) {
-	for (MovableText mT : subRegionStack) {
+	long minutes = ((GregorianCalendar.getInstance().getTimeInMillis()/1000) - startTimer)/60;
+        long seconds = ((GregorianCalendar.getInstance().getTimeInMillis()/1000) - startTimer)%60;
+        String time = String.format("Time Elapsed: %02d:%02d",minutes,seconds);
+        for (MovableText mT : subRegionStack) {
 	    mT.update(percentage);
 	}
 	if (!subRegionStack.isEmpty()) {
@@ -351,11 +423,16 @@ public class RegioVincoDataModel extends PointAndClickGameDataModel {
 	    if (bottomY >= FIRST_REGION_Y_IN_STACK) {
 		double diffY = bottomY - FIRST_REGION_Y_IN_STACK;
 		for (MovableText mT : subRegionStack) {
-		    mT.getText().setY(mT.getText().getX() - diffY);
+		    mT.getText().setY(mT.getText().getY() - diffY);
 		    mT.setVelocityY(0);
 		}
 	    }
 	}
+        
+        regionsFound.setText("Regions Found: " + regionsFoundInt);
+        regionsLeft.setText("Regions Left: " + regionsLeftInt);
+        incorrectGuesses.setText("Incorrect Guesses: " + incorrectGuessesInt);
+        gameTimer.setText(time);
     }
 
     /**

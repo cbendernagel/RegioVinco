@@ -208,6 +208,7 @@ public class RegioVincoGame extends PointAndClickGame {
     @Override
     public void updateGUI() {
 	// IF THE GAME IS OVER, DISPLAY THE APPROPRIATE RESPONSE
+        
 	if (data.won()) {
 	    ImageView winImage = guiImages.get(WIN_DISPLAY_TYPE);
 	    winImage.setVisible(true);
