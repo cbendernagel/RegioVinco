@@ -49,6 +49,14 @@ public class MovableText {
     public void setVelocityY(double initVelocityY) {
 	velocity[1] = initVelocityY;
     }
+    
+    public void setAccelerationX(double initAccelerationX){
+        acceleration[0] = initAccelerationX;
+    }
+    
+    public void setAccelerationY(double initAccelerationY){
+        acceleration[1] = initAccelerationY;
+    }
 
     /**
      * Called each frame, this function moves the node according

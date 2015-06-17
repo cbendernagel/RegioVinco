@@ -44,7 +44,7 @@ public class RegioVinco extends Application {
     // LOCATION IS PROVIDED HERE AS WELL. NOTE THAT IT MIGHT BE A 
     // GOOD IDEA TO LOAD ALL OF THESE SETTINGS FROM A FILE, BUT ALAS,
     // THERE ARE ONLY SO MANY HOURS IN A DAY
-    public static final int TARGET_FRAME_RATE = 50;
+    public static final int TARGET_FRAME_RATE = 30;
     public static final String APP_TITLE = "Regio Vinco";
     
     // BACKGROUND IMAGE

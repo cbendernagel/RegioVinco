@@ -48,6 +48,7 @@ public class RegioVincoDataModel extends PointAndClickGameDataModel {
     private int regionsFoundInt;
     private int regionsLeftInt;
     private int incorrectGuessesInt;
+    private int totalSubRegions;
     
     //START TIMER
     private long startTimer;
@@ -78,6 +79,7 @@ public class RegioVincoDataModel extends PointAndClickGameDataModel {
 	    redSubRegions.clear();
         while (subRegionStack.size() > 1) {
 	    MovableText text = subRegionStack.removeFirst();
+            
 	    String subRegionName = text.getText().getText();
 
 	    // TURN THE TERRITORY GREEN
@@ -155,6 +157,7 @@ public class RegioVincoDataModel extends PointAndClickGameDataModel {
     public void respondToMapSelection(RegioVincoGame game, int x, int y) {
         // THIS IS WHERE WE'LL CHECK TO SEE IF THE
 	// PLAYER CLICKED NO THE CORRECT SUBREGION
+        Pane gameLayer = game.getGameLayer();
 	Color pixelColor = mapPixelReader.getColor(x, y);
 	String clickedSubRegion = colorToSubRegionMappings.get(pixelColor);
 	if ((clickedSubRegion == null) || (subRegionStack.isEmpty())) {
@@ -163,12 +166,14 @@ public class RegioVincoDataModel extends PointAndClickGameDataModel {
 	if (clickedSubRegion.equals(subRegionStack.get(0).getText().getText())) {
 	    // YAY, CORRECT ANSWER
 	    game.getAudio().play(SUCCESS, false);
-
+            
+            
 	    // TURN THE TERRITORY GREEN
 	    changeSubRegionColorOnMap(game, clickedSubRegion, Color.GREEN);
 
 	    // REMOVE THE BOTTOM ELEMENT FROM THE STACK
-	    subRegionStack.removeFirst();
+	    MovableText removed = subRegionStack.removeFirst();
+            gameLayer.getChildren().remove(removed.getText());
 
 	    // AND LET'S CHANGE THE RED ONES BACK TO THEIR PROPER COLORS
 	    for (String s : redSubRegions) {
@@ -183,9 +188,26 @@ public class RegioVincoDataModel extends PointAndClickGameDataModel {
             regionsLeftInt--;
 
 	    if (subRegionStack.isEmpty()) {
-                Pane gameLayer = game.getGameLayer();
                 gameLayer.getChildren().clear();
-                for(int i = 0; i < mapImage.getWidth(); i++)
+                colorToSubRegionMappings.clear();
+                subRegionToColorMappings.clear();
+                for(int i = 0; i < mapImage.getWidth(); i++){
+                    for(int j = 0; j < mapImage.getHeight(); j++){
+                        mapPixelWriter.setColor(i, j, Color.TRANSPARENT);
+                    }
+                }
+                
+                Long totalTime = (GregorianCalendar.getInstance().getTimeInMillis()/1000 - startTimer);
+                long score = 1000 - (totalTime - (1000 * incorrectGuessesInt)); 
+                
+                //CREATE STATISTIC PANE
+                String statString = String.format("Region:  Afghanistan\nScore:  %d\nGame Duration:  %02d:%02d\nSub Regions:  %d\nIncorrect Guesses:  %d",score,totalTime/60,totalTime%60,totalSubRegions,incorrectGuessesInt);
+                Text fullStats = new Text(statString);
+                fullStats.setX(400);
+                fullStats.setY(350);
+                
+                game.getGuiLayer().getChildren().add(fullStats);
+                
 		this.endGameAsWin();
 		game.getAudio().stop(TRACKED_SONG);
 		game.getAudio().play(AFGHAN_ANTHEM, false);  
@@ -206,6 +228,7 @@ public class RegioVincoDataModel extends PointAndClickGameDataModel {
     public void startTextStackMovingDown() {
 	// AND START THE REST MOVING DOWN
 	for (MovableText mT : subRegionStack) {
+            mT.setAccelerationY(1);
 	    mT.setVelocityY(SUB_STACK_VELOCITY);
         }
     }
@@ -288,6 +311,7 @@ public class RegioVincoDataModel extends PointAndClickGameDataModel {
 	colorToSubRegionMappings.put(makeColor(134, 134, 134), "Kandahar");
         
         regionsLeftInt = colorToSubRegionMappings.size();
+        totalSubRegions = regionsLeftInt;
         
 	// REST THE MOVABLE TEXT
 	Pane gameLayer = ((RegioVincoGame)game).getGameLayer();
@@ -315,6 +339,7 @@ public class RegioVincoDataModel extends PointAndClickGameDataModel {
 	    MovableText subRegionText = new MovableText(textNode);
 	    subRegionText.getText().setFill(REGION_NAME_COLOR);
 	    textNode.setX(STACK_X);
+            gameLayer.getChildren().add(textNode);
 	    subRegionStack.add(subRegionText);
 	}
 	Collections.shuffle(subRegionStack);
@@ -322,7 +347,6 @@ public class RegioVincoDataModel extends PointAndClickGameDataModel {
 	// NOW FIX THEIR Y LOCATIONS
 	for (MovableText mT : subRegionStack) {
 	    mT.getText().setY(y);
-            gameLayer.getChildren().add(mT.getText());
             y -= STACK_INIT_Y_INC;
 	}
 
@@ -416,6 +440,9 @@ public class RegioVincoDataModel extends PointAndClickGameDataModel {
         String time = String.format("Time Elapsed: %02d:%02d",minutes,seconds);
         for (MovableText mT : subRegionStack) {
 	    mT.update(percentage);
+            if(mT.getVelocityY() == SUB_STACK_VELOCITY){
+                mT.setAccelerationY(0);
+            }
 	}
 	if (!subRegionStack.isEmpty()) {
 	    MovableText bottomOfStack = subRegionStack.get(0);
@@ -423,7 +450,8 @@ public class RegioVincoDataModel extends PointAndClickGameDataModel {
 	    if (bottomY >= FIRST_REGION_Y_IN_STACK) {
 		double diffY = bottomY - FIRST_REGION_Y_IN_STACK;
 		for (MovableText mT : subRegionStack) {
-		    mT.getText().setY(mT.getText().getY() - diffY);
+		    //mT.getText().setY(mT.getText().getY() - diffY); 
+                    mT.setAccelerationX(0);
 		    mT.setVelocityY(0);
 		}
 	    }
