@@ -9,6 +9,7 @@ import javafx.scene.image.WritableImage;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
+import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 import pacg.PointAndClickGame;
 import static regio_vinco.RegioVinco.*;
@@ -112,6 +113,15 @@ public class RegioVincoGame extends PointAndClickGame {
 	// THEN THE GUI LAYER
 	guiLayer = new Pane();
 	addStackPaneLayer(guiLayer);
+        Rectangle subRegionBlock = new Rectangle();
+        
+        subRegionBlock.setWidth(300);
+        subRegionBlock.setHeight(225);
+        subRegionBlock.setX(900);
+        
+        subRegionBlock.setFill(Color.BLACK);
+        
+        guiLayer.getChildren().add(subRegionBlock);
 	addGUIImage(guiLayer, TITLE_TYPE, loadImage(TITLE_FILE_PATH), TITLE_X, TITLE_Y);
 	addGUIButton(guiLayer, START_TYPE, loadImage(START_BUTTON_FILE_PATH), START_X, START_Y);
 	addGUIButton(guiLayer, EXIT_TYPE, loadImage(EXIT_BUTTON_FILE_PATH), EXIT_X, EXIT_Y);

@@ -1,5 +1,7 @@
 package regio_vinco;
 
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
 
 /**
@@ -9,6 +11,7 @@ import javafx.scene.text.Text;
 public class MovableText {
     // A JAVAFX TEXT NODE IN THE SCENE GRAPH
     protected Text text;
+    protected Rectangle  rectangle;
     
     // USED FOR MANAGING NODE MOVEMENT
     protected double[] velocity = new double[2];
@@ -22,6 +25,11 @@ public class MovableText {
      */
     public MovableText(Text initText) {
 	text = initText;
+        rectangle = new Rectangle();
+        rectangle.setWidth(300);
+        rectangle.setHeight(50);
+        rectangle.setFill(Color.BLUE);
+        //rectangle.setOpacity(0);
     }
     
     // ACCESSOR AND MUTATOR METHODS
@@ -32,6 +40,14 @@ public class MovableText {
     
     public void setText(Text initText) {
 	text = initText;
+    }
+    
+    public Rectangle getRectangle(){
+        return rectangle;
+    }
+    
+    public void setRectangle(Rectangle initRectangle){
+        rectangle = initRectangle;
     }
     
     public double getVelocityX() {
@@ -72,8 +88,13 @@ public class MovableText {
 	double x = text.translateXProperty().doubleValue();
 	text.translateXProperty().setValue(x + (velocity[0] * percentage));
 	double y = text.translateYProperty().doubleValue();
-	text.translateYProperty().setValue(x + (velocity[1] * percentage));
+	text.translateYProperty().setValue(y + (velocity[1] * percentage));
 	
+        double rX = rectangle.translateXProperty().doubleValue();
+        rectangle.translateXProperty().setValue(x + (velocity[0] * percentage));
+        double rY = rectangle.translateYProperty().doubleValue();
+	rectangle.translateYProperty().setValue(y + (velocity[1] * percentage));
+        
 	// UPDATE VELOCITY
 	velocity[0] += (acceleration[0] * percentage);
 	velocity[1] += (acceleration[1] * percentage);

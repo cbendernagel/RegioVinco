@@ -174,6 +174,7 @@ public class RegioVincoDataModel extends PointAndClickGameDataModel {
 	    // REMOVE THE BOTTOM ELEMENT FROM THE STACK
 	    MovableText removed = subRegionStack.removeFirst();
             gameLayer.getChildren().remove(removed.getText());
+            gameLayer.getChildren().remove(removed.getRectangle());
 
 	    // AND LET'S CHANGE THE RED ONES BACK TO THEIR PROPER COLORS
 	    for (String s : redSubRegions) {
@@ -228,7 +229,7 @@ public class RegioVincoDataModel extends PointAndClickGameDataModel {
     public void startTextStackMovingDown() {
 	// AND START THE REST MOVING DOWN
 	for (MovableText mT : subRegionStack) {
-            mT.setAccelerationY(1);
+            //mT.setAccelerationY(1);
 	    mT.setVelocityY(SUB_STACK_VELOCITY);
         }
     }
@@ -325,7 +326,7 @@ public class RegioVincoDataModel extends PointAndClickGameDataModel {
         regionText.resize(100, 50);
         regionText.setStyle("-fx-font: 15px Tahoma");
         regionText.setTextAlignment(TextAlignment.CENTER);
-        gameLayer.getChildren().add(regionText); 
+        ((RegioVincoGame)game).getGuiLayer().getChildren().add(regionText); 
         
         regionsFound = new Text();
         regionsLeft = new Text();
@@ -336,9 +337,12 @@ public class RegioVincoDataModel extends PointAndClickGameDataModel {
 	    String subRegion = colorToSubRegionMappings.get(c);
 	    subRegionToColorMappings.put(subRegion, c);
 	    Text textNode = new Text(subRegion);
+            textNode.setFill(Color.NAVY);
 	    MovableText subRegionText = new MovableText(textNode);
-	    subRegionText.getText().setFill(REGION_NAME_COLOR);
+	    //subRegionText.getText().setFill(REGION_NAME_COLOR);
 	    textNode.setX(STACK_X);
+            subRegionText.getRectangle().setFill(c);
+            gameLayer.getChildren().add(subRegionText.getRectangle());
             gameLayer.getChildren().add(textNode);
 	    subRegionStack.add(subRegionText);
 	}
@@ -348,6 +352,8 @@ public class RegioVincoDataModel extends PointAndClickGameDataModel {
 	for (MovableText mT : subRegionStack) {
 	    mT.getText().setY(y);
             y -= STACK_INIT_Y_INC;
+            mT.getRectangle().setY(y + 20);
+            mT.getRectangle().setX(mT.getText().getX());
 	}
 
 	// RELOAD THE MAP
@@ -446,12 +452,14 @@ public class RegioVincoDataModel extends PointAndClickGameDataModel {
 	}
 	if (!subRegionStack.isEmpty()) {
 	    MovableText bottomOfStack = subRegionStack.get(0);
+            bottomOfStack.getText().setFill(Color.RED);
+            bottomOfStack.getRectangle().setFill(Color.GREEN);
 	    double bottomY = bottomOfStack.getText().getY();
 	    if (bottomY >= FIRST_REGION_Y_IN_STACK) {
 		double diffY = bottomY - FIRST_REGION_Y_IN_STACK;
 		for (MovableText mT : subRegionStack) {
-		    //mT.getText().setY(mT.getText().getY() - diffY); 
-                    mT.setAccelerationX(0);
+		    mT.getText().setY(mT.getText().getY() - diffY); 
+                    mT.setAccelerationY(0);
 		    mT.setVelocityY(0);
 		}
 	    }
