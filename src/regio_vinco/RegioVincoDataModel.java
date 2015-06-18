@@ -6,6 +6,7 @@ import java.util.Collections;
 import java.util.GregorianCalendar;
 import java.util.HashMap;
 import java.util.LinkedList;
+import javafx.event.EventType;
 import javafx.scene.image.PixelReader;
 import javafx.scene.image.PixelWriter;
 import javafx.scene.image.WritableImage;
@@ -45,6 +46,7 @@ public class RegioVincoDataModel extends PointAndClickGameDataModel {
     private Text regionsLeft;
     private Text incorrectGuesses;
     private Text gameTimer;
+    private Text fullStats;
     private int regionsFoundInt;
     private int regionsLeftInt;
     private int incorrectGuessesInt;
@@ -72,6 +74,7 @@ public class RegioVincoDataModel extends PointAndClickGameDataModel {
     }
 
     public void removeAllButOneFromeStack(RegioVincoGame game) {
+        Pane gameLayer = game.getGameLayer();
         for (String s : redSubRegions) {
 		Color subRegionColor = subRegionToColorMappings.get(s);
 		changeSubRegionColorOnMap(game, s, subRegionColor);
@@ -79,9 +82,10 @@ public class RegioVincoDataModel extends PointAndClickGameDataModel {
 	    redSubRegions.clear();
         while (subRegionStack.size() > 1) {
 	    MovableText text = subRegionStack.removeFirst();
-            
+            gameLayer.getChildren().remove(text.getRectangle());
+            gameLayer.getChildren().remove(text.getText());
 	    String subRegionName = text.getText().getText();
-
+            
 	    // TURN THE TERRITORY GREEN
 	    changeSubRegionColorOnMap(game, subRegionName, Color.GREEN);
 	}
@@ -199,11 +203,11 @@ public class RegioVincoDataModel extends PointAndClickGameDataModel {
                 }
                 
                 Long totalTime = (GregorianCalendar.getInstance().getTimeInMillis()/1000 - startTimer);
-                long score = 1000 - (totalTime - (1000 * incorrectGuessesInt)); 
+                long score = 1000 - (totalTime) - (100 * incorrectGuessesInt); 
                 
                 //CREATE STATISTIC PANE
                 String statString = String.format("Region:  Afghanistan\nScore:  %d\nGame Duration:  %02d:%02d\nSub Regions:  %d\nIncorrect Guesses:  %d",score,totalTime/60,totalTime%60,totalSubRegions,incorrectGuessesInt);
-                Text fullStats = new Text(statString);
+                fullStats = new Text(statString);
                 fullStats.setX(400);
                 fullStats.setY(350);
                 
@@ -255,6 +259,9 @@ public class RegioVincoDataModel extends PointAndClickGameDataModel {
     @Override
     public void reset(PointAndClickGame game) {
 
+        if(((RegioVincoGame)game).getGuiLayer().getChildren().contains(fullStats))
+            ((RegioVincoGame)game).getGuiLayer().getChildren().remove(fullStats);
+        
         //RESET ALL STATISTICS
         regionsFoundInt = 0;
         incorrectGuessesInt = 0;
@@ -324,7 +331,7 @@ public class RegioVincoDataModel extends PointAndClickGameDataModel {
         regionText.setY(200);
         regionText.setFill(Color.YELLOW);
         regionText.resize(100, 50);
-        regionText.setStyle("-fx-font: 15px Tahoma");
+        regionText.setStyle("-fx-font: 30px Arial");
         regionText.setTextAlignment(TextAlignment.CENTER);
         ((RegioVincoGame)game).getGuiLayer().getChildren().add(regionText); 
         
@@ -337,6 +344,7 @@ public class RegioVincoDataModel extends PointAndClickGameDataModel {
 	    String subRegion = colorToSubRegionMappings.get(c);
 	    subRegionToColorMappings.put(subRegion, c);
 	    Text textNode = new Text(subRegion);
+            textNode.setStyle("-fx-font: 25px Calibri");
             textNode.setFill(Color.NAVY);
 	    MovableText subRegionText = new MovableText(textNode);
 	    //subRegionText.getText().setFill(REGION_NAME_COLOR);
@@ -389,23 +397,27 @@ public class RegioVincoDataModel extends PointAndClickGameDataModel {
         regionsFound.setText("Regions Found: " + regionsFoundInt);
         regionsFound.setX(300);
         regionsFound.setY(650);
-        regionsFound.setFill(Color.WHITE);
+        regionsFound.setFill(Color.ORANGE);
+        regionsFound.setStyle("-fx-font: 20px Calibri");
         
         regionsLeft.setText("Regions Left: " + regionsLeftInt);
         regionsLeft.setX(500);
         regionsLeft.setY(650);
-        regionsLeft.setFill(Color.WHITE);
+        regionsLeft.setFill(Color.ORANGE);
+        regionsLeft.setStyle("-fx-font: 20px Calibri");
         
         incorrectGuesses.setText("Incorrect Guesses: " + incorrectGuessesInt);
         incorrectGuesses.setX(700);
         incorrectGuesses.setY(650);
-        incorrectGuesses.setFill(Color.WHITE);
+        incorrectGuesses.setFill(Color.ORANGE);
+        incorrectGuesses.setStyle("-fx-font: 20px Calibri");
         
         startTimer = GregorianCalendar.getInstance().getTimeInMillis()/1000;
         gameTimer.setText("Time Elapsed: " + "00:" + startTimer);
         gameTimer.setX(100);
         gameTimer.setY(650);
-        gameTimer.setFill(Color.WHITE);
+        gameTimer.setFill(Color.ORANGE);
+        gameTimer.setStyle("-fx-font: 20px Calibri");
         
         gameLayer.getChildren().add(regionsFound);
         gameLayer.getChildren().add(regionsLeft);
@@ -445,24 +457,23 @@ public class RegioVincoDataModel extends PointAndClickGameDataModel {
         long seconds = ((GregorianCalendar.getInstance().getTimeInMillis()/1000) - startTimer)%60;
         String time = String.format("Time Elapsed: %02d:%02d",minutes,seconds);
         for (MovableText mT : subRegionStack) {
+            mT.getText().setY(mT.getText().getY() + mT.getVelocityY());
+            mT.getRectangle().setY(mT.getRectangle().getY() + mT.getVelocityY());
 	    mT.update(percentage);
-            if(mT.getVelocityY() == SUB_STACK_VELOCITY){
-                mT.setAccelerationY(0);
-            }
 	}
+
 	if (!subRegionStack.isEmpty()) {
 	    MovableText bottomOfStack = subRegionStack.get(0);
             bottomOfStack.getText().setFill(Color.RED);
             bottomOfStack.getRectangle().setFill(Color.GREEN);
-	    double bottomY = bottomOfStack.getText().getY();
+            double bottomY = bottomOfStack.getText().getY() + bottomOfStack.getText().translateYProperty().doubleValue();
 	    if (bottomY >= FIRST_REGION_Y_IN_STACK) {
 		double diffY = bottomY - FIRST_REGION_Y_IN_STACK;
 		for (MovableText mT : subRegionStack) {
-		    mT.getText().setY(mT.getText().getY() - diffY); 
-                    mT.setAccelerationY(0);
+		    mT.getText().setY(mT.getText().getY() - diffY);
 		    mT.setVelocityY(0);
 		}
-	    }
+            }
 	}
         
         regionsFound.setText("Regions Found: " + regionsFoundInt);
