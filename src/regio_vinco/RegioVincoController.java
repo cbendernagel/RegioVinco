@@ -36,6 +36,12 @@ public class RegioVincoController implements KeyPressHook {
         game.getHelpLayer().setVisible(true);
     }
     
+    public void processWorldButtonRequest(){
+        game.beginUsingData();
+        game.getSettingsLayer().setVisible(false);
+        game.getHelpLayer().setVisible(false);
+    }
+    
     public void processMapClickRequest(int x, int y) {
 	((RegioVincoDataModel)game.getDataModel()).respondToMapSelection(game, x, y);
     }

@@ -8,6 +8,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.image.PixelReader;
 import javafx.scene.image.WritableImage;
 import javafx.scene.layout.Background;
+import javafx.scene.layout.Border;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
@@ -47,6 +48,10 @@ public class RegioVincoGame extends PointAndClickGame {
     
     public AudioManager getAudio() {
 	return audio;
+    }
+    
+    public Pane getBackgroundLayer(){
+        return backgroundLayer;
     }
     
     public Pane getGameLayer() {
@@ -129,14 +134,18 @@ public class RegioVincoGame extends PointAndClickGame {
         // THEN THE SETTINGS WINDOWPANE
         settingsLayer = new Pane();
         addStackPaneLayer(settingsLayer);
+        settingsLayer.setStyle("-fx-background-color: #3498db");
+        addGUIButton(settingsLayer, WORLD_TYPE2, loadImage(WORLD_BUTTON_FILE_PATH), WORLD_X, WORLD_Y);
         settingsLayer.setVisible(false);
         
         // THEN THE HELP WINDOWPANE
         helpLayer = new Pane();
         addStackPaneLayer(helpLayer);
-        helpLayer.setVisible(false);
         helpLayer.setStyle("-fx-background-color: #3498db");
+        addGUIButton(helpLayer, WORLD_TYPE, loadImage(WORLD_BUTTON_FILE_PATH), WORLD_X, WORLD_Y);
+        helpLayer.setVisible(false);
         
+        //
         
         subRegionBlock.setWidth(300);
         subRegionBlock.setHeight(225);
@@ -185,18 +194,33 @@ public class RegioVincoGame extends PointAndClickGame {
         Button enterButton = guiButtons.get(ENTER_TYPE);
         enterButton.setBackground(Background.EMPTY);
         enterButton.setOnAction(e -> {
+            getBackgroundLayer().getChildren().clear();
             enterButton.setVisible(false);
             controller.processEnterGameRequest();
         });
 
         Button settingsButton = guiButtons.get(SETTINGS_TYPE);
+        settingsButton.setBackground(Background.EMPTY);
         settingsButton.setOnAction(e ->{
             controller.processSettingsButtonRequest();
         });
         
-        Button helpButton = guiButtons.get(SETTINGS_TYPE);
+        Button helpButton = guiButtons.get(HELP_TYPE);
+        helpButton.setBackground(Background.EMPTY);
         helpButton.setOnAction(e ->{
             controller.processHelpButtonRequest();
+        });
+        
+        Button worldButton = guiButtons.get(WORLD_TYPE);
+        worldButton.setBackground(Background.EMPTY);
+        worldButton.setOnAction(e ->{
+            controller.processWorldButtonRequest();
+        });
+        
+        Button worldButton2 = guiButtons.get(WORLD_TYPE2);
+        worldButton2.setBackground(Background.EMPTY);
+        worldButton2.setOnAction(e ->{
+            controller.processWorldButtonRequest();
         });
         
 	// MAKE THE CONTROLLER THE HOOK FOR KEY PRESSES
@@ -223,8 +247,11 @@ public class RegioVincoGame extends PointAndClickGame {
 	// IF THE WIN DIALOG IS VISIBLE, MAKE IT INVISIBLE
 	ImageView winView = guiImages.get(WIN_DISPLAY_TYPE);
 	winView.setVisible(false);
-
+        
+        
 	// AND RESET ALL GAME DATA
+        ((RegioVincoDataModel)data).setRegionName(WORLD_NAME);
+        ((RegioVincoDataModel)data).setRegionMapName(WORLD_MAP_NAME);
 	data.reset(this);
     }
 
@@ -254,8 +281,8 @@ public class RegioVincoGame extends PointAndClickGame {
 	}
     }
 
-    public void reloadMap() {
-	Image tempMapImage = loadImage(AFG_MAP_FILE_PATH);
+    public void reloadMap(String map, String mapName) {
+	Image tempMapImage = loadImage(MAPS_PATH + "/" + map + "/" + mapName);
 	PixelReader pixelReader = tempMapImage.getPixelReader();
 	WritableImage mapImage = new WritableImage(pixelReader, (int) tempMapImage.getWidth(), (int) tempMapImage.getHeight());
 	ImageView mapView = guiImages.get(MAP_TYPE);

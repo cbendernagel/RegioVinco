@@ -34,12 +34,14 @@ public class RegioVincoDataModel extends PointAndClickGameDataModel {
     
     // AND OTHER GAME DATA
     private String regionName;
+    private String regionMapName;
     private String subRegionsType;
     private HashMap<Color, String> colorToSubRegionMappings;
     private HashMap<String, Color> subRegionToColorMappings;
     private HashMap<String, ArrayList<int[]>> pixels;
     private LinkedList<String> redSubRegions;
     private LinkedList<MovableText> subRegionStack;
+    private LinkedList<Text> navigatedRegions;
     
     //GAME STATISTICS AND TEXT BOXES
     private Text regionsFound;
@@ -65,6 +67,7 @@ public class RegioVincoDataModel extends PointAndClickGameDataModel {
 	subRegionToColorMappings = new HashMap();
 	subRegionStack = new LinkedList();
 	redSubRegions = new LinkedList();
+        navigatedRegions = new LinkedList();
     }
     
     public void setMapImage(WritableImage initMapImage) {
@@ -96,13 +99,22 @@ public class RegioVincoDataModel extends PointAndClickGameDataModel {
     public String getRegionName() {
 	return regionName;
     }
+    
+    public String getRegionMapName(){
+        return regionMapName;
+    }
+    
+    public void setRegionName(String regionName) {
+	this.regionName = regionName;
+    }
+    
+    public void setRegionMapName(String regionMapName){
+        this.regionMapName = regionMapName;
+    }
+
 
     public String getSubRegionsType() {
 	return subRegionsType;
-    }
-
-    public void setRegionName(String initRegionName) {
-	regionName = initRegionName;
     }
 
     public void setSubRegionsType(String initSubRegionsType) {
@@ -258,21 +270,18 @@ public class RegioVincoDataModel extends PointAndClickGameDataModel {
      */
     @Override
     public void reset(PointAndClickGame game) {
-
+        
         if(((RegioVincoGame)game).getGuiLayer().getChildren().contains(fullStats))
             ((RegioVincoGame)game).getGuiLayer().getChildren().remove(fullStats);
         
         //RESET ALL STATISTICS
-        regionsFoundInt = 0;
-        incorrectGuessesInt = 0;
-        regionsLeftInt = 0;
+        //regionsFoundInt = 0;
+        //incorrectGuessesInt = 0;
+        //regionsLeftInt = 0;
         
 
-        Pane statistics = new Pane();
-        
-	// THIS GAME ONLY PLAYS AFGHANISTAN
-	regionName = "Afghanistan";
-	subRegionsType = "Provinces";
+        //Pane statistics = new Pane();
+
         
 	// LET'S CLEAR THE DATA STRUCTURES
 	colorToSubRegionMappings.clear();
@@ -291,40 +300,7 @@ public class RegioVincoDataModel extends PointAndClickGameDataModel {
          * HAVE THE WORLD MAP LOADED FIRST, THEN WAIT FOR MAP PRESS INPUT
          * CHECK IF DIRECTORY EXISTS, IF IT DOES LOAD IT. IF IT DOESN'T DON'T DO ANYTHING
          */
-	colorToSubRegionMappings.put(makeColor(200, 200, 200), "Badakhshan");
-	colorToSubRegionMappings.put(makeColor(198, 198, 198), "Nuristan");
-	colorToSubRegionMappings.put(makeColor(196, 196, 196), "Kunar");
-	colorToSubRegionMappings.put(makeColor(194, 194, 194), "Laghman");
-	colorToSubRegionMappings.put(makeColor(192, 192, 192), "Kapisa");
-	colorToSubRegionMappings.put(makeColor(190, 190, 190), "Panjshir");
-	colorToSubRegionMappings.put(makeColor(188, 188, 188), "Takhar");
-	colorToSubRegionMappings.put(makeColor(186, 186, 186), "Kunduz");
-	colorToSubRegionMappings.put(makeColor(184, 184, 184), "Baghlan");
-	colorToSubRegionMappings.put(makeColor(182, 182, 182), "Parwan");
-	colorToSubRegionMappings.put(makeColor(180, 180, 180), "Kabul");
-	colorToSubRegionMappings.put(makeColor(178, 178, 178), "Nangrahar");
-	colorToSubRegionMappings.put(makeColor(176, 176, 176), "Maidan Wardak");
-	colorToSubRegionMappings.put(makeColor(174, 174, 174), "Logar");
-	colorToSubRegionMappings.put(makeColor(172, 172, 172), "Paktia");
-	colorToSubRegionMappings.put(makeColor(170, 170, 170), "Khost");
-	colorToSubRegionMappings.put(makeColor(168, 168, 168), "Samangan");
-	colorToSubRegionMappings.put(makeColor(166, 166, 166), "Balkh");
-	colorToSubRegionMappings.put(makeColor(164, 164, 164), "Jowzjan");
-	colorToSubRegionMappings.put(makeColor(162, 162, 162), "Faryab");
-	colorToSubRegionMappings.put(makeColor(160, 160, 160), "Sar-e Pol");
-	colorToSubRegionMappings.put(makeColor(158, 158, 158), "Bamyan");
-	colorToSubRegionMappings.put(makeColor(156, 156, 156), "Ghazni");
-	colorToSubRegionMappings.put(makeColor(154, 154, 154), "Paktika");
-	colorToSubRegionMappings.put(makeColor(152, 152, 152), "Badghis");
-	colorToSubRegionMappings.put(makeColor(150, 150, 150), "Ghor");
-	colorToSubRegionMappings.put(makeColor(148, 148, 148), "Daykundi");
-	colorToSubRegionMappings.put(makeColor(146, 146, 146), "Oruzgan");
-	colorToSubRegionMappings.put(makeColor(144, 144, 144), "Zabul");
-	colorToSubRegionMappings.put(makeColor(142, 142, 142), "Herat");
-	colorToSubRegionMappings.put(makeColor(140, 140, 140), "Farah");
-	colorToSubRegionMappings.put(makeColor(138, 138, 138), "Nimruz");
-	colorToSubRegionMappings.put(makeColor(136, 136, 136), "Helmand");
-	colorToSubRegionMappings.put(makeColor(134, 134, 134), "Kandahar");
+	
         
         regionsLeftInt = colorToSubRegionMappings.size();
         totalSubRegions = regionsLeftInt;
@@ -332,15 +308,22 @@ public class RegioVincoDataModel extends PointAndClickGameDataModel {
 	// REST THE MOVABLE TEXT
 	Pane gameLayer = ((RegioVincoGame)game).getGameLayer();
         
+        if(navigatedRegions.size() > 1){
+            navigatedRegions.getFirst().setFill(Color.WHITE);
+        }
         
 	gameLayer.getChildren().clear();
-        Text regionText = new Text(regionName + " " + subRegionsType);
-        regionText.setX(900);
-        regionText.setY(200);
+        Text regionText = new Text(regionName);
+        regionText.setX(NAVIGATION_X * navigatedRegions.size());
+        regionText.setY(NAVIGATION_Y);
         regionText.setFill(Color.YELLOW);
         regionText.resize(100, 50);
-        regionText.setStyle("-fx-font: 30px Arial");
-        regionText.setTextAlignment(TextAlignment.CENTER);
+        regionText.setOnMouseClicked(e -> {
+            System.out.println(regionText.getText());
+            
+        });
+        regionText.setStyle("-fx-font: 30px Verdana");
+        navigatedRegions.add(regionText);
         ((RegioVincoGame)game).getGuiLayer().getChildren().add(regionText); 
         
         regionsFound = new Text();
@@ -373,7 +356,7 @@ public class RegioVincoDataModel extends PointAndClickGameDataModel {
 	}
 
 	// RELOAD THE MAP
-	((RegioVincoGame) game).reloadMap();
+	((RegioVincoGame) game).reloadMap(regionName, regionMapName);
         
         
 

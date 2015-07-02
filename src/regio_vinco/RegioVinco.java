@@ -24,13 +24,13 @@ public class RegioVinco extends Application {
 
     // FOR THIS APP WE'RE ONLY PLAYING WITH ONE MAP, BUT
     // IN THE FUTURE OUR GAMES WILL USE LOTS OF THEM
-    public static final String REGION_NAME = "Afghanistan";
+    public static final String WORLD_NAME = "The World";
     public static final String MAPS_PATH = "./data/maps/";
-    public static final String AFG_MAP_FILE_PATH = MAPS_PATH + "GreyscaleAFG.png";
+    public static final String WORLD_MAP_NAME = "The World Map.png";
 
     // HERE ARE THE PATHS TO THE REST OF THE IMAGES WE'LL USE
     public static final String GUI_PATH = "./data/gui/";
-    public static final String BACKGROUND_FILE_PATH = GUI_PATH + "RegioVincoBackground.jpg";
+    public static final String BACKGROUND_FILE_PATH = GUI_PATH + "RegioVincoBackground.png";
     public static final String TITLE_FILE_PATH = GUI_PATH + "RegioVincoTitle.png";
     public static final String ENTER_BUTTON_FILE_PATH = GUI_PATH + "RegioVincoEnterButton.png";
     public static final String START_BUTTON_FILE_PATH = GUI_PATH + "RegioVincoStartButton.png";
@@ -39,6 +39,7 @@ public class RegioVinco extends Application {
     public static final String EXIT_BUTTON_MO_FILE_PATH = GUI_PATH + "RegioVincoExitButtonMouseOver.png";
     public static final String SETTINGS_BUTTON_FILE_PATH = GUI_PATH + "RegioVincoSettingsButton.png";
     public static final String HELP_BUTTON_FILE_PATH = GUI_PATH + "RegioVincoHelpButton.png";
+    public static final String WORLD_BUTTON_FILE_PATH = GUI_PATH + "RegioVincoWorldButton.png";
     public static final String SUB_REGION_FILE_PATH = GUI_PATH + "RegioVincoSubRegion.png";
     public static final String WIN_DISPLAY_FILE_PATH = GUI_PATH + "RegioVincoWinDisplay.png";
 
@@ -62,18 +63,8 @@ public class RegioVinco extends Application {
     
     // Enter Game Button
     public static final String ENTER_TYPE = "BEGIN_TYPE";
-    public static final int ENTER_X = 975;
-    public static final int ENTER_Y = 100;
-    
-    // START GAME BUTTON
-    public static final String START_TYPE = "START_TYPE";
-    public static final int START_X = 900;
-    public static final int START_Y = 100;
-
-    // EXIT GAME BUTTON
-    public static final String EXIT_TYPE = "EXIT_TYPE";
-    public static final int EXIT_X = 1050;
-    public static final int EXIT_Y = 100;
+    public static final int ENTER_X = 515;
+    public static final int ENTER_Y = 600;
     
     // SETTINGS BUTTON
     public static final String SETTINGS_TYPE = "SETTINGS_TYPE";
@@ -84,6 +75,12 @@ public class RegioVinco extends Application {
     public static final String HELP_TYPE = "HELP_TYPE";
     public static final int HELP_X = 850;
     public static final int HELP_Y = 30;
+    
+    // WORLD BUTTON
+    public static final String WORLD_TYPE = "WORLD_TYPE";
+    public static final String WORLD_TYPE2 = "WORLD_TYPE2";
+    public static final int WORLD_X = 450;
+    public static final int WORLD_Y = 300;
     
     // MAP AND REGION TITLE
     public static final String REGION_SUB_REGION_TYPE = "REGION_SUB_REGION_TYPE";
@@ -105,6 +102,10 @@ public class RegioVinco extends Application {
     public static final int STACK_X = 900;
     public static final int STACK_INIT_Y = 650;
     public static final int STACK_INIT_Y_INC = 50;
+    
+    // NAVGATION TEXT
+    public static final int NAVIGATION_X = 50;
+    public static final int NAVIGATION_Y = 50;
 
     public static final Color REGION_NAME_COLOR = RegioVincoDataModel.makeColor(240, 240, 240);
 
