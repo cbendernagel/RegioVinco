@@ -2,6 +2,8 @@ package regio_vinco;
 
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.layout.Pane;
+import javafx.stage.Stage;
 import pacg.KeyPressHook;
 
 /**
@@ -20,6 +22,18 @@ public class RegioVincoController implements KeyPressHook {
     
     public void processExitGameRequest() {
 	game.killApplication();
+    }
+    
+    public void processEnterGameRequest(){
+        game.reset();
+    }
+    
+    public void processSettingsButtonRequest(){
+        game.getSettingsLayer().setVisible(true);
+    }
+    
+    public void processHelpButtonRequest(){
+        game.getHelpLayer().setVisible(true);
     }
     
     public void processMapClickRequest(int x, int y) {

@@ -283,6 +283,14 @@ public class RegioVincoDataModel extends PointAndClickGameDataModel {
         // INIT THE MAPPINGS - NOTE THIS SHOULD 
 	// BE DONE IN A FILE, WHICH WE'LL DO IN
 	// FUTURE HOMEWORK ASSIGNMENTS
+        
+        
+        
+        
+        /**
+         * HAVE THE WORLD MAP LOADED FIRST, THEN WAIT FOR MAP PRESS INPUT
+         * CHECK IF DIRECTORY EXISTS, IF IT DOES LOAD IT. IF IT DOESN'T DON'T DO ANYTHING
+         */
 	colorToSubRegionMappings.put(makeColor(200, 200, 200), "Badakhshan");
 	colorToSubRegionMappings.put(makeColor(198, 198, 198), "Nuristan");
 	colorToSubRegionMappings.put(makeColor(196, 196, 196), "Kunar");

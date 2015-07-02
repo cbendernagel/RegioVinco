@@ -32,10 +32,13 @@ public class RegioVinco extends Application {
     public static final String GUI_PATH = "./data/gui/";
     public static final String BACKGROUND_FILE_PATH = GUI_PATH + "RegioVincoBackground.jpg";
     public static final String TITLE_FILE_PATH = GUI_PATH + "RegioVincoTitle.png";
+    public static final String ENTER_BUTTON_FILE_PATH = GUI_PATH + "RegioVincoEnterButton.png";
     public static final String START_BUTTON_FILE_PATH = GUI_PATH + "RegioVincoStartButton.png";
     public static final String START_BUTTON_MO_FILE_PATH = GUI_PATH + "RegioVincoStartButtonMouseOver.png";
     public static final String EXIT_BUTTON_FILE_PATH = GUI_PATH + "RegioVincoExitButton.png";
     public static final String EXIT_BUTTON_MO_FILE_PATH = GUI_PATH + "RegioVincoExitButtonMouseOver.png";
+    public static final String SETTINGS_BUTTON_FILE_PATH = GUI_PATH + "RegioVincoSettingsButton.png";
+    public static final String HELP_BUTTON_FILE_PATH = GUI_PATH + "RegioVincoHelpButton.png";
     public static final String SUB_REGION_FILE_PATH = GUI_PATH + "RegioVincoSubRegion.png";
     public static final String WIN_DISPLAY_FILE_PATH = GUI_PATH + "RegioVincoWinDisplay.png";
 
@@ -57,6 +60,11 @@ public class RegioVinco extends Application {
     public static final int TITLE_X = 900;
     public static final int TITLE_Y = 0;
     
+    // Enter Game Button
+    public static final String ENTER_TYPE = "BEGIN_TYPE";
+    public static final int ENTER_X = 975;
+    public static final int ENTER_Y = 100;
+    
     // START GAME BUTTON
     public static final String START_TYPE = "START_TYPE";
     public static final int START_X = 900;
@@ -66,6 +74,16 @@ public class RegioVinco extends Application {
     public static final String EXIT_TYPE = "EXIT_TYPE";
     public static final int EXIT_X = 1050;
     public static final int EXIT_Y = 100;
+    
+    // SETTINGS BUTTON
+    public static final String SETTINGS_TYPE = "SETTINGS_TYPE";
+    public static final int SETTINGS_X = 850;
+    public static final int SETTINGS_Y = 0;
+    
+    // HELP BUTTON
+    public static final String HELP_TYPE = "HELP_TYPE";
+    public static final int HELP_X = 850;
+    public static final int HELP_Y = 30;
     
     // MAP AND REGION TITLE
     public static final String REGION_SUB_REGION_TYPE = "REGION_SUB_REGION_TYPE";

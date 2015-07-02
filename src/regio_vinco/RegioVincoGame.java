@@ -1,6 +1,7 @@
 package regio_vinco;
 
 import audio_manager.AudioManager;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -32,6 +33,8 @@ public class RegioVincoGame extends PointAndClickGame {
     Pane backgroundLayer;
     Pane gameLayer;
     Pane guiLayer;
+    Pane settingsLayer;
+    Pane helpLayer;
 
     /**
      * Get the game setup.
@@ -52,6 +55,14 @@ public class RegioVincoGame extends PointAndClickGame {
     
     public Pane getGuiLayer() {
         return guiLayer;
+    }
+    
+    public Pane getSettingsLayer() {
+        return settingsLayer;
+    }
+    
+    public Pane getHelpLayer() {
+        return helpLayer;
     }
 
     /**
@@ -115,6 +126,18 @@ public class RegioVincoGame extends PointAndClickGame {
 	addStackPaneLayer(guiLayer);
         Rectangle subRegionBlock = new Rectangle();
         
+        // THEN THE SETTINGS WINDOWPANE
+        settingsLayer = new Pane();
+        addStackPaneLayer(settingsLayer);
+        settingsLayer.setVisible(false);
+        
+        // THEN THE HELP WINDOWPANE
+        helpLayer = new Pane();
+        addStackPaneLayer(helpLayer);
+        helpLayer.setVisible(false);
+        helpLayer.setStyle("-fx-background-color: #3498db");
+        
+        
         subRegionBlock.setWidth(300);
         subRegionBlock.setHeight(225);
         subRegionBlock.setX(900);
@@ -123,8 +146,11 @@ public class RegioVincoGame extends PointAndClickGame {
         
         guiLayer.getChildren().add(subRegionBlock);
 	addGUIImage(guiLayer, TITLE_TYPE, loadImage(TITLE_FILE_PATH), TITLE_X, TITLE_Y);
-	addGUIButton(guiLayer, START_TYPE, loadImage(START_BUTTON_FILE_PATH), START_X, START_Y);
-	addGUIButton(guiLayer, EXIT_TYPE, loadImage(EXIT_BUTTON_FILE_PATH), EXIT_X, EXIT_Y);
+        addGUIButton(guiLayer, ENTER_TYPE, loadImage(ENTER_BUTTON_FILE_PATH), ENTER_X, ENTER_Y);
+        addGUIButton(guiLayer, SETTINGS_TYPE, loadImage(SETTINGS_BUTTON_FILE_PATH), SETTINGS_X, SETTINGS_Y);
+        addGUIButton(guiLayer, HELP_TYPE, loadImage(HELP_BUTTON_FILE_PATH), HELP_X, HELP_Y);
+        
+        //uiLayer.getChildren().
 	
 	// NOTE THAT THE MAP IS ALSO AN IMAGE, BUT
 	// WE'LL LOAD THAT WHEN A GAME STARTS, SINCE
@@ -155,21 +181,24 @@ public class RegioVincoGame extends PointAndClickGame {
     @Override
     public void initGUIHandlers() {
 	controller = new RegioVincoController(this);
+        
+        Button enterButton = guiButtons.get(ENTER_TYPE);
+        enterButton.setBackground(Background.EMPTY);
+        enterButton.setOnAction(e -> {
+            enterButton.setVisible(false);
+            controller.processEnterGameRequest();
+        });
 
-	Button startButton = guiButtons.get(START_TYPE);
-        //MAKES THE FILL OF THE BUTTON EMPTY
-        startButton.setBackground(Background.EMPTY);
-	startButton.setOnAction(e -> {
-	    controller.processStartGameRequest();
-	});
-
-	Button exitButton = guiButtons.get(EXIT_TYPE);
-        //MAKES THE FILL OF THE BUTTON EMPTY
-        exitButton.setBackground(Background.EMPTY);
-	exitButton.setOnAction(e -> {
-	    controller.processExitGameRequest();
-	});
-
+        Button settingsButton = guiButtons.get(SETTINGS_TYPE);
+        settingsButton.setOnAction(e ->{
+            controller.processSettingsButtonRequest();
+        });
+        
+        Button helpButton = guiButtons.get(SETTINGS_TYPE);
+        helpButton.setOnAction(e ->{
+            controller.processHelpButtonRequest();
+        });
+        
 	// MAKE THE CONTROLLER THE HOOK FOR KEY PRESSES
 	keyController.setHook(controller);
 
