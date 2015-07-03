@@ -27,6 +27,7 @@ public class RegioVinco extends Application {
     public static final String WORLD_NAME = "The World";
     public static final String MAPS_PATH = "./data/maps/";
     public static final String WORLD_MAP_NAME = "The World Map.png";
+    public static final String SCHEMA_NAME = "RegionData.xsd";
 
     // HERE ARE THE PATHS TO THE REST OF THE IMAGES WE'LL USE
     public static final String GUI_PATH = "./data/gui/";
