@@ -387,17 +387,15 @@ public class RegioVincoDataModel extends PointAndClickGameDataModel {
             // REST THE MOVABLE TEXT
             Pane gameLayer = ((RegioVincoGame)game).getGameLayer();
             
-            if(navigatedRegions.size() > 1){
-                navigatedRegions.getFirst().setFill(Color.WHITE);
-            }
             if(!repeat){
                 gameLayer.getChildren().clear();
                 Text regionText = new Text(regionName);
                 navigatedRegions.add(regionText);
-                regionText.setX(NAVIGATION_X * navigatedRegions.size());
-                regionText.setY(NAVIGATION_Y);
+                System.out.println(navNum);
+                regionText.setX(900);
+                regionText.setY(200 + (navNum * 25));
                 regionText.setFill(Color.YELLOW);
-                regionText.resize(100 + (navNum * 250), 50);
+                regionText.resize(100 * (navNum + 1), 50);
                 regionText.setOnMouseClicked(e -> {
                     System.out.println(regionText.getText());
                     backTrack(regionText,game);
@@ -408,6 +406,8 @@ public class RegioVincoDataModel extends PointAndClickGameDataModel {
                 navigatedRegions.add(regionText);
                 ((RegioVincoGame)game).getGuiLayer().getChildren().add(regionText);
             }
+            
+            
             regionsFound = new Text();
             regionsLeft = new Text();
             incorrectGuesses = new Text();
@@ -424,8 +424,8 @@ public class RegioVincoDataModel extends PointAndClickGameDataModel {
                 //subRegionText.getText().setFill(REGION_NAME_COLOR);
                 textNode.setX(STACK_X);
                 subRegionText.getRectangle().setFill(c);
-                gameLayer.getChildren().add(subRegionText.getRectangle());
-                gameLayer.getChildren().add(textNode);
+                //gameLayer.getChildren().add(subRegionText.getRectangle());
+                //gameLayer.getChildren().add(textNode);
                 subRegionStack.add(subRegionText);
             }
             Collections.shuffle(subRegionStack);
@@ -493,10 +493,10 @@ public class RegioVincoDataModel extends PointAndClickGameDataModel {
             gameTimer.setFill(Color.ORANGE);
             gameTimer.setStyle("-fx-font: 20px Calibri");
             
-            gameLayer.getChildren().add(regionsFound);
-            gameLayer.getChildren().add(regionsLeft);
-            gameLayer.getChildren().add(incorrectGuesses);
-            gameLayer.getChildren().add(gameTimer);
+            //gameLayer.getChildren().add(regionsFound);
+            //gameLayer.getChildren().add(regionsLeft);
+            //gameLayer.getChildren().add(incorrectGuesses);
+            //gameLayer.getChildren().add(gameTimer);
             
             // RESET THE AUDIO
             AudioManager audio = ((RegioVincoGame) game).getAudio();
@@ -512,9 +512,7 @@ public class RegioVincoDataModel extends PointAndClickGameDataModel {
         } catch (SAXException ex) {
             Logger.getLogger(RegioVincoDataModel.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
         navNum++;
-        System.out.println(navNum);
         repeat = false;
     }
    
@@ -584,7 +582,9 @@ public class RegioVincoDataModel extends PointAndClickGameDataModel {
         while(!regionText.equals(navigatedRegions.getLast())){
             navigatedRegions.getLast().setVisible(false);
             navigatedRegions.removeLast();
+            navNum--;
         }
+        navNum++;
         regionName = regionText.getText();
         regionMapName = regionText.getText() + " Map.png";
         reset(game);
