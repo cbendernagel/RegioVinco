@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<region name="Lithuania">
+  <sub_region red="123" green="123" blue="123" name="Alytus" capital="Alytus" />
+  <sub_region red="163" green="163" blue="163" name="Kaunas" capital="Kaunas" />
+  <sub_region red="233" green="233" blue="233" name="Klaipeda" capital="Klaipeda" />
+  <sub_region red="179" green="179" blue="179" name="Marijampole" capital="Marijampole" />
+  <sub_region red="141" green="141" blue="141" name="Panevezys" capital="Panevezys" />
+  <sub_region red="182" green="182" blue="182" name="Siauliai" capital="Siauliai" />
+  <sub_region red="202" green="202" blue="202" name="Taurage" capital="Taurage" />
+  <sub_region red="216" green="216" blue="216" name="Telsiai" capital="Telsiai" />
+  <sub_region red="129" green="129" blue="129" name="Utena" capital="Utena" />
+  <sub_region red="122" green="122" blue="122" name="Vilnius" capital="Vilnius" />
+</region>

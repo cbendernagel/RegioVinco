@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<region name="Finland">
+  <sub_region red="200" green="200" blue="200" name="Lapland" capital="Rovaniemi" />
+  <sub_region red="188" green="188" blue="188" name="Oulu" capital="Oulu" />
+  <sub_region red="186" green="186" blue="186" name="Eastern Finland" capital="Mikkeli" />
+  <sub_region red="198" green="198" blue="198" name="Western Finland" capital="Turku" />
+  <sub_region red="190" green="190" blue="190" name="Southern Finland" capital="Hameenlinna" />
+</region>

@@ -1,0 +1,34 @@
+<region name="Bulgaria">
+<sub_region red="225" green="225" blue="225" name="Silistra" capital="Silistra"/>
+<sub_region red="217" green="217" blue="217" name="Dobrich" capital="Dobrich"/>
+<sub_region red="209" green="209" blue="209" name="Razgrad" capital="Razgrad"/>
+<sub_region red="200" green="200" blue="200" name="Rousse" capital="Rousse"/>
+<sub_region red="191" green="191" blue="191" name="Shumen" capital="Shumen"/>
+<sub_region red="182" green="182" blue="182" name="Varna" capital="Varna"/>
+
+<sub_region red="174" green="174" blue="174" name="Targovishte" capital="Targovishte"/>
+<sub_region red="166" green="166" blue="166" name="Veliko Tarnovo" capital="Veliko Tarnovo"/>
+<sub_region red="158" green="158" blue="158" name="Burgas" capital="Burgas"/>
+<sub_region red="150" green="150" blue="150" name="Sliven" capital="Sliven"/>
+<sub_region red="142" green="142" blue="142" name="Yambol" capital="Yambol"/>
+<sub_region red="134" green="134" blue="134" name="Pleven" capital="Pleven"/>
+
+<sub_region red="126" green="126" blue="126" name="Gabrovo" capital="Gabrovo"/>
+<sub_region red="118" green="118" blue="118" name="Stara Zagora" capital="Stara Zagora"/>
+<sub_region red="110" green="110" blue="110" name="Haskovo" capital="Haskovo"/>
+<sub_region red="102" green="102" blue="102" name="Lovech" capital="Lovech"/>
+<sub_region red="94" green="94" blue="94" name="Plovdiv" capital="Plovdiv"/>
+<sub_region red="86" green="86" blue="86" name="Kardzhali" capital="Kardzhali"/>
+
+<sub_region red="78" green="78" blue="78" name="Vratsa" capital="Vratsa"/>
+<sub_region red="70" green="70" blue="70" name="Sofia Province" capital="Sofia Province"/>
+<sub_region red="62" green="62" blue="62" name="Pazardzhik" capital="Pazardzhik"/>
+<sub_region red="54" green="54" blue="54" name="Smolyan" capital="Smolyan"/>
+<sub_region red="46" green="46" blue="46" name="Montana" capital="Montana"/>
+<sub_region red="38" green="38" blue="38" name="Pernik" capital="Pernik"/>
+
+<sub_region red="30" green="30" blue="30" name="Kyustendil" capital="Kyustendil"/>
+<sub_region red="22" green="22" blue="22" name="Blagoevgrad" capital="Blagoevgrad"/>
+<sub_region red="14" green="14" blue="14" name="Vidin" capital="Vidin"/>
+
+</region>

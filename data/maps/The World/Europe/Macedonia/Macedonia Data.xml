@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<region name="Macedonia">
+    <sub_region red="111" green="111" blue="111" name="Polog"/>
+    <sub_region red="150" green="150" blue="150" name="Skopje"/>
+    <sub_region red="175" green="175" blue="175" name="Northeastern"/>
+    <sub_region red="200" green="200" blue="200" name="Eastern"/>
+    <sub_region red="60" green="60" blue="60" name="Southeastern"/>
+    <sub_region red="88" green="88" blue="88" name="Pelagonia"/>
+    <sub_region red="140" green="140" blue="140" name="Vardar"/>
+    <sub_region red="90" green="90" blue="90" name="Southwestern"/>
+</region>

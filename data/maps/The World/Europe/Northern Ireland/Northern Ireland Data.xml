@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<region name="Northern Ireland">
+<sub_region red="220" green="220" blue="220" name="Fermanagh District" capital="Enniskillen"/>
+<sub_region red="218" green="218" blue="218" name="Omagh District" capital="Omagh Town"/>
+<sub_region red="216" green="216" blue="216" name="Strabane District" capital="Strabane "/>
+<sub_region red="214" green="214" blue="214" name="Dungannon District" capital="Dungannon Town"/>
+<sub_region red="212" green="212" blue="212" name="Armagh District" capital="Armagh City"/>
+<sub_region red="210" green="210" blue="210" name="Newry Mourne District" capital="Newry"/>
+<sub_region red="208" green="208" blue="208" name="Banbridge District" capital="Banbridge"/>
+<sub_region red="206" green="206" blue="206" name="Craigavon Borough " capital="Craigavon"/>
+<sub_region red="204" green="204" blue="204" name="Cookstown District" capital="Cookstown"/>
+<sub_region red="202" green="202" blue="202" name="Magharefelt District" capital="Magherafelt"/>
+<sub_region red="200" green="200" blue="200" name="Derry District" capital="Derry City"/>
+<sub_region red="198" green="198" blue="198" name="Limavady Borough" capital="Limavady City"/>
+<sub_region red="196" green="196" blue="196" name="Coleraine Borough" capital="Coleraine"/>
+<sub_region red="194" green="194" blue="194" name="Moyle District" capital="Ballycastle"/>
+<sub_region red="192" green="192" blue="192" name="Ballymoney Borough" capital="Ballymoney"/>
+<sub_region red="190" green="190" blue="190" name="Ballymena Borough" capital="Ballymena"/>
+<sub_region red="188" green="188" blue="188" name="Antrim Borough" capital="Antrim Town"/>
+<sub_region red="186" green="186" blue="186" name="Lisburn City" capital="Lisburn"/>
+<sub_region red="184" green="184" blue="184" name="Down District" capital="Downpatrick"/>
+<sub_region red="182" green="182" blue="182" name="Ards Borough" capital="Ards"/>
+<sub_region red="180" green="180" blue="180" name="Castle Reagh" capital="Newtownbreda"/>
+<sub_region red="178" green="178" blue="178" name="North Down Borough" capital="Bangor"/>
+<sub_region red="176" green="176" blue="176" name="Belfast City Council" capital="Belfast City"/>
+<sub_region red="174" green="174" blue="174" name="Newtown Abbey" capital="Newtown City"/>
+<sub_region red="172" green="172" blue="172" name="Carrick Fergus" capital="Carrick"/>
+<sub_region red="170" green="170" blue="170" name="Larne District" capital="Larne City"/>
+</region>

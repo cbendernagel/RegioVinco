@@ -1,0 +1,85 @@
+﻿<region name=”Russia”>
+	<sub_region red="200" green="200" blue="200" name="Sakhalin oblast" capital="Yuzhno-Sakhalinsk" />
+	<sub_region red="198" green="198" blue="198" name="Khabarovsk krai" capital="Khabarovsk" />
+	<sub_region red="196" green="196" blue="196" name="Primorye krai" capital="Vladivostok" />
+	<sub_region red="194" green="194" blue="194" name="Jewish autonomous oblast" capital="Birobidzhan" />
+	<sub_region red="192" green="192" blue="192" name="Amur oblast" capital="Blagoveschensk" />
+	<sub_region red="190" green="190" blue="190" name="Sakha republic" capital="Yakutsk" />
+	<sub_region red="188" green="188" blue="188" name="Magadan oblast" capital="Magadan" />
+	<sub_region red="186" green="186" blue="186" name="Kamchatka krai" capital="Petropavlovsk-Kamchatsky" />
+	<sub_region red="184" green="184" blue="184" name="Chukotka okrug" capital="Anadyr" />
+	<sub_region red="182" green="182" blue="182" name="Krasnoyarsk krai" capital="Krasnoyarsk" />
+	<sub_region red="180" green="180" blue="180" name="Irkutsk oblast" capital="Irkutsk" />
+	<sub_region red="178" green="178" blue="178" name="Buryat republic" capital="Ulan-Ude" />
+	<sub_region red="176" green="176" blue="176" name="Zabaikalsky krai" capital="Chita" />
+	<sub_region red="174" green="174" blue="174" name="Tuva republic" capital="Kyzyl" />
+	<sub_region red="172" green="172" blue="172" name="Altay republic" capital="Gorno-Altaisk" />
+	<sub_region red="170" green="170" blue="170" name="Altai krai" capital="Barnaul" />
+	<sub_region red="168" green="168" blue="168" name="Novosibirsk oblast" capital="Novosibirsk" />
+	<sub_region red="166" green="166" blue="166" name="Omsk oblast" capital="Omsk" />
+	<sub_region red="164" green="164" blue="164" name="Tomsk oblast" capital="Tomsk" />
+	<sub_region red="162" green="162" blue="162" name="Khakassia republic" capital="Abakan" />
+	<sub_region red="160" green="160" blue="160" name="Kemerovo oblast" capital="Kemerovo" />
+	<sub_region red="158" green="158" blue="158" name="Tyumen oblast" capital="Tyumen" />
+	<sub_region red="156" green="156" blue="156" name="Khanty-Mansi okrug" capital="Khanty-Mansiysk" />
+	<sub_region red="154" green="154" blue="154" name="Yamalo-Nenets okrug" capital="Salekhard" />
+	<sub_region red="152" green="152" blue="152" name="Kurgan oblast" capital="Kurgan" />
+	<sub_region red="150" green="150" blue="150" name="Sverdlovsk oblast" capital="Ekaterinburg" />
+	<sub_region red="148" green="148" blue="148" name="Chelyabinsk oblast" capital="Chelyabinsk" />
+	<sub_region red="146" green="146" blue="146" name="Perm krai" capital="Perm" />
+	<sub_region red="144" green="144" blue="144" name="Bashkortostan republic " capital="Ufa" />
+	<sub_region red="142" green="142" blue="142" name="Orenburg oblast" capital="Orenburg" />
+	<sub_region red="140" green="140" blue="140" name="Samara oblast" capital="Samara" />
+	<sub_region red="138" green="138" blue="138" name="Tatarstan republic" capital="Kazan" />
+	<sub_region red="136" green="136" blue="136" name="Udmurt republic" capital="Izhevsk" />
+	<sub_region red="134" green="134" blue="134" name="Kirov oblast" capital="Kirov" />
+	<sub_region red="132" green="132" blue="132" name="Mari El republic" capital="Yoshkar-Ola" />
+	<sub_region red="130" green="130" blue="130" name="Chuvashia republic" capital="Cheboksary" />
+	<sub_region red="128" green="128" blue="128" name="Ulyanovsk oblast" capital="Ulyanovsk" />
+	<sub_region red="126" green="126" blue="126" name="Saratov oblast" capital="Saratov" />
+	<sub_region red="124" green="124" blue="124" name="Penza oblast" capital="Penza" />
+	<sub_region red="122" green="122" blue="122" name="Mordovia republic" capital="Saransk" />
+	<sub_region red="120" green="120" blue="120" name="Nizhegorodskaya oblast" capital="Nizhny Novogorod" />
+	<sub_region red="118" green="118" blue="118" name="Komi republic" capital="Syktyvkar" />
+	<sub_region red="116" green="116" blue="116" name="Nenets okrug" capital="Naryan-Mar" />
+	<sub_region red="114" green="114" blue="114" name="Arkhangelsk oblast" capital="Arkhangelsk" />
+	<sub_region red="112" green="112" blue="112" name="Vologda oblast" capital="Vologda" />
+	<sub_region red="110" green="110" blue="110" name="Leningrad oblast" />
+	<sub_region red="206" green="206" blue="206" name="Saint Petersburg" />
+	<sub_region red="108" green="108" blue="108" name="Karelia republic" capital="Petrozavodsk" />
+	<sub_region red="106" green="106" blue="106" name="Murmansk oblast" capital="Murmansk" />
+	<sub_region red="104" green="104" blue="104" name="Kaliningrad oblast" capital="Kaliningrad" />
+	<sub_region red="102" green="102" blue="102" name="Pskov oblast" capital="Pskov" />
+	<sub_region red="100" green="100" blue="100" name="Novgorod oblast" capital="Novgorod" />
+	<sub_region red="98" green="98" blue="98" name="Tver oblast" capital="Tver" />
+	<sub_region red="96" green="96" blue="96" name="Yaroslavl oblast" capital="Yaroslavl" />
+	<sub_region red="94" green="94" blue="94" name="Kostroma oblast" capital="Kostroma" />
+	<sub_region red="92" green="92" blue="92" name="Smolensk oblast" capital="Smolensk" />
+	<sub_region red="90" green="90" blue="90" name="Moskovskaya oblast" />
+	<sub_region red="204" green="204" blue="204" name="Moscow" />
+	<sub_region red="88" green="88" blue="88" name="Vladimir oblast" capital="Vladimir" />
+	<sub_region red="86" green="86" blue="86" name="Ivanovo oblast" capital="Ivanovo" />
+	<sub_region red="84" green="84" blue="84" name="Bryansk oblast" capital="Bryansk" />
+	<sub_region red="82" green="82" blue="82" name="Kaluga oblast" capital="Kaluga" />
+	<sub_region red="80" green="80" blue="80" name="Tula oblast" capital="Tula" />
+	<sub_region red="78" green="78" blue="78" name="Ryazan oblast" capital="Ryazan" />
+	<sub_region red="76" green="76" blue="76" name="Kursk oblast" capital="Kursk" />
+	<sub_region red="74" green="74" blue="74" name="Orlovskaya oblast" capital="Orel" />
+	<sub_region red="72" green="72" blue="72" name="Lipetsk oblast" capital="Lipetsk" />
+	<sub_region red="70" green="70" blue="70" name="Tambov oblast" capital="Tambov" />
+	<sub_region red="68" green="68" blue="68" name="Belgorod oblast" capital="Belgorod" />
+	<sub_region red="66" green="66" blue="66" name="Voronezh oblast" capital="Voronezh" />
+	<sub_region red="64" green="64" blue="64" name="Volgograd oblast" capital="Volgograd" />
+	<sub_region red="62" green="62" blue="62" name="Rostov oblast" capital="Rostov" />
+	<sub_region red="60" green="60" blue="60" name="Kalmykia republic" capital="Elista" />
+	<sub_region red="58" green="58" blue="58" name="Astrakhan oblast" capital="Astrakhan" />
+	<sub_region red="56" green="56" blue="56" name="Krasnodar krai" capital="Krasnodar" />
+	<sub_region red="202" green="202" blue="202" name="Adygeya republic" capital="Maykop" />
+	<sub_region red="54" green="54" blue="54" name="Stavropol krai" capital="Stavropol" />
+	<sub_region red="52" green="52" blue="52" name="Karachay-Cherkessia republic" capital="Cherkessk" />
+	<sub_region red="50" green="50" blue="50" name="Kabardino-Balkaria republic" capital="Nalchik" />
+	<sub_region red="48" green="48" blue="48" name="North Ossetia republic" capital="Vladikavkaz" />
+	<sub_region red="46" green="46" blue="46" name="Ingushetia republic" capital="Magas" />
+	<sub_region red="44" green="44" blue="44" name="Chechnya republic" capital="Grozny" />
+	<sub_region red="42" green="42" blue="42" name="Dagestan republic" capital="Makhachkala" />
+<region name=”Russia”/>

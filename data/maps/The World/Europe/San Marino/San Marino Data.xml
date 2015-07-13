@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<region name="San Marino">
+  <sub_region red="225" green="225" blue="225" name="Acquaviva" />
+  <sub_region red="200" green="200" blue="200" name="Borgo Maggiore" />
+  <sub_region red="175" green="175" blue="175" name="Chiesanuova" />
+  <sub_region red="150" green="150" blue="150" name="Domagnano" />
+  <sub_region red="125" green="125" blue="125" name="Faetano" />
+  <sub_region red="100" green="100" blue="100" name="Fiorentino" />
+  <sub_region red="75" green="75" blue="75" name="Montegiardino" />
+  <sub_region red="50" green="50" blue="50" name="San Marino" />
+  <sub_region red="25" green="25" blue="25" name="Serravalle" />
+</region>

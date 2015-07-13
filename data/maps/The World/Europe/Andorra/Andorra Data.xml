@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<region name = "Andorra">
+	<sub_region red="200" green="200" blue="200" name="Ordino"/>
+	<sub_region red="198" green="198" blue="198" name="Canillo"/>
+	<sub_region red="196" green="196" blue="196" name="Encamp"/>
+	<sub_region red="194" green="194" blue="194" name="Escaldes-Engordany"/>
+	<sub_region red="192" green="192" blue="192" name="La Massana"/>
+	<sub_region red="190" green="190" blue="190" name="Andorra la Vella"/>
+	<sub_region red="188" green="188" blue="188" name="Sant Julia de Loria"/>
+</region>
+

@@ -26,6 +26,7 @@ public class RegioVincoGame extends PointAndClickGame {
 
     // THIS PROVIDES GAME AND GUI EVENT RESPONSES
     RegioVincoController controller;
+    RegioVincoDataModel dataModel;
 
     // THIS PROVIDES MUSIC AND SOUND EFFECTS
     AudioManager audio;
@@ -282,7 +283,9 @@ public class RegioVincoGame extends PointAndClickGame {
     }
 
     public void reloadMap(String map, String mapName) {
-	Image tempMapImage = loadImage(MAPS_PATH + "/" + map + "/" + mapName);
+        String path = ((RegioVincoDataModel) getDataModel()).getCurrentDirectory();
+        System.out.println(path + map + "/" + mapName + "!!!");
+	Image tempMapImage = loadImage(path + map + "/" + mapName);
 	PixelReader pixelReader = tempMapImage.getPixelReader();
 	WritableImage mapImage = new WritableImage(pixelReader, (int) tempMapImage.getWidth(), (int) tempMapImage.getHeight());
 	ImageView mapView = guiImages.get(MAP_TYPE);

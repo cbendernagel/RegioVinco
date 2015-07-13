@@ -1,0 +1,46 @@
+<region name="England">
+<sub_region red="120" green="120" blue="120" name="Northumberland"/>
+<sub_region red="151" green="151" blue="151" name="Tyne and Wear"/>
+<sub_region red="54" green="54" blue="54" name="Cumbria"/>
+<sub_region red="155" green="155" blue="155" name="Durham"/>
+<sub_region red="79" green="79" blue="79" name="North Yorkshire"/>
+<sub_region red="109" green="109" blue="109" name="Lancashire"/>
+<sub_region red="112" green="112" blue="112" name="West Yorkshire"/>
+<sub_region red="60" green="60" blue="60" name="Humberside"/>
+<sub_region red="92" green="92" blue="92" name="Merseyside"/>
+<sub_region red="130" green="130" blue="130" name="Greater Manchester"/>
+<sub_region red="89" green="89" blue="89" name="South Yorkshire"/>
+<sub_region red="118" green="118" blue="118" name="Cheshire"/>
+<sub_region red="70" green="70" blue="70" name="Derby Shire"/>
+<sub_region red="163" green="163" blue="163" name="Nottinghamshire"/>
+<sub_region red="85" green="85" blue="85" name="Lincolnshire"/>
+<sub_region red="125" green="125" blue="125" name="Leicestershirie"/>
+<sub_region red="168" green="168" blue="168" name="Stafordshire"/>
+<sub_region red="107" green="107" blue="107" name="Shropshire"/>
+<sub_region red="130" green="130" blue="130" name="Hereford and Worcester"/>
+<sub_region red="82" green="82" blue="82" name="West Midlands"/>
+<sub_region red="174" green="174" blue="174" name="Warwickshire"/>
+<sub_region red="140" green="140" blue="140" name="Northhamptonshire"/>
+<sub_region red="58" green="58" blue="58" name="Cambridgeshire"/>
+<sub_region red="77" green="77" blue="77" name="Norfolk"/>
+<sub_region red="46" green="46" blue="46" name="Suffolk"/>
+<sub_region red="94" green="94" blue="94" name="Essex"/>
+<sub_region red="128" green="128" blue="128" name="Bedfordshire"/>
+<sub_region red="99" green="99" blue="99" name="Buckinghamshire"/>
+<sub_region red="138" green="138" blue="138" name="OxfordShire"/>
+<sub_region red="75" green="75" blue="75" name="Goucestershire"/>
+<sub_region red="110" green="110" blue="110" name="Hertfordshire"/>
+<sub_region red="48" green="48" blue="48" name="London"/>
+<sub_region red="69" green="69" blue="69" name="Kent"/>
+<sub_region red="59" green="59" blue="59" name="East Sussex"/>
+<sub_region red="156" green="156" blue="156" name="West Sussex"/>
+<sub_region red="122" green="122" blue="122" name="Surrey"/>
+<sub_region red="50" green="50" blue="50" name="Berkshire"/>
+<sub_region red="181" green="181" blue="181" name="Wiltshire"/>
+<sub_region red="64" green="64" blue="64" name="Avon"/>
+<sub_region red="40" green="40" blue="40" name="Dorset"/>
+<sub_region red="84" green="84" blue="84" name="Somerset"/>
+<sub_region red="56" green="56" blue="56" name="Devon"/>
+<sub_region red="170" green="170" blue="170" name="Cornwall"/>
+<sub_region red="212" green="212" blue="212" name="Isle of Wight"/>
+</region>

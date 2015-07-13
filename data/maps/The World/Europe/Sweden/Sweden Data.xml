@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<region name="Sweden">
+  <sub_region red="250" green="250" blue="250" name="Norrbotten" capital="Lulea" />
+  <sub_region red="240" green="240" blue="240" name="Vasterbotten" capital="Umea" />
+  <sub_region red="235" green="235" blue="235" name="Jamtland" capital="Ostersund" />
+  <sub_region red="230" green="230" blue="230" name="Vasternorrland" capital="Harnosand" />
+  <sub_region red="225" green="225" blue="225" name="Dalarna" capital="Falun" />
+  <sub_region red="220" green="220" blue="220" name="Gavleborg" capital="Gavle" />
+  <sub_region red="215" green="215" blue="215" name="Varmland" capital="Karlstad" />
+  <sub_region red="210" green="210" blue="210" name="Orebro" capital="Orebro" />
+  <sub_region red="205" green="205" blue="205" name="Vastmanland" capital="Vasteras" />
+  <sub_region red="200" green="200" blue="200" name="Uppsala" capital="Uppsala" />
+  <sub_region red="190" green="190" blue="190" name="Vastra Gotaland" capital="Vanersborg" />
+  <sub_region red="185" green="185" blue="185" name="Ostergotland" capital="Linkoping" />
+  <sub_region red="180" green="180" blue="180" name="Sodermanland" capital="Nykoping" />
+  <sub_region red="175" green="175" blue="175" name="Stockholm" capital="Stockholm" />
+  <sub_region red="170" green="170" blue="170" name="Halland" capital="Halmstad" />
+  <sub_region red="165" green="165" blue="165" name="Jonkoping" capital="Jonkoping" />
+  <sub_region red="160" green="160" blue="160" name="Kalmar" capital="Kalmar" />
+  <sub_region red="155" green="155" blue="155" name="Kronoberg" capital="Vaxjo" />
+  <sub_region red="150" green="150" blue="150" name="Skane" capital="Malmo" />
+  <sub_region red="140" green="140" blue="140" name="Belkinge" capital="Karlskrona" />
+  <sub_region red="130" green="130" blue="130" name="Gotland" capital="Visby" />
+</region>

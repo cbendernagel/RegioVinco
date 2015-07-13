@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<region name="Austria" leader="Heinz Fischer" capital="Vienna">
+  <sub_region red="150" green="171" blue="171" name="Burgenland" capital="Eisenstadt" />
+  <sub_region red="118" green="146" blue="146" name="Carinthia" capital="Klagenfurt" />
+  <sub_region red="180" green="195" blue="195" name="Lower Austria" capital="St. polten" />
+  <sub_region red="125" green="151" blue="151" name="Upper Austria" capital="Linz" />
+  <sub_region red="106" green="134" blue="134" name="Salzburg Province" capital="Salzburg" />
+  <sub_region red="138" green="162" blue="162" name="Styria" capital="Graz" />
+  <sub_region red="92" green="118" blue="118" name="Tirol" capital="Innsbruck" />
+  <sub_region red="83" green="106" blue="106" name="Vorarlberg" capital="Bregenz" />
+  <sub_region red="168" green="185" blue="185" name="Vienna" capital="Vienna" />
+</region>

@@ -1,23 +1,24 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
+
 <region name="Europe">
   <sub_region red="220" green="220" blue="220" name="Albania" capital="Tirana" leader="Bujar Nishani" />
-  <sub_region red="218" green="218" blue="218" name="Andorra" capital="Andorra la Vella" leader="Antoni Marti" />
+  <sub_region red="218" green="218" blue="218" name="Andorra" capital="Andorra la Vella" leader = "Antoni Marti" />
   <sub_region red="216" green="216" blue="216" name="Austria" capital="Vienna" leader="Heinz Fischer" />
-  <sub_region red="214" green="214" blue="214" name="Belarus" capital="Minsk" leader="Alexander Lukashenko" />
+  <sub_region red="214" green="214" blue="214" name="Belarus" capital="Minsk" leader= "Alexander Lukashenko" />
   <sub_region red="212" green="212" blue="212" name="Belgium" capital="Brussels" leader="King Philippe" />
   <sub_region red="210" green="210" blue="210" name="Bosnia and Herzegovina" capital="Sarajevo" leader="Valentin Inzko" />
   <sub_region red="208" green="208" blue="208" name="Bulgaria" capital="Sofia" leader="Rosen Plevneliev" />
-  <sub_region red="206" green="206" blue="206" name="Croatia" capital="Zagreb" leader="Zoran Milanovic" />
-  <sub_region red="204" green="204" blue="204" name="Cyprus" capital="Nicosia" leader="Nicos Anastasiades" />
+  <sub_region red="206" green="206" blue="206" name="Croatia"  capital="Zagreb" leader="Zoran Milanovic"/>
+  <sub_region red="204" green="204" blue="204" name="Cyprus" capital="Nicosia" leader="Nicos Anastasiades"/>
   <sub_region red="202" green="202" blue="202" name="Czech Republic" capital="Prague" leader="Milos Zeman" />
   <sub_region red="200" green="200" blue="200" name="Denmark" capital="Copenhagen" leader="Helle Thorning Schmidt" />
   <sub_region red="132" green="132" blue="132" name="England" capital="London" leader="David Cameron" />
-  <sub_region red="198" green="198" blue="198" name="Estonia" capital="Tallinn" leader="Taavi Roivas" />
+  <sub_region red="198" green="198" blue="198" name="Estonia" capital="Tallinn" leader="Taavi Roivas"/>
   <sub_region red="196" green="196" blue="196" name="Finland" capital="Helsinki" leader="Sauli Niinisto" />
   <sub_region red="194" green="194" blue="194" name="France" capital="Paris" leader="Francois Hollande" />
   <sub_region red="192" green="192" blue="192" name="Germany" capital="Berlin" leader="Angela Merkel" />
   <sub_region red="190" green="190" blue="190" name="Greece" capital="Athens" leader="Alexis Tsipras" />
-  <sub_region red="188" green="188" blue="188" name="Hungary" capital="Budapest" leader="Viktor Orban" />
+  <sub_region red="188" green="188" blue="188" name="Hungary" capital="Budapest"  leader="Viktor Orban"/>
   <sub_region red="186" green="186" blue="186" name="Iceland" capital="Reykjavik" leader="Olafur Ragnar Grimsson" />
   <sub_region red="104" green="104" blue="104" name="Ireland" capital="Dublin" leader="Michael D. Higgins" />
   <sub_region red="184" green="184" blue="184" name="Italy" capital="Rome" leader="Sergio Mattarella" />
@@ -27,26 +28,27 @@
   <sub_region red="178" green="178" blue="178" name="Lithuania" capital="Vilnius" leader="Dalia Grybauskaite" />
   <sub_region red="176" green="176" blue="176" name="Luxembourg" capital="Luxembourg" leader="Xavier Bettel" />
   <sub_region red="174" green="174" blue="174" name="Macedonia" capital="Skopje" leader="Gjorge Ivanov" />
-  <sub_region red="170" green="170" blue="170" name="Moldova" capital="Chisinau" leader="Nicolae Timofti" />
+  <sub_region red="170" green="170" blue="170" name="Moldova" capital="Chisinau" leader = "Nicolae Timofti"  />
   <sub_region red="168" green="168" blue="168" name="Monaco" capital="Monaco" leader="Albert II" />
   <sub_region red="166" green="166" blue="166" name="Montenegro" capital="Podgorica" leader="Milo Dukanovic" />
   <sub_region red="164" green="164" blue="164" name="Netherlands" capital="Amsterdam" leader="Mark Rutte" />
   <sub_region red="130" green="130" blue="130" name="Northern Ireland" capital="Belfast" leader="Harriet Harman" />
-  <sub_region red="162" green="162" blue="162" name="Norway" capital="Oslo" />
-  <sub_region red="160" green="160" blue="160" name="Poland" capital="Warsaw" />
-  <sub_region red="158" green="158" blue="158" name="Portugal" capital="Lisbon" leader="Anibal Cavaco Silva" />
-  <sub_region red="156" green="156" blue="156" name="Romania" capital="Bucharest" leader="Klaus Iohannis" />
-  <sub_region red="154" green="154" blue="154" name="Russia" capital="Moscow" leader="Vladimir Putin" />
-  <sub_region red="152" green="152" blue="152" name="San Marino" capital="San Marino" leader="Andrea Belluzzi Roberto Venturini" />
-  <sub_region red="128" green="128" blue="128" name="Scotland" capital="Edinburgh" />
-  <sub_region red="150" green="150" blue="150" name="Serbia" capital="Belgrade" leader="Tomislav Nikolic" />
+  <sub_region red="162" green="162" blue="162" name="Norway" capital="Oslo"/>
+  <sub_region red="160" green="160" blue="160" name="Poland" capital="Warsaw"/>
+  <sub_region red="158" green="158" blue="158" name="Portugal" capital="Lisbon" leader="Anibal Cavaco Silva"/>
+  <sub_region red="156" green="156" blue="156" name="Romania" capital="Bucharest" leader="Klaus Iohannis"/>
+  <sub_region red="154" green="154" blue="154" name="Russia" capital="Moscow" leader="Vladimir Putin"/>
+  <sub_region red="152" green="152" blue="152" name="San Marino" capital="San Marino" leader="Andrea Belluzzi Roberto Venturini"/>
+  <sub_region red="128" green="128" blue="128" name="Scotland" capital="Edinburgh"/>
+  <sub_region red="150" green="150" blue="150" name="Serbia" capital="Belgrade" leader="Tomislav Nikolic"/>
   <sub_region red="148" green="148" blue="148" name="Slovakia" capital="Bratislava" leader="Andrej Kiska" />
   <sub_region red="146" green="146" blue="146" name="Slovenia" capital="Ljubljana" leader="Borut Pahor" />
   <sub_region red="144" green="144" blue="144" name="Spain" capital="Madrid" leader="Mariano Rajoy" />
   <sub_region red="142" green="142" blue="142" name="Sweden" capital="Stockholm" leader="Stefan Lofven" />
-  <sub_region red="140" green="140" blue="140" name="Switzerland" capital="Bern" leader="Simonetta Sommaruga" />
-  <sub_region red="138" green="138" blue="138" name="Turkey" capital="Ankara" leader="Recep Tayyip Erdogan" />
-  <sub_region red="136" green="136" blue="136" name="Ukraine" capital="Kiev" leader="Petro Poroshenko" />
-  <sub_region red="134" green="134" blue="134" name="Vatican City" capital="Vatican City" leader="Giuseppe Bertello" />
-  <sub_region red="126" green="126" blue="126" name="Wales" capital="Cardiff" leader="Carwyn Jones" />
+  <sub_region red="140" green="140" blue="140" name="Switzerland" capital="Bern" leader="Simonetta Sommaruga"  />
+  <sub_region red="138" green="138" blue="138" name="Turkey" capital="Ankara" leader="Recep Tayyip Erdogan"/>
+  <sub_region red="136" green="136" blue="136" name="Ukraine" capital="Kiev" leader="Petro Poroshenko"/>
+  <sub_region red="134" green="134" blue="134" name="Vatican City" capital="Vatican City" leader="Giuseppe Bertello"/>
+  <sub_region red="126" green="126" blue="126" name="Wales" capital="Cardiff" leader="Carwyn Jones"/>
 </region>
+

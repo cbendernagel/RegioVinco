@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<region name="Estonia">
+  <sub_region red="200" green="200" blue="200" name="Saare" capital="Kuressaare" leader="Kaido Kaasik"/>
+  <sub_region red="197" green="197" blue="197" name="Parnu" capital="Parnu" leader="Andres Metsoja"/>
+  <sub_region red="194" green="194" blue="194" name="Rapla" capital="Rapla" leader="Tiit Leier"/>
+  <sub_region red="191" green="191" blue="191" name="Laane" capital="Haapsalu" leader="Innar Maesalu"/>
+  <sub_region red="188" green="188" blue="188" name="Hiiu" capital="Kardla" leader="Riho Rahuoja"/>
+  <sub_region red="185" green="185" blue="185" name="Harju" capital="Tallinn" leader="Ulle Rajasalu"/>
+  <sub_region red="182" green="182" blue="182" name="Viljandi" capital="Viljandi" leader="Lembit Kruuse"/>
+  <sub_region red="179" green="179" blue="179" name="Jarva" capital="Paide" leader="Tiina Oraste"/>
+  <sub_region red="176" green="176" blue="176" name="Laane-Viru" capital="Rakvere" leader="Einar Vallbaum"/>
+  <sub_region red="173" green="173" blue="173" name="Jogeva" capital="Jogeva" leader="Viktor Svjatosev "/>
+  <sub_region red="170" green="170" blue="170" name="Valga" capital="Valga" leader="Margus Lepik"/>
+  <sub_region red="167" green="167" blue="167" name="Voru" capital="Voru" leader="Andres Koiv"/>
+  <sub_region red="164" green="164" blue="164" name="Polva" capital="Polva" leader="Ulla Preeden"/>
+  <sub_region red="161" green="161" blue="161" name="Tartu" capital="Tartu" leader="Reno Laidre "/>
+  <sub_region red="155" green="155" blue="155" name="Ida-Viru" capital="Johvi" leader="Andres Noormagi"/>
+</region>

@@ -1,0 +1,8 @@
+<region name="Cyprus">
+	<sub_region red="157" green="157" blue="157" name="Paphos" capital="Pafos" leader="Savvas Vergas"/>
+	<sub_region red="163" green="163" blue="163" name="Limassol" capital="Limassol" leader="Andreas Christou"/>
+	<sub_region red="181" green="181" blue="181" name="Larnaca" capital="Larnaca" leader="Andreas Louroutziatis"/>
+	<sub_region red="172" green="172" blue="172" name="Nicosia" capital="Nicosia" leader="Constantinos Yiorkadjis"/>
+	<sub_region red="191" green="191" blue="191" name="Kyrenia" capital="Kyrenia" leader="Nidai Gungordu"/>
+	<sub_region red="200" green="200" blue="200" name="Famagusta" capital="Famagusta" leader="Ismail Arter"/>
+</region>

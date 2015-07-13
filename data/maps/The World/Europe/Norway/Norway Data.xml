@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<region name="Norway">
+    <sub_region red="240" green="240" blue="240" name="Finnmark" capital="Vadso" />
+    <sub_region red="220" green="220" blue="220" name="Troms" capital="Tromso" />
+    <sub_region red="200" green="200" blue="200" name="Nordland" capital="Bodo" />
+    <sub_region red="180" green="180" blue="180" name="Nord-Trondelag" capital="Steinkjer" />
+    <sub_region red="160" green="160" blue="160" name="Sor-Trondelag" capital="Trondheim" />
+    <sub_region red="130" green="130" blue="130" name="More og Romsdal" capital="Molde" />
+    <sub_region red="135" green="135" blue="135" name="Sogn og Fjordane" capital="Leikanger" />
+    <sub_region red="190" green="190" blue="190" name="Hordaland" capital="Bergen" />
+    <sub_region red="155" green="155" blue="155" name="Rogaland" capital="Stavanger" />
+    <sub_region red="170" green="170" blue="170" name="Vest-Agder" capital="Kristiansand" />
+    <sub_region red="245" green="245" blue="245" name="Aust-Agder" capital="Arendal" />
+    <sub_region red="230" green="230" blue="230" name="Telemark" capital="Skien" />
+    <sub_region red="125" green="125" blue="125" name="Vestfold" capital="Tonsberg" />
+    <sub_region red="120" green="120" blue="120" name="Buskerud" capital="Drammen" />
+    <sub_region red="150" green="150" blue="150" name="Oppland" capital="Lillehammer" />
+    <sub_region red="140" green="140" blue="140" name="Hedmark" capital="Hamar" />
+    <sub_region red="250" green="250" blue="250" name="Oslo" capital="City of Oslo" />
+    <sub_region red="115" green="115" blue="115" name="Akershus" capital="Oslo" />
+    <sub_region red="110" green="110" blue="110" name="Ostfold" capital="Sarpsborg" />
+</region>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<region name="Romania" leader="Klaus Iohannis" capital="Bucharest">
+  <sub_region red="200" green="200" blue="200" name="Alba" capital="Alba Iulia">sub_region1</sub_region>
+  <sub_region red="198" green="198" blue="198" name="Arad" capital="Arad">sub_region2</sub_region>
+  <sub_region red="196" green="196" blue="196" name="Arges" capital="Pitesti">sub_region3</sub_region>
+  <sub_region red="194" green="194" blue="194" name="Bacau" capital="Bacau">sub_region4</sub_region>
+  <sub_region red="192" green="192" blue="192" name="Bihor" capital="Oradea">sub_region5</sub_region>
+  <sub_region red="190" green="190" blue="190" name="Bistrita-Nasaud" capital="Bistrita">sub_region6</sub_region>
+  <sub_region red="188" green="188" blue="188" name="Botosani" capital="Botosani">sub_region7</sub_region>
+  <sub_region red="186" green="186" blue="186" name="Brasov" capital="Brasov">sub_region8</sub_region>
+  <sub_region red="184" green="184" blue="184" name="Braila" capital="Braila">sub_region9</sub_region>
+  <sub_region red="182" green="182" blue="182" name="Buzau" capital="Buzau">sub_region10</sub_region>
+  <sub_region red="180" green="180" blue="180" name="Caras Severin" capital="Resita">sub_region11</sub_region>
+  <sub_region red="178" green="178" blue="178" name="Calarasi" capital="Calarasi">sub_region12</sub_region>
+  <sub_region red="176" green="176" blue="176" name="Cluj" capital="Cluj-Napoca">sub_region13</sub_region>
+  <sub_region red="174" green="174" blue="174" name="Constanta" capital="Constanta">sub_region14</sub_region>
+  <sub_region red="172" green="172" blue="172" name="Covasna" capital="Sfantu Gheorghe">sub_region15</sub_region>
+  <sub_region red="170" green="170" blue="170" name="Dambovita" capital="Targoviște">sub_region16</sub_region>
+  <sub_region red="168" green="168" blue="168" name="Dolj" capital="Craiova">sub_region17</sub_region>
+  <sub_region red="166" green="166" blue="166" name="Galati" capital="Galati">sub_region18</sub_region>
+  <sub_region red="164" green="164" blue="164" name="Giurgiu" capital="Giurgiu">sub_region19</sub_region>
+  <sub_region red="162" green="162" blue="162" name="Gorj" capital="Targu Jiu">sub_region20</sub_region>
+  <sub_region red="160" green="160" blue="160" name="Harghita" capital="Miercurea Ciuc">sub_region21</sub_region>
+  <sub_region red="158" green="158" blue="158" name="Hunedoara" capital="Deva">sub_region22</sub_region>
+  <sub_region red="156" green="156" blue="156" name="Ialomita" capital="Slobozia">sub_region23</sub_region>
+  <sub_region red="154" green="154" blue="154" name="Iasi" capital="Iasi">sub_region24</sub_region>
+  <sub_region red="152" green="152" blue="152" name="Ilfov" capital="Buftea">sub_region25</sub_region>
+  <sub_region red="150" green="150" blue="150" name="Maramures" capital="Baia Mare">sub_region26</sub_region>
+  <sub_region red="148" green="148" blue="148" name="Mehedinti" capital="Drobeta-Turnu Severin">sub_region27</sub_region>
+  <sub_region red="146" green="146" blue="146" name="Mures" capital="Targu Mures">sub_region28</sub_region>
+  <sub_region red="144" green="144" blue="144" name="Neamt" capital="Piatra Neamt">sub_region29</sub_region>
+  <sub_region red="142" green="142" blue="142" name="Olt" capital="Slatina">sub_region30</sub_region>
+  <sub_region red="140" green="140" blue="140" name="Prahova" capital="Ploiești">sub_region31</sub_region>
+  <sub_region red="138" green="138" blue="138" name="Satu Mare" capital="Satu Mare">sub_region32</sub_region>
+  <sub_region red="136" green="136" blue="136" name="Salaj" capital="Zalău">sub_region33</sub_region>
+  <sub_region red="134" green="134" blue="134" name="Sibiu" capital="Sibiu">sub_region34</sub_region>
+  <sub_region red="132" green="132" blue="132" name="Suceava" capital="Suceava">sub_region35</sub_region>
+  <sub_region red="130" green="130" blue="130" name="Teleorman" capital="Alexandria">sub_region36</sub_region>
+  <sub_region red="128" green="128" blue="128" name="Timis" capital="Timisoara">sub_region37</sub_region>
+  <sub_region red="126" green="126" blue="126" name="Tulcea" capital="Tulcea">sub_region38</sub_region>
+  <sub_region red="124" green="124" blue="124" name="Vaslui" capital="Vaslui">sub_region39</sub_region>
+  <sub_region red="122" green="122" blue="122" name="Valcea" capital="Ramnicu Valcea">sub_region40</sub_region>
+  <sub_region red="120" green="120" blue="120" name="Vrancea" capital="Focsani">sub_region41</sub_region>
+</region>

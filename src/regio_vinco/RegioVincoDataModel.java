@@ -46,6 +46,7 @@ public class RegioVincoDataModel extends PointAndClickGameDataModel {
     // AND OTHER GAME DATA
     private String regionName;
     private String regionMapName;
+    protected String currentDirectory;
     private String subRegionsType;
     private HashMap<Color, String> colorToSubRegionMappings;
     private HashMap<String, Color> subRegionToColorMappings;
@@ -64,7 +65,7 @@ public class RegioVincoDataModel extends PointAndClickGameDataModel {
     private int regionsLeftInt;
     private int incorrectGuessesInt;
     private int totalSubRegions;
-    private int navNum;
+    private int prevTextLength;
     private boolean repeat = false;
     
     //START TIMER
@@ -82,7 +83,8 @@ public class RegioVincoDataModel extends PointAndClickGameDataModel {
 	redSubRegions = new LinkedList();
         navigatedRegions = new LinkedList();
         xmlUtility = new XMLUtilities();
-        navNum = 0;
+        currentDirectory = MAPS_PATH;
+        prevTextLength = 0;
     }
     
     public void setMapImage(WritableImage initMapImage) {
@@ -117,6 +119,10 @@ public class RegioVincoDataModel extends PointAndClickGameDataModel {
     
     public String getRegionMapName(){
         return regionMapName;
+    }
+    
+    public String getCurrentDirectory(){
+        return currentDirectory;
     }
     
     public void setRegionName(String regionName) {
@@ -292,7 +298,7 @@ public class RegioVincoDataModel extends PointAndClickGameDataModel {
      */
     @Override
     public void reset(PointAndClickGame game) {
-        
+        System.out.println(regionName);
         ((RegioVincoGame) game).reloadMap(regionName, regionMapName);
         
         // LET'S CLEAR THE DATA STRUCTURES
@@ -308,11 +314,11 @@ public class RegioVincoDataModel extends PointAndClickGameDataModel {
             
             Document xmlDocument = null;
             
-            System.out.println(xmlUtility.validateXMLDoc(MAPS_PATH + regionName + "/" + regionName + " Data.xml", MAPS_PATH + SCHEMA_NAME));
+            System.out.println(xmlUtility.validateXMLDoc(currentDirectory + regionName + "/" + regionName + " Data.xml", MAPS_PATH + SCHEMA_NAME));
             
             //xmlDocument = xmlUtility.loadXMLDocument(MAPS_PATH + regionName + "/" + regionName + " Data.xml", MAPS_PATH + SCHEMA_NAME);
             
-            Document xmlDoc = xmlUtility.loadXMLDocument(MAPS_PATH + regionName + "/" + regionName + " Data.xml", MAPS_PATH + SCHEMA_NAME);
+            Document xmlDoc = xmlUtility.loadXMLDocument(currentDirectory + regionName + "/" + regionName + " Data.xml", MAPS_PATH + SCHEMA_NAME);
             
             int numOfElements = xmlUtility.getNumNodesOfElement(xmlDoc, "sub_region");
             
@@ -361,12 +367,12 @@ public class RegioVincoDataModel extends PointAndClickGameDataModel {
                     colorToSubRegionMappings.put(makeColor(red,green,blue), name); 
                 }
                 
-                    
+                
                 
             }
             
             
-            
+            currentDirectory += regionName + "/";
             
             
             // INIT THE MAPPINGS - NOTE THIS SHOULD
@@ -392,18 +398,16 @@ public class RegioVincoDataModel extends PointAndClickGameDataModel {
                 gameLayer.getChildren().clear();
                 Text regionText = new Text(regionName);
                 navigatedRegions.add(regionText);
-                System.out.println(navNum);
-                regionText.setX(900);
-                regionText.setY(200 + (navNum * 25));
+                regionText.setX(50 + (((int)navigatedRegions.size() - 1) * 100));
+                regionText.setY(650);
                 regionText.setFill(Color.YELLOW);
-                regionText.resize(100 * (navNum + 1), 50);
                 regionText.setOnMouseClicked(e -> {
                     System.out.println(regionText.getText());
                     backTrack(regionText,game);
                     return;
 
                 });
-                regionText.setStyle("-fx-font: 30px Verdana");
+                regionText.setStyle("-fx-font: 15px Verdana");
                 navigatedRegions.add(regionText);
                 ((RegioVincoGame)game).getGuiLayer().getChildren().add(regionText);
             }
@@ -416,7 +420,7 @@ public class RegioVincoDataModel extends PointAndClickGameDataModel {
             
             for (Color c : colorToSubRegionMappings.keySet()) {
                 String subRegion = colorToSubRegionMappings.get(c);
-                System.out.println(subRegion);
+                //System.out.println(subRegion);
                 subRegionToColorMappings.put(subRegion, c);
                 Text textNode = new Text(subRegion);
                 textNode.setStyle("-fx-font: 25px Calibri");
@@ -440,7 +444,7 @@ public class RegioVincoDataModel extends PointAndClickGameDataModel {
             }
             
             // RELOAD THE MAP
-            ((RegioVincoGame) game).reloadMap(regionName, regionMapName);
+            //((RegioVincoGame) game).reloadMap(regionName, regionMapName);
             
             
             
@@ -460,7 +464,7 @@ public class RegioVincoDataModel extends PointAndClickGameDataModel {
                     if (colorToSubRegionMappings.containsKey(c)) {
                         String subRegion = colorToSubRegionMappings.get(c);
                         //System.out.println(subRegion);
-                        File testFile = new File(MAPS_PATH + subRegion + "/" + subRegion + " Data.xml");
+                        File testFile = new File(currentDirectory + subRegion + "/" + subRegion + " Data.xml");
                         if(!testFile.exists())
                             mapPixelWriter.setColor(i,j, Color.PINK);
                         ArrayList<int[]> subRegionPixels = pixels.get(subRegion);
@@ -519,7 +523,6 @@ public class RegioVincoDataModel extends PointAndClickGameDataModel {
         } catch (SAXException ex) {
             Logger.getLogger(RegioVincoDataModel.class.getName()).log(Level.SEVERE, null, ex);
         }
-        navNum++;
         repeat = false;
     }
    
@@ -587,11 +590,11 @@ public class RegioVincoDataModel extends PointAndClickGameDataModel {
         int x = 0;
         repeat = true;
         while(!regionText.equals(navigatedRegions.getLast())){
+            currentDirectory = currentDirectory.replace(navigatedRegions.getLast().getText() + "/", "");
             navigatedRegions.getLast().setVisible(false);
             navigatedRegions.removeLast();
-            navNum--;
         }
-        navNum++;
+        currentDirectory = currentDirectory.replace(regionText.getText() + "/", "");
         regionName = regionText.getText();
         regionMapName = regionText.getText() + " Map.png";
         reset(game);

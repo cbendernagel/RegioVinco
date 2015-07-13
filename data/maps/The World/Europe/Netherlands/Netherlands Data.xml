@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<region name="Netherlands">
+    <sub_region red="221" green="221" blue="221" name="Drenthe" capital="Assen"/>
+    <sub_region red="201" green="201" blue="201" name="Flevoland" capital="Lelystad"/>
+    <sub_region red="233" green="233" blue="233" name="Friesland" capital="Leeuwarden"/>
+    <sub_region red="170" green="170" blue="170" name="Gelderland" capital="Arnhem"/>
+    <sub_region red="247" green="247" blue="247" name="Groningen" capital="Groningen"/>
+    <sub_region red="159" green="159" blue="159" name="Limburg" capital="Maastricht"/>
+    <sub_region red="148" green="148" blue="148" name="North Brabant" capital="'s-Hertogenbosch"/>
+    <sub_region red="192" green="192" blue="192" name="North Holland" capital="Haarlem"/>
+    <sub_region red="211" green="211" blue="211" name="Overijssel" capital="Zwolle"/>
+    <sub_region red="134" green="134" blue="134" name="South Holland" capital="The Hague"/>
+    <sub_region red="182" green="182" blue="182" name="Utrecht" capital="Utrecht"/>
+    <sub_region red="120" green="120" blue="120" name="Zeeland" capital="Middelburg"/>   
+</region>

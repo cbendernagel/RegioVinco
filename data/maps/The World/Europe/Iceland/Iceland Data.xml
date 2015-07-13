@@ -1,0 +1,11 @@
+<region name="Iceland">
+<sub_region red="210" green="210" blue="210" name="Capital Region" capital="Greater Reykjavik"/>
+<sub_region red="190" green="190" blue="190" name="Southern Peninsula" capital="Keflavik"/>
+<sub_region red="170" green="170" blue="170" name="Western Region" capital="Akranes"/>
+<sub_region red="150" green="150" blue="150" name="Westfjords" capital="Isafjordur"/>
+<sub_region red="130" green="130" blue="130" name="Northwestern Region" capital="Saudarkrokur"/>
+<sub_region red="110" green="110" blue="110" name="Eastern Region" capital="Egilsstadir"/>
+<sub_region red="90" green="90" blue="90" name="Southern Region" capital="Selfoss"/>
+<sub_region red="70" green="70" blue="70" name="Northeastern Region" capital="Akureyri"/>
+</region>
+

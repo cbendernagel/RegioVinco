@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<region name="Albania">
+<sub_region red="140" green="140" blue="140" name="Gjirokaster" capital="Gjirokaster"/>
+<sub_region red="142" green="142" blue="142" name="Vlore" capital="Vlore"/>
+<sub_region red="144" green="144" blue="144" name="Fier" capital="Fier"/>
+<sub_region red="147" green="147" blue="147" name="Berat" capital="Bera"/>
+<sub_region red="149" green="149" blue="149" name="Korce" capital="Korce"/>
+<sub_region red="153" green="153" blue="153" name="Elbasan" capital="Elbasan"/>
+<sub_region red="155" green="155" blue="155" name="Tirana" capital="Tirana"/>
+<sub_region red="159" green="159" blue="159" name="Diber" capital="Diber"/>
+<sub_region red="162" green="162" blue="162" name="Durres" capital="Durres"/>
+<sub_region red="166" green="166" blue="166" name="Lezhe" capital="Lezhe"/>
+<sub_region red="172" green="172" blue="172" name="Shkoder" capital="Shkoder"/>
+<sub_region red="178" green="178" blue="178" name="Kukes" capital="Kukes"/>
+</region>

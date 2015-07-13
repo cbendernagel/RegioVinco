@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<region name="Croatia">
+    <sub_region red="220" green="220" blue="220" name="Vukovar-Srijem" capital="Vukovar"/>
+    <sub_region red="218" green="218" blue="218" name="Osijek-Baranja" capital="Osijek-Baranja"/>
+    <sub_region red="216" green="216" blue="216" name="Virovitica-Podravina" capital="Virovitica" />
+    <sub_region red="214" green="214" blue="214" name="Pozega-Slavonia" capital="Pozega"/>
+    <sub_region red="212" green="212" blue="212" name="Brod-Posavina" capital="Slavonski-Brod"/>
+    <sub_region red="210" green="210" blue="210" name="Sisak-Moslavina" capital="Sisak"/>
+    <sub_region red="208" green="208" blue="208" name="Bjelovar-Bilogora" capital="Bjelovar"/>
+    <sub_region red="206" green="206" blue="206" name="Koprivnica-Krizevci" capital="Koprivnica"/>
+    <sub_region red="204" green="204" blue="204" name="Medimurje" capital="Cakovec"/>
+    <sub_region red="202" green="202" blue="202" name="Varazdin" capital="Varazdin"/>
+    <sub_region red="200" green="200" blue="200" name="Krapina-Zagorje" capital="Krapina"/>
+    <sub_region red="198" green="198" blue="198" name="Zagreb" capital="City of Zagreb"/>
+    <sub_region red="196" green="196" blue="196" name="Karlovac" capital="City of Karlovac"/>
+    <sub_region red="194" green="194" blue="194" name="Primorje-Gorski Kotar" capital="Rijeka"/>
+    <sub_region red="192" green="192" blue="192" name="Istia" capital="Pula"/>
+    <sub_region red="190" green="190" blue="190" name="Lika-Senj" capital="Gospic"/>
+    <sub_region red="188" green="188" blue="188" name="Zadar County" capital="Zadar"/>
+    <sub_region red="186" green="186" blue="186" name="Sibenik-Knin" capital="Sibenik"/>
+    <sub_region red="184" green="184" blue="184" name="Split-Dalmatia" capital="Split"/>
+    <sub_region red="182" green="182" blue="182" name="Dubrovnik-Neretva" capital="Dubrovnik"/>
+</region>

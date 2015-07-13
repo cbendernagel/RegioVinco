@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<region name="Switzerland">
+  <sub_region red="200" green="200" blue="200" name="Graubunden" capital="Chur" />
+  <sub_region red="198" green="198" blue="198" name="St. Gallen" capital="St. Gallen" />
+  <sub_region red="196" green="196" blue="196" name="Appenzell" capital="Appenzell" />
+  <sub_region red="194" green="194" blue="194" name="Thurgau" capital="Frauenfeld" />
+  <sub_region red="192" green="192" blue="192" name="Schaffhausen" capital="Schaffhausen" />
+  <sub_region red="190" green="190" blue="190" name="Glarus" capital="Glarus" />
+  <sub_region red="188" green="188" blue="188" name="Zurich" capital="Zurich" />
+  <sub_region red="186" green="186" blue="186" name="Schwyz" capital="Schwyz" />
+  <sub_region red="184" green="184" blue="184" name="Zug" capital="Zug" />
+  <sub_region red="182" green="182" blue="182" name="Uri" capital="Uri" />
+  <sub_region red="180" green="180" blue="180" name="Ticino" capital="Bellinzona" />
+  <sub_region red="178" green="178" blue="178" name="Nidwalden" capital="Stans" />
+  <sub_region red="176" green="176" blue="176" name="Obwalden" capital="Sarnen" />
+  <sub_region red="174" green="174" blue="174" name="Aargau" capital="Aarau" />
+  <sub_region red="172" green="172" blue="172" name="Lucerne" capital="Lucerne" />
+  <sub_region red="170" green="170" blue="170" name="Bern" capital="Bern" />
+  <sub_region red="168" green="168" blue="168" name="Valais" capital="Sion" />
+  <sub_region red="166" green="166" blue="166" name="Basel-Stadt" capital="Basel" />
+  <sub_region red="164" green="164" blue="164" name="Basel-Landschaft" capital="Liestal" />
+  <sub_region red="162" green="162" blue="162" name="Solothurn" capital="Solothurn" />
+  <sub_region red="160" green="160" blue="160" name="Jura" capital="Delemont" />
+  <sub_region red="158" green="158" blue="158" name="Neuchatel" capital="Neuchatel" />
+  <sub_region red="156" green="156" blue="156" name="Fribourg" capital="Fribourg" />
+  <sub_region red="154" green="154" blue="154" name="Vaud" capital="Lausannen" />
+  <sub_region red="152" green="152" blue="152" name="Geneva" capital="Geneva" />
+</region>

@@ -41,6 +41,10 @@ public class RegioVinco extends Application {
     public static final String SETTINGS_BUTTON_FILE_PATH = GUI_PATH + "RegioVincoSettingsButton.png";
     public static final String HELP_BUTTON_FILE_PATH = GUI_PATH + "RegioVincoHelpButton.png";
     public static final String WORLD_BUTTON_FILE_PATH = GUI_PATH + "RegioVincoWorldButton.png";
+    public static final String LEADER_BUTTON_FILE_PATH = GUI_PATH + "RegioVincoLeaderButton.png";
+    public static final String CAPITAL_BUTTON_FILE_PATH = GUI_PATH + "RegioVincoCapitalButton.png";
+    public static final String REGION_BUTTON_FILE_PATH = GUI_PATH + "RegioVincoRegionButton.png";
+    public static final String FLAG_BUTTON_FILE_PATH = GUI_PATH + "RegioVincoFlagdButton.png";
     public static final String SUB_REGION_FILE_PATH = GUI_PATH + "RegioVincoSubRegion.png";
     public static final String WIN_DISPLAY_FILE_PATH = GUI_PATH + "RegioVincoWinDisplay.png";
 
@@ -82,6 +86,26 @@ public class RegioVinco extends Application {
     public static final String WORLD_TYPE2 = "WORLD_TYPE2";
     public static final int WORLD_X = 450;
     public static final int WORLD_Y = 300;
+    
+    // REGION BUTTON
+    public static final String REGION_TYPE = "REGION_TYPE";
+    public static final int REGION_X = 850;
+    public static final int REGION_Y = 0;
+    
+    // CAPITAL BUTTON
+    public static final String CAPITAL_TYPE = "CAPITAL_TYPE";
+    public static final int CAPITAL_X = 850;
+    public static final int CAPITAL_Y = 0;
+    
+    // LEADER BUTTON
+    public static final String LEADER_TYPE = "LEADER_TYPE";
+    public static final int LEADER_X = 850;
+    public static final int LEADER_Y = 0;
+    
+    // FLAG BUTTON
+    public static final String FLAG_TYPE = "FLAG_TYPE";
+    public static final int FLAG_X = 850;
+    public static final int FLAG_Y = 0;
     
     // MAP AND REGION TITLE
     public static final String REGION_SUB_REGION_TYPE = "REGION_SUB_REGION_TYPE";

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<region name="Portugal">
+    <sub_region red="220" green="220" blue="220" name="Viana Do Castelo"/>
+    <sub_region red="215" green="215" blue="215" name="Braga"/>
+    <sub_region red="210" green="210" blue="210" name="Porto"/>
+    <sub_region red="205" green="205" blue="205" name="Vila Real"/>
+    <sub_region red="200" green="200" blue="200" name="Braganca"/>
+    <sub_region red="195" green="195" blue="195" name="Aveiro"/>
+    <sub_region red="190" green="190" blue="190" name="Viseu"/>
+    <sub_region red="185" green="185" blue="185" name="Guarda"/>
+    <sub_region red="180" green="180" blue="180" name="Coimbra"/>
+    <sub_region red="175" green="175" blue="175" name="Castelo Branco"/>
+    <sub_region red="170" green="170" blue="170" name="Leiria"/>
+    <sub_region red="165" green="165" blue="165" name="Santarem"/>
+    <sub_region red="160" green="160" blue="160" name="Portalegre"/>
+    <sub_region red="155" green="155" blue="155" name="Lisboa" capital="Lisbon" />
+	<sub_region red="150" green="150" blue="150" name="Setubal"/>
+	<sub_region red="145" green="145" blue="145" name="Evora"/>
+	<sub_region red="140" green="140" blue="140" name="Bega"/>
+	<sub_region red="135" green="135" blue="135" name="Faro"/>
+</region>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<region name="Luxembourg">
+  <sub_region red="225" green="225" blue="225" name="Diekirch" />
+  <sub_region red="200" green="200" blue="200" name="Luxembourg" />
+  <sub_region red="175" green="175" blue="175" name="Luxembourg" />
+  <sub_region red="150" green="150" blue="150" name="Grevenmacher" />
+</region>

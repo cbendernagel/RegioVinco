@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<region name="Slovakia">
+    <sub_region red="250" green="250" blue="250" name="Bratislava" capital="Bratislava"/>
+    <sub_region red="249" green="249" blue="249" name="Trnava" capital="Trnava"/>
+    <sub_region red="248" green="248" blue="249" name="Trencin" capital="Trencin"/>
+    <sub_region red="247" green="247" blue="247" name="Nitra" capital="Nitra"/>
+    <sub_region red="246" green="246" blue="246" name="Zilina" capital="Zilina"/>
+    <sub_region red="245" green="245" blue="245" name="Banska Bystrica" capital="Banska Bystrica"/>
+    <sub_region red="244" green="244" blue="244" name="Presov" capital="Presov"/>
+    <sub_region red="243" green="243" blue="243" name="Kosice" capital="Kosice"/>
+</region>

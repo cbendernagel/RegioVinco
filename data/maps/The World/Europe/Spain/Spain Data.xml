@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<region name="Spain">
+	<sub_region red="200" green="200" blue="200" name="Andalusia" capital="Seville" />
+	<sub_region red="198" green="198" blue="198" name="Aragon" capital="Zaragoza" />
+	<sub_region red="196" green="196" blue="196" name="Asturias" capital="Oviedo" />
+	<sub_region red="194" green="194" blue="194" name="Balearic Islands" capital="Palma de Mallorca" />
+	<sub_region red="192" green="192" blue="192" name="Basque Country" capital="Vitoria-Gasteiz" />
+	<sub_region red="190" green="190" blue="190" name="Castille La Mancha" capital="Toledo" />
+	<sub_region red="188" green="188" blue="188" name="Castille Leon" capital="Valladolid" />
+	<sub_region red="186" green="186" blue="186" name="Cantabria" capital="Santander" />
+	<sub_region red="184" green="184" blue="184" name="Catalonia" capital="Barcelona" />
+	<sub_region red="182" green="182" blue="182" name="Extremadura" capital="Merida" />
+	<sub_region red="180" green="180" blue="180" name="Galicia" capital="Santiago de Compostela" />
+	<sub_region red="178" green="178" blue="178" name="La Rioja" capital="Logrono" />
+	<sub_region red="176" green="176" blue="176" name="Madrid" capital="Madrid" />
+	<sub_region red="174" green="174" blue="174" name="Murcia" capital="Murcia" />
+	<sub_region red="172" green="172" blue="172" name="Navarre" capital="Pamplona" />
+	<sub_region red="170" green="170" blue="170" name="Valencia" capital="Valencia" />
+</region>

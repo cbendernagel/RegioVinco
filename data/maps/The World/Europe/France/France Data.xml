@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<region name="France">
+    <sub_region red="200" green="200" blue="200" name="Alsace" capital="Strasbourg"/>
+    <sub_region red="147" green="147" blue="147" name="Aquitane" capital="Bordeaux"/>
+    <sub_region red="168" green="168" blue="168" name="Auvergne" capital="Clermont-Ferrand"/>
+    <sub_region red="184" green="184" blue="184" name="Brittany" capital="Rennes"/>
+    <sub_region red="208" green="208" blue="208" name="Burgundy" capital="Dijon"/>
+    <sub_region red="198" green="198" blue="198" name="Center" capital="Orleans"/>
+    <sub_region red="206" green="206" blue="206" name="Champagne-Ardenne" capital="Chalons-en-Champagne"/>
+    <sub_region red="154" green="154" blue="154" name="Corsica" capital="Ajaccio"/>
+    <sub_region red="140" green="140" blue="140" name="Franche-comte" capital="Besancon"/>
+    <sub_region red="136" green="136" blue="136" name="Languedoc-Roussillon" capital="Montpellier"/>
+    <sub_region red="160" green="160" blue="160" name="Limousin" capital="Limoges"/>
+    <sub_region red="146" green="146" blue="146" name="Lorraine" capital="Metz"/>
+    <sub_region red="164" green="164" blue="164" name="Lower-Normandy" capital="Caen"/>
+    <sub_region red="128" green="128" blue="128" name="Midi-Pyrenees" capital="Toulouse"/>
+    <sub_region red="153" green="153" blue="153" name="North-Calais" capital="Lille"/>
+    <sub_region red="202" green="202" blue="202" name="Paris-Isle-of-France" capital="Paris"/>
+    <sub_region red="192" green="192" blue="192" name="Pays-de-la-Loire" capital="Nantes"/>
+    <sub_region red="167" green="167" blue="167" name="Picardy" capital="Amiens"/>
+    <sub_region red="152" green="152" blue="152" name="Poitou-Charentes" capital="Poitiers"/>
+    <sub_region red="144" green="144" blue="144" name="Provence-Alpes-Azur" capital="Marseille"/>
+    <sub_region red="176" green="176" blue="176" name="Rhone-Alps" capital="Lyon"/>
+    <sub_region red="137" green="137" blue="137" name="Upper-Normandy" capital="Rouen"/>
+</region>

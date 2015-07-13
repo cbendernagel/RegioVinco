@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<region name = "Monaco">
+	<sub_region red="200" green="200" blue="200" name="Monaco"/>
+</region>
+

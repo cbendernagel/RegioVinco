@@ -1,0 +1,14 @@
+<region name="Slovenia">
+ <sub_region red="240" green="240" blue="240" name="Mura" capital="Murska Sobota"/>
+ <sub_region red="224" green="224" blue="224" name="Drava" capital="Maribor"/>
+ <sub_region red="212" green="212" blue="212" name="Carinthia" capital="Slovenj Gradec"/>
+ <sub_region red="200" green="200" blue="200" name="Savinja" capital="Celje"/>
+ <sub_region red="188" green="188" blue="188" name="Central Sava" capital="Trbovlje"/>
+ <sub_region red="176" green="176" blue="176" name="Lower Sava" capital="Krško"/>
+ <sub_region red="165" green="165" blue="165" name="Southeast Slovenia" capital="Novo Mesto"/>
+ <sub_region red="160" green="160" blue="160" name="Littoral Inner Carniola" capital="Postojna"/>
+ <sub_region red="155" green="155" blue="155" name="Central Slovenia" capital="Ljubljana"/>
+ <sub_region red="150" green="150" blue="150" name="Upper Carniola" capital="Kranj"/>
+ <sub_region red="140" green="140" blue="140" name="Gorizia" capital="Nova Gorica"/>
+ <sub_region red="135" green="135" blue="135" name="Coastal Karst" capital="Koper"/>
+</region>

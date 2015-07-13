@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+
+<region name="Germany">
+  <sub_region red="148" green="148" blue="148" name="Baden-Württemberg" capital="Stuttgart" />
+  <sub_region red="156" green="156" blue="156" name="Bavaria" capital="Munich" />
+  <sub_region red="188" green="188" blue="188" name="Berlin" capital="Berlin" />
+  <sub_region red="196" green="196" blue="196" name="Brandenburg" capital="Potsdam" />
+  <sub_region red="172" green="172" blue="172" name="Bremen" capital="Bremen" />
+  <sub_region red="184" green="184" blue="184" name="Hamburg" capital="Hamburg" />
+  <sub_region red="156" green="156" blue="156" name="Hesse" capital="Wiesbaden" />
+  <sub_region red="180" green="180" blue="180" name="Lower Saxony" capital="Hanover" />
+  <sub_region red="200" green="200" blue="200" name="Mecklenburg-Vorpommern" capital="Schwerin" />
+  <sub_region red="160" green="160" blue="160" name="North Rhine-Westphalia" capital="Düsseldorf" />
+  <sub_region red="152" green="152" blue="152" name="Rhineland-Palatinate" capital="Mainz" />
+  <sub_region red="144" green="144" blue="144" name="Saarland" capital="Saarbrücken" />
+  <sub_region red="168" green="168" blue="168" name="Saxony" capital="Dresden" />
+  <sub_region red="176" green="176" blue="176" name="Saxony-Anhalt" capital="Magdeburg" />
+  <sub_region red="192" green="192" blue="192" name="Schleswig-Holstein" capital="Kiel" />
+  <sub_region red="164" green="164" blue="164" name="Thuringia" capital="Erfurt" />
+</region>

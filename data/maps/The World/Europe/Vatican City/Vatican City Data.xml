@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<region name="Vatican City">
+  <sub_region red="220" green="225" blue="225" name="Vatican City" />
+</region>

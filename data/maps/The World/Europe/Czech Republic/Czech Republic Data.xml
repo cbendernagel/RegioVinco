@@ -1,0 +1,16 @@
+<region name="Czech Republic">
+	<sub_region red="220" green="220" blue="220" name="Moravia-Silesia"/>
+	<sub_region red="220" green="220" blue="219" name="Zlin"/>
+	<sub_region red="220" green="220" blue="218" name="Olomouc"/>
+	<sub_region red="220" green="220" blue="217" name="Pardubice"/>
+	<sub_region red="220" green="220" blue="216" name="South Moravia"/>
+	<sub_region red="220" green="220" blue="215" name="Vysocina"/>
+	<sub_region red="220" green="220" blue="214" name="Hradec Kralove"/>
+	<sub_region red="220" green="220" blue="213" name="Liberec"/>
+	<sub_region red="220" green="220" blue="212" name="Central Bohemia"/>
+	<sub_region red="220" green="220" blue="211" name="Prague"/>
+	<sub_region red="220" green="220" blue="210" name="South Bohemia"/>
+	<sub_region red="220" green="220" blue="209" name="Usti nad Labem"/>
+	<sub_region red="220" green="220" blue="208" name="Karlovy Vary"/>
+	<sub_region red="220" green="220" blue="207" name="Plzen"/>
+</region>

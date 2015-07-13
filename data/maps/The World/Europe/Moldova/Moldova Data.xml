@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+
+
+<region name="Moldova">
+ <sub_region red="5" green="5" blue="5" name="Briceni" capital="Briceni" />
+ <sub_region red="65" green="65" blue="65" name="Dondușeni" capital="city of Dondușeni" />
+ <sub_region red="70" green="70" blue="70" name="Drochia" capital="Drochia"  />
+ <sub_region red="10" green="10" blue="10" name="Edineț" capital="Edineț" />
+ <sub_region red="25" green="25" blue="25" name="Fălești" capital="Fălești" />
+ <sub_region red="30" green="30" blue="30" name="Ungheni" capital="Ungheni" />
+ <sub_region red="225" green="225" blue="225" name="Ștefan Vodă" capital="Ștefan Vodă"  />
+ <sub_region red="160" green="160" blue="160" name="Șoldănești"  capital="Șoldănești" />
+ <sub_region red="100" green="100" blue="100" name="Strășeni" capital="Strășeni" />
+ <sub_region red="150" green="150" blue="150" name="Soroca" capital="Soroca"  />
+ <sub_region red="80" green="80" blue="80" name="Sîngerei" capital="Sîngerei"  />
+ <sub_region red="15" green="15" blue="15" name="Rîșcani" capital="Rîșcani" />
+<sub_region red="165" green="165" blue="165" name="Rezina" capital="Rezina" />
+ <sub_region red="170" green="170" blue="170" name="Orhei" capital="Orhei" />
+ <sub_region red="60" green="60" blue="60" name="Ocnița" capital="Ocnița"  />
+ <sub_region red="35" green="35" blue="35" name="Nisporeni" capital="Nisporeni" />
+ <sub_region red="45" green="45" blue="45" name="Leova" capital="Leova" />
+ <sub_region red="105" green="105" blue="105" name="Ialoveni" capital="Ialoveni" />
+ <sub_region red="40" green="40" blue="40" name="Hîncești" capital="Hîncești"  />
+ <sub_region red="20" green="20" blue="20" name="Glodeni"  capital="Glodeni" />
+ <sub_region red="190" green="190" blue="190" name="Căușeni " capital="Căușeni " />
+ <sub_region red="90" green="90" blue="90" name="Călărași" capital="Călărași"  />
+ <sub_region red="50" green="50" blue="50" name="Cantemir" capital="Cantemir"  />
+ <sub_region red="55" green="55" blue="55" name="Cahul" capital="Cahul"  />
+ <sub_region red="185" green="185" blue="185" name="Anenii Noi" capital="Anenii Noi"  />
+ <sub_region red="195" green="195" blue="195" name="Basarabeasca" capital="Basarabeasca"  />
+ <sub_region red="110" green="110" blue="110" name="Cimișlia" capital="Cimișlia"  />
+ <sub_region red="155" green="155" blue="155" name="Florești" capital="Florești"  />
+ <sub_region red="120" green="120" blue="120" name="Taracila" capital="Taracila"  />
+ <sub_region red="205" green="205" blue="205" name="Dubăsari" capital="Cocieri"  />
+ <sub_region red="210" green="210" blue="210" name="Dubăsari" capital="Cocieri"  />
+ </region>
+
+ 
