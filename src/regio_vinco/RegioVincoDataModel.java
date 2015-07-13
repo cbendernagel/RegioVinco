@@ -217,8 +217,7 @@ public class RegioVincoDataModel extends PointAndClickGameDataModel {
         Pane gameLayer = game.getGameLayer();
 	Color pixelColor = mapPixelReader.getColor(x, y);
 	String clickedSubRegion = colorToSubRegionMappings.get(pixelColor);
-        System.out.println(clickedSubRegion);
-	if ((clickedSubRegion == null) || (subRegionStack.isEmpty())) {
+	if (((clickedSubRegion == null) || (subRegionStack.isEmpty())) && gameType == 0) {
 	    return;
 	}
         
@@ -386,8 +385,9 @@ public class RegioVincoDataModel extends PointAndClickGameDataModel {
 
                     x++;
 
-                    colorToSubRegionMappings.put(makeColor(red,green,blue), name); 
+                    
                 }
+                colorToSubRegionMappings.put(makeColor(red,green,blue), name); 
 
 
 
@@ -439,6 +439,11 @@ public class RegioVincoDataModel extends PointAndClickGameDataModel {
             incorrectGuesses = new Text();
             gameTimer = new Text();
 
+            
+
+            // RELOAD THE MAP
+            //((RegioVincoGame) game).reloadMap(regionName, regionMapName);
+
             for (Color c : colorToSubRegionMappings.keySet()) {
                 String subRegion = colorToSubRegionMappings.get(c);
 
@@ -447,11 +452,11 @@ public class RegioVincoDataModel extends PointAndClickGameDataModel {
                 textNode.setStyle("-fx-font: 25px Calibri");
                 textNode.setFill(Color.NAVY);
                 MovableText subRegionText = new MovableText(textNode);
-                //subRegionText.getText().setFill(REGION_NAME_COLOR);
+                subRegionText.getText().setFill(Color.YELLOW);
                 textNode.setX(STACK_X);
                 subRegionText.getRectangle().setFill(c);
                 gameLayer.getChildren().add(subRegionText.getRectangle());
-                //gameLayer.getChildren().add(textNode);
+                gameLayer.getChildren().add(textNode);
                 subRegionStack.add(subRegionText);
             }
             Collections.shuffle(subRegionStack);
@@ -463,11 +468,6 @@ public class RegioVincoDataModel extends PointAndClickGameDataModel {
                 mT.getRectangle().setY(y + 20);
                 mT.getRectangle().setX(mT.getText().getX());
             }
-
-            // RELOAD THE MAP
-            //((RegioVincoGame) game).reloadMap(regionName, regionMapName);
-
-
 
             // LET'S RECORD ALL THE PIXELS
             pixels = new HashMap();
