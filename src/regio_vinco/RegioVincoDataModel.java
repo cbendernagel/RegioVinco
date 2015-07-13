@@ -16,7 +16,6 @@ import javafx.scene.image.WritableImage;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
-import javafx.scene.text.TextAlignment;
 import org.w3c.dom.Document;
 import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.Node;
@@ -61,6 +60,7 @@ public class RegioVincoDataModel extends PointAndClickGameDataModel {
     private Text incorrectGuesses;
     private Text gameTimer;
     private Text fullStats;
+    private Text mapTitle;
     private int regionsFoundInt;
     private int regionsLeftInt;
     private int incorrectGuessesInt;
@@ -83,8 +83,14 @@ public class RegioVincoDataModel extends PointAndClickGameDataModel {
 	redSubRegions = new LinkedList();
         navigatedRegions = new LinkedList();
         xmlUtility = new XMLUtilities();
+        mapTitle = new Text("");
+        mapTitle.setX(375);
+        mapTitle.setY(50);
+        mapTitle.setFill(REGION_NAME_COLOR);
+        mapTitle.setStyle("-fx-font: 30px Verdana");
         currentDirectory = MAPS_PATH;
         prevTextLength = 0;
+        
     }
     
     public void setMapImage(WritableImage initMapImage) {
@@ -298,7 +304,15 @@ public class RegioVincoDataModel extends PointAndClickGameDataModel {
      */
     @Override
     public void reset(PointAndClickGame game) {
-        System.out.println(regionName);
+        
+        if(!mapTitle.getText().equals("")){
+            ((RegioVincoGame) game).getGuiLayer().getChildren().remove(mapTitle);
+            mapTitle.setText(regionName);
+            ((RegioVincoGame) game).getGuiLayer().getChildren().add(mapTitle);
+        }else{
+            mapTitle.setText(regionName);
+            ((RegioVincoGame) game).getGuiLayer().getChildren().add(mapTitle);
+        }
         ((RegioVincoGame) game).reloadMap(regionName, regionMapName);
         
         // LET'S CLEAR THE DATA STRUCTURES
@@ -313,8 +327,6 @@ public class RegioVincoDataModel extends PointAndClickGameDataModel {
                 ((RegioVincoGame)game).getGuiLayer().getChildren().remove(fullStats);
             
             Document xmlDocument = null;
-            
-            System.out.println(xmlUtility.validateXMLDoc(currentDirectory + regionName + "/" + regionName + " Data.xml", MAPS_PATH + SCHEMA_NAME));
             
             //xmlDocument = xmlUtility.loadXMLDocument(MAPS_PATH + regionName + "/" + regionName + " Data.xml", MAPS_PATH + SCHEMA_NAME);
             
@@ -402,7 +414,6 @@ public class RegioVincoDataModel extends PointAndClickGameDataModel {
                 regionText.setY(650);
                 regionText.setFill(Color.YELLOW);
                 regionText.setOnMouseClicked(e -> {
-                    System.out.println(regionText.getText());
                     backTrack(regionText,game);
                     return;
 

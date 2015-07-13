@@ -132,6 +132,9 @@ public class RegioVincoGame extends PointAndClickGame {
 	addStackPaneLayer(guiLayer);
         Rectangle subRegionBlock = new Rectangle();
         
+        //addGUIButton(guiLayer, STOP_TYPE, loadImage(STOP_BUTTON_FILE_PATH), STOP_X, STOP_Y);
+        
+        
         // THEN THE SETTINGS WINDOWPANE
         settingsLayer = new Pane();
         addStackPaneLayer(settingsLayer);
@@ -159,6 +162,11 @@ public class RegioVincoGame extends PointAndClickGame {
         addGUIButton(guiLayer, ENTER_TYPE, loadImage(ENTER_BUTTON_FILE_PATH), ENTER_X, ENTER_Y);
         addGUIButton(guiLayer, SETTINGS_TYPE, loadImage(SETTINGS_BUTTON_FILE_PATH), SETTINGS_X, SETTINGS_Y);
         addGUIButton(guiLayer, HELP_TYPE, loadImage(HELP_BUTTON_FILE_PATH), HELP_X, HELP_Y);
+        addGUIButton(guiLayer, REGION_TYPE, loadImage(REGION_BUTTON_FILE_PATH), REGION_X, REGION_Y);
+        addGUIButton(guiLayer, LEADER_TYPE, loadImage(LEADER_BUTTON_FILE_PATH), LEADER_X, LEADER_Y);
+        addGUIButton(guiLayer, CAPITAL_TYPE, loadImage(CAPITAL_BUTTON_FILE_PATH), CAPITAL_X, CAPITAL_Y);
+        addGUIButton(guiLayer, FLAG_TYPE, loadImage(FLAG_BUTTON_FILE_PATH), FLAG_X, FLAG_Y);
+        addGUIButton(guiLayer, STOP_TYPE, loadImage(STOP_BUTTON_FILE_PATH), STOP_X, STOP_Y);
         
         //uiLayer.getChildren().
 	
@@ -210,6 +218,36 @@ public class RegioVincoGame extends PointAndClickGame {
         helpButton.setBackground(Background.EMPTY);
         helpButton.setOnAction(e ->{
             controller.processHelpButtonRequest();
+        });
+        
+        Button regionButton = guiButtons.get(REGION_TYPE);
+        regionButton.setBackground(Background.EMPTY);
+        regionButton.setOnAction(e ->{
+            //controller.processRegionButtonRequest();
+        });
+        
+        Button leaderButton = guiButtons.get(LEADER_TYPE);
+        leaderButton.setBackground(Background.EMPTY);
+        leaderButton.setOnAction(e ->{
+            //controller.processLeaderButtonRequest();
+        });
+        
+        Button capitalButton = guiButtons.get(CAPITAL_TYPE);
+        capitalButton.setBackground(Background.EMPTY);
+        capitalButton.setOnAction(e ->{
+            //controller.processCapitalButtonRequest();
+        });
+        
+        Button flagButton = guiButtons.get(FLAG_TYPE);
+        flagButton.setBackground(Background.EMPTY);
+        flagButton.setOnAction(e ->{
+            //controller.processFlagButtonRequest();
+        });
+        
+        Button stopButton = guiButtons.get(STOP_TYPE);
+        stopButton.setBackground(Background.EMPTY);
+        stopButton.setOnAction(e ->{
+            //controller.processStopButtonRequest();
         });
         
         Button worldButton = guiButtons.get(WORLD_TYPE);
@@ -284,7 +322,6 @@ public class RegioVincoGame extends PointAndClickGame {
 
     public void reloadMap(String map, String mapName) {
         String path = ((RegioVincoDataModel) getDataModel()).getCurrentDirectory();
-        System.out.println(path + map + "/" + mapName + "!!!");
 	Image tempMapImage = loadImage(path + map + "/" + mapName);
 	PixelReader pixelReader = tempMapImage.getPixelReader();
 	WritableImage mapImage = new WritableImage(pixelReader, (int) tempMapImage.getWidth(), (int) tempMapImage.getHeight());

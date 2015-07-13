@@ -44,7 +44,8 @@ public class RegioVinco extends Application {
     public static final String LEADER_BUTTON_FILE_PATH = GUI_PATH + "RegioVincoLeaderButton.png";
     public static final String CAPITAL_BUTTON_FILE_PATH = GUI_PATH + "RegioVincoCapitalButton.png";
     public static final String REGION_BUTTON_FILE_PATH = GUI_PATH + "RegioVincoRegionButton.png";
-    public static final String FLAG_BUTTON_FILE_PATH = GUI_PATH + "RegioVincoFlagdButton.png";
+    public static final String FLAG_BUTTON_FILE_PATH = GUI_PATH + "RegioVincoFlagButton.png";
+    public static final String STOP_BUTTON_FILE_PATH = GUI_PATH + "RegioVincoStopButton.png";
     public static final String SUB_REGION_FILE_PATH = GUI_PATH + "RegioVincoSubRegion.png";
     public static final String WIN_DISPLAY_FILE_PATH = GUI_PATH + "RegioVincoWinDisplay.png";
 
@@ -89,23 +90,28 @@ public class RegioVinco extends Application {
     
     // REGION BUTTON
     public static final String REGION_TYPE = "REGION_TYPE";
-    public static final int REGION_X = 850;
-    public static final int REGION_Y = 0;
+    public static final int REGION_X = 900;
+    public static final int REGION_Y = 100;
     
     // CAPITAL BUTTON
     public static final String CAPITAL_TYPE = "CAPITAL_TYPE";
-    public static final int CAPITAL_X = 850;
-    public static final int CAPITAL_Y = 0;
+    public static final int CAPITAL_X = 950;
+    public static final int CAPITAL_Y = 100;
     
     // LEADER BUTTON
     public static final String LEADER_TYPE = "LEADER_TYPE";
-    public static final int LEADER_X = 850;
-    public static final int LEADER_Y = 0;
+    public static final int LEADER_X = 1000;
+    public static final int LEADER_Y = 100;
     
     // FLAG BUTTON
     public static final String FLAG_TYPE = "FLAG_TYPE";
-    public static final int FLAG_X = 850;
-    public static final int FLAG_Y = 0;
+    public static final int FLAG_X = 1050;
+    public static final int FLAG_Y = 100;
+    
+    // STOP BUTTON
+    public static final String STOP_TYPE = "STOP_TYPE";
+    public static final int STOP_X = 1100;
+    public static final int STOP_Y = 100;
     
     // MAP AND REGION TITLE
     public static final String REGION_SUB_REGION_TYPE = "REGION_SUB_REGION_TYPE";
@@ -127,10 +133,6 @@ public class RegioVinco extends Application {
     public static final int STACK_X = 900;
     public static final int STACK_INIT_Y = 650;
     public static final int STACK_INIT_Y_INC = 50;
-    
-    // NAVGATION TEXT
-    public static final int NAVIGATION_X = 50;
-    public static final int NAVIGATION_Y = 50;
 
     public static final Color REGION_NAME_COLOR = RegioVincoDataModel.makeColor(240, 240, 240);
 
