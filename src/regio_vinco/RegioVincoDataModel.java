@@ -220,10 +220,12 @@ public class RegioVincoDataModel extends PointAndClickGameDataModel {
 	if (((clickedSubRegion == null) || (subRegionStack.isEmpty())) && gameType == 0) {
 	    return;
 	}
-        
-        regionName = clickedSubRegion;
-        regionMapName = clickedSubRegion + " Map.png";
-        reset(game);
+       
+        if(gameType == 0){
+            regionName = clickedSubRegion;
+            regionMapName = clickedSubRegion + " Map.png";
+            reset(game);
+        }
 	if (clickedSubRegion.equals(subRegionStack.get(0).getText().getText())) {
 	    
             
@@ -455,8 +457,11 @@ public class RegioVincoDataModel extends PointAndClickGameDataModel {
                 subRegionText.getText().setFill(Color.YELLOW);
                 textNode.setX(STACK_X);
                 subRegionText.getRectangle().setFill(c);
-                gameLayer.getChildren().add(subRegionText.getRectangle());
-                gameLayer.getChildren().add(textNode);
+                
+                if(gameType!=0){
+                    gameLayer.getChildren().add(subRegionText.getRectangle());
+                    gameLayer.getChildren().add(textNode);
+                }
                 subRegionStack.add(subRegionText);
             }
             Collections.shuffle(subRegionStack);
@@ -504,18 +509,20 @@ public class RegioVincoDataModel extends PointAndClickGameDataModel {
 
         
         //CREATING TEXT BOXES FOR STATISTICS
+        regionsFoundInt = 0;
         regionsFound.setText("Regions Found: " + regionsFoundInt);
         regionsFound.setX(300);
         regionsFound.setY(675);
         regionsFound.setFill(Color.ORANGE);
         regionsFound.setStyle("-fx-font: 15px Calibri");
-
+        
         regionsLeft.setText("Regions Left: " + regionsLeftInt);
         regionsLeft.setX(500);
         regionsLeft.setY(675);
         regionsLeft.setFill(Color.ORANGE);
         regionsLeft.setStyle("-fx-font: 15px Calibri");
 
+        incorrectGuessesInt = 0;
         incorrectGuesses.setText("Incorrect Guesses: " + incorrectGuessesInt);
         incorrectGuesses.setX(700);
         incorrectGuesses.setY(675);
