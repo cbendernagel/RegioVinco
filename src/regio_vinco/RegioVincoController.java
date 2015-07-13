@@ -3,6 +3,7 @@ package regio_vinco;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Pane;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import pacg.KeyPressHook;
 
@@ -30,6 +31,47 @@ public class RegioVincoController implements KeyPressHook {
     
     public void processSettingsButtonRequest(){
         game.getSettingsLayer().setVisible(true);
+    }
+    
+    public void processRegionButtonRequest(){
+        RegioVincoDataModel dataModel = ((RegioVincoDataModel)((RegioVincoGame)game).getDataModel());
+        dataModel.setGameType(1);
+        dataModel.setRepeat(true);
+        dataModel.setCurrentDirectory(dataModel.getCurrentDirectory().replace(dataModel.getRegionName() + "/", ""));
+        dataModel.reset(game);
+        
+    }
+    
+    public void processLeaderButtonRequest(){
+        RegioVincoDataModel dataModel = ((RegioVincoDataModel)((RegioVincoGame)game).getDataModel());
+        dataModel.setGameType(2);
+        dataModel.setRepeat(true);
+        dataModel.setCurrentDirectory(dataModel.getCurrentDirectory().replace(dataModel.getRegionName() + "/", ""));
+        dataModel.reset(game);
+    }
+    
+    public void processCapitalButtonRequest(){
+        RegioVincoDataModel dataModel = ((RegioVincoDataModel)((RegioVincoGame)game).getDataModel());
+        dataModel.setGameType(3);
+        dataModel.setRepeat(true);
+        dataModel.setCurrentDirectory(dataModel.getCurrentDirectory().replace(dataModel.getRegionName() + "/", ""));
+        dataModel.reset(game);
+    }
+    
+    public void processFlagButtonRequest(){
+        RegioVincoDataModel dataModel = ((RegioVincoDataModel)((RegioVincoGame)game).getDataModel());
+        dataModel.setGameType(4);
+        dataModel.setRepeat(true);
+        dataModel.setCurrentDirectory(dataModel.getCurrentDirectory().replace(dataModel.getRegionName() + "/", ""));
+        dataModel.reset(game);
+    }
+    
+    public void processStopButtonRequest(){
+        RegioVincoDataModel dataModel = ((RegioVincoDataModel)((RegioVincoGame)game).getDataModel());
+        dataModel.setGameType(0);
+        dataModel.setRepeat(true);
+        dataModel.setCurrentDirectory(dataModel.getCurrentDirectory().replace(dataModel.getRegionName() + "/", ""));
+        dataModel.reset(game);
     }
     
     public void processHelpButtonRequest(){

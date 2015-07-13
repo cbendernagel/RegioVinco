@@ -66,6 +66,7 @@ public class RegioVincoDataModel extends PointAndClickGameDataModel {
     private int incorrectGuessesInt;
     private int totalSubRegions;
     private int prevTextLength;
+    private int gameType;
     private boolean repeat = false;
     
     //START TIMER
@@ -90,7 +91,12 @@ public class RegioVincoDataModel extends PointAndClickGameDataModel {
         mapTitle.setStyle("-fx-font: 30px Verdana");
         currentDirectory = MAPS_PATH;
         prevTextLength = 0;
+        gameType = 0;
         
+    }
+    
+    public void setGameType(int gameType){
+        this.gameType = gameType;
     }
     
     public void setMapImage(WritableImage initMapImage) {
@@ -127,8 +133,16 @@ public class RegioVincoDataModel extends PointAndClickGameDataModel {
         return regionMapName;
     }
     
+    public void setRepeat(boolean repeat){
+        this.repeat = repeat;
+    }
+    
     public String getCurrentDirectory(){
         return currentDirectory;
+    }
+    
+    public void setCurrentDirectory(String currentDirectory){
+        this.currentDirectory = currentDirectory;
     }
     
     public void setRegionName(String regionName) {
@@ -304,7 +318,7 @@ public class RegioVincoDataModel extends PointAndClickGameDataModel {
      */
     @Override
     public void reset(PointAndClickGame game) {
-        
+
         if(!mapTitle.getText().equals("")){
             ((RegioVincoGame) game).getGuiLayer().getChildren().remove(mapTitle);
             mapTitle.setText(regionName);
@@ -314,47 +328,43 @@ public class RegioVincoDataModel extends PointAndClickGameDataModel {
             ((RegioVincoGame) game).getGuiLayer().getChildren().add(mapTitle);
         }
         ((RegioVincoGame) game).reloadMap(regionName, regionMapName);
-        
+
         // LET'S CLEAR THE DATA STRUCTURES
             colorToSubRegionMappings.clear();
             subRegionToColorMappings.clear();
             subRegionStack.clear();
             redSubRegions.clear();
-        
-        
+
+
         try {
             if(((RegioVincoGame)game).getGuiLayer().getChildren().contains(fullStats))
                 ((RegioVincoGame)game).getGuiLayer().getChildren().remove(fullStats);
-            
+
             Document xmlDocument = null;
-            
-            //xmlDocument = xmlUtility.loadXMLDocument(MAPS_PATH + regionName + "/" + regionName + " Data.xml", MAPS_PATH + SCHEMA_NAME);
-            
+
             Document xmlDoc = xmlUtility.loadXMLDocument(currentDirectory + regionName + "/" + regionName + " Data.xml", MAPS_PATH + SCHEMA_NAME);
-            
+
             int numOfElements = xmlUtility.getNumNodesOfElement(xmlDoc, "sub_region");
-            
+
             for(int i = 0; i < numOfElements; i++){
-                
+
                 int[] rgb = new int[3];
                 Node subRegionNode = xmlUtility.getNodeInSequence(xmlDoc, "sub_region", i);
-                
-                //System.out.println(subRegionNode.getNodeName());
-                
+
                 NamedNodeMap attributes = subRegionNode.getAttributes();
-                
+
                 int numAttributes = attributes.getLength();
                 int red = 0,green = 0,blue = 0;
                 String name = "";
                 int x = 0;
-                
-                
-                
+
+
+
                 for(int j = 0; j < numAttributes; j++){
                     Node attNode = attributes.item(j);
                     String attName = attNode.getNodeName();
                     NodeList attList = attNode.getChildNodes();
-                    
+
                     String textName = attList.item(0).toString();
                     String value = textName.substring(8, textName.length()-1);
 
@@ -372,40 +382,40 @@ public class RegioVincoDataModel extends PointAndClickGameDataModel {
                                 blue = (Integer.parseInt(value));
                                 break;
                         }
-                        
-                        
+
+
                     x++;
-                    
+
                     colorToSubRegionMappings.put(makeColor(red,green,blue), name); 
                 }
-                
-                
-                
+
+
+
             }
-            
-            
+
+
             currentDirectory += regionName + "/";
-            
-            
+
+
             // INIT THE MAPPINGS - NOTE THIS SHOULD
             // BE DONE IN A FILE, WHICH WE'LL DO IN
             // FUTURE HOMEWORK ASSIGNMENTS
-            
-            
-            
-            
+
+
+
+
             /**
              * HAVE THE WORLD MAP LOADED FIRST, THEN WAIT FOR MAP PRESS INPUT
              * CHECK IF DIRECTORY EXISTS, IF IT DOES LOAD IT. IF IT DOESN'T DON'T DO ANYTHING
              */
-            
-            
+
+
             regionsLeftInt = colorToSubRegionMappings.size();
             totalSubRegions = regionsLeftInt;
-            
+
             // REST THE MOVABLE TEXT
             Pane gameLayer = ((RegioVincoGame)game).getGameLayer();
-            
+
             if(!repeat){
                 gameLayer.getChildren().clear();
                 Text regionText = new Text(regionName);
@@ -422,16 +432,16 @@ public class RegioVincoDataModel extends PointAndClickGameDataModel {
                 navigatedRegions.add(regionText);
                 ((RegioVincoGame)game).getGuiLayer().getChildren().add(regionText);
             }
-            
-            
+
+
             regionsFound = new Text();
             regionsLeft = new Text();
             incorrectGuesses = new Text();
             gameTimer = new Text();
-            
+
             for (Color c : colorToSubRegionMappings.keySet()) {
                 String subRegion = colorToSubRegionMappings.get(c);
-                //System.out.println(subRegion);
+
                 subRegionToColorMappings.put(subRegion, c);
                 Text textNode = new Text(subRegion);
                 textNode.setStyle("-fx-font: 25px Calibri");
@@ -440,7 +450,7 @@ public class RegioVincoDataModel extends PointAndClickGameDataModel {
                 //subRegionText.getText().setFill(REGION_NAME_COLOR);
                 textNode.setX(STACK_X);
                 subRegionText.getRectangle().setFill(c);
-                //gameLayer.getChildren().add(subRegionText.getRectangle());
+                gameLayer.getChildren().add(subRegionText.getRectangle());
                 //gameLayer.getChildren().add(textNode);
                 subRegionStack.add(subRegionText);
             }
@@ -453,12 +463,12 @@ public class RegioVincoDataModel extends PointAndClickGameDataModel {
                 mT.getRectangle().setY(y + 20);
                 mT.getRectangle().setX(mT.getText().getX());
             }
-            
+
             // RELOAD THE MAP
             //((RegioVincoGame) game).reloadMap(regionName, regionMapName);
-            
-            
-            
+
+
+
             // LET'S RECORD ALL THE PIXELS
             pixels = new HashMap();
             for (MovableText mT : subRegionStack) {
@@ -474,66 +484,71 @@ public class RegioVincoDataModel extends PointAndClickGameDataModel {
                     }
                     if (colorToSubRegionMappings.containsKey(c)) {
                         String subRegion = colorToSubRegionMappings.get(c);
-                        //System.out.println(subRegion);
                         File testFile = new File(currentDirectory + subRegion + "/" + subRegion + " Data.xml");
-                        if(!testFile.exists())
+                        if(!testFile.exists() && gameType == 0)
                             mapPixelWriter.setColor(i,j, Color.PINK);
+                        else{
+                            mapPixelWriter.setColor(i,j,c);
+                        }
                         ArrayList<int[]> subRegionPixels = pixels.get(subRegion);
                         int[] pixel = new int[2];
                         pixel[0] = i;
                         pixel[1] = j;
                         subRegionPixels.add(pixel);
                     }else if(colorToSubRegionMappings.containsKey(c)){
-                        
+
                     }
                 }
             }
-            
-            //CREATING TEXT BOXES FOR STATISTICS
-            regionsFound.setText("Regions Found: " + regionsFoundInt);
-            regionsFound.setX(300);
-            regionsFound.setY(650);
-            regionsFound.setFill(Color.ORANGE);
-            regionsFound.setStyle("-fx-font: 20px Calibri");
-            
-            regionsLeft.setText("Regions Left: " + regionsLeftInt);
-            regionsLeft.setX(500);
-            regionsLeft.setY(650);
-            regionsLeft.setFill(Color.ORANGE);
-            regionsLeft.setStyle("-fx-font: 20px Calibri");
-            
-            incorrectGuesses.setText("Incorrect Guesses: " + incorrectGuessesInt);
-            incorrectGuesses.setX(700);
-            incorrectGuesses.setY(650);
-            incorrectGuesses.setFill(Color.ORANGE);
-            incorrectGuesses.setStyle("-fx-font: 20px Calibri");
-            
-            startTimer = GregorianCalendar.getInstance().getTimeInMillis()/1000;
-            gameTimer.setText("Time Elapsed: " + "00:" + startTimer);
-            gameTimer.setX(100);
-            gameTimer.setY(650);
-            gameTimer.setFill(Color.ORANGE);
-            gameTimer.setStyle("-fx-font: 20px Calibri");
-            
-            //gameLayer.getChildren().add(regionsFound);
-            //gameLayer.getChildren().add(regionsLeft);
-            //gameLayer.getChildren().add(incorrectGuesses);
-            //gameLayer.getChildren().add(gameTimer);
-            
-            // RESET THE AUDIO
-            AudioManager audio = ((RegioVincoGame) game).getAudio();
-            audio.stop(AFGHAN_ANTHEM);
-            
-            if (!audio.isPlaying(TRACKED_SONG)) {
-                audio.play(TRACKED_SONG, true);
-            }
-            // LET'S GO
-            beginGame();
-        } catch (InvalidXMLFileFormatException ex) {
-            Logger.getLogger(RegioVincoDataModel.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (SAXException ex) {
-            Logger.getLogger(RegioVincoDataModel.class.getName()).log(Level.SEVERE, null, ex);
+        
+
+        
+        //CREATING TEXT BOXES FOR STATISTICS
+        regionsFound.setText("Regions Found: " + regionsFoundInt);
+        regionsFound.setX(300);
+        regionsFound.setY(675);
+        regionsFound.setFill(Color.ORANGE);
+        regionsFound.setStyle("-fx-font: 15px Calibri");
+
+        regionsLeft.setText("Regions Left: " + regionsLeftInt);
+        regionsLeft.setX(500);
+        regionsLeft.setY(675);
+        regionsLeft.setFill(Color.ORANGE);
+        regionsLeft.setStyle("-fx-font: 15px Calibri");
+
+        incorrectGuesses.setText("Incorrect Guesses: " + incorrectGuessesInt);
+        incorrectGuesses.setX(700);
+        incorrectGuesses.setY(675);
+        incorrectGuesses.setFill(Color.ORANGE);
+        incorrectGuesses.setStyle("-fx-font: 15px Calibri");
+
+        startTimer = GregorianCalendar.getInstance().getTimeInMillis()/1000;
+        gameTimer.setText("Time Elapsed: " + "00:" + startTimer);
+        gameTimer.setX(100);
+        gameTimer.setY(675);
+        gameTimer.setFill(Color.ORANGE);
+        gameTimer.setStyle("-fx-font: 15px Calibri");
+
+        if(gameType != 0){
+            gameLayer.getChildren().add(regionsFound);
+            gameLayer.getChildren().add(regionsLeft);
+            gameLayer.getChildren().add(incorrectGuesses);
+            gameLayer.getChildren().add(gameTimer);
         }
+        // RESET THE AUDIO
+        AudioManager audio = ((RegioVincoGame) game).getAudio();
+        audio.stop(AFGHAN_ANTHEM);
+
+        if (!audio.isPlaying(TRACKED_SONG)) {
+            audio.play(TRACKED_SONG, true);
+        }
+        } catch (InvalidXMLFileFormatException ex) {
+        Logger.getLogger(RegioVincoDataModel.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SAXException ex) {
+        Logger.getLogger(RegioVincoDataModel.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        // LET'S GO
+        beginGame();
         repeat = false;
     }
    

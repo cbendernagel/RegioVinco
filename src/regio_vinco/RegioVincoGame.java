@@ -223,31 +223,31 @@ public class RegioVincoGame extends PointAndClickGame {
         Button regionButton = guiButtons.get(REGION_TYPE);
         regionButton.setBackground(Background.EMPTY);
         regionButton.setOnAction(e ->{
-            //controller.processRegionButtonRequest();
+            controller.processRegionButtonRequest();
         });
         
         Button leaderButton = guiButtons.get(LEADER_TYPE);
         leaderButton.setBackground(Background.EMPTY);
         leaderButton.setOnAction(e ->{
-            //controller.processLeaderButtonRequest();
+            controller.processLeaderButtonRequest();
         });
         
         Button capitalButton = guiButtons.get(CAPITAL_TYPE);
         capitalButton.setBackground(Background.EMPTY);
         capitalButton.setOnAction(e ->{
-            //controller.processCapitalButtonRequest();
+            controller.processCapitalButtonRequest();
         });
         
         Button flagButton = guiButtons.get(FLAG_TYPE);
         flagButton.setBackground(Background.EMPTY);
         flagButton.setOnAction(e ->{
-            //controller.processFlagButtonRequest();
+            controller.processFlagButtonRequest();
         });
         
         Button stopButton = guiButtons.get(STOP_TYPE);
         stopButton.setBackground(Background.EMPTY);
         stopButton.setOnAction(e ->{
-            //controller.processStopButtonRequest();
+            controller.processStopButtonRequest();
         });
         
         Button worldButton = guiButtons.get(WORLD_TYPE);
