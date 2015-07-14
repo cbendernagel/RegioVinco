@@ -74,6 +74,14 @@ public class RegioVincoController implements KeyPressHook {
         dataModel.reset(game);
     }
     
+    public void processCloseButtonRequest(){
+        RegioVincoDataModel dataModel = ((RegioVincoDataModel)((RegioVincoGame)game).getDataModel());
+        dataModel.setGameType(0);
+        dataModel.setRepeat(true);
+        dataModel.setCurrentDirectory(dataModel.getCurrentDirectory().replace(dataModel.getRegionName() + "/", ""));
+        dataModel.reset(game);
+    }
+    
     public void processHelpButtonRequest(){
         game.getHelpLayer().setVisible(true);
     }

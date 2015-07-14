@@ -37,6 +37,13 @@ public class RegioVincoGame extends PointAndClickGame {
     Pane guiLayer;
     Pane settingsLayer;
     Pane helpLayer;
+    
+    // GAME BUTTONS
+    Button regionButton;
+    Button leaderButton;
+    Button capitalButton;
+    Button flagButton;
+    Button stopButton;
 
     /**
      * Get the game setup.
@@ -69,6 +76,26 @@ public class RegioVincoGame extends PointAndClickGame {
     
     public Pane getHelpLayer() {
         return helpLayer;
+    }
+    
+    public Button getRegionButton(){
+        return regionButton;
+    }
+    
+    public Button getCapitalButton(){
+        return capitalButton;
+    }
+    
+    public Button getLeaderButton(){
+        return leaderButton;
+    }
+    
+    public Button getFlagButton(){
+        return flagButton;
+    }
+    
+    public Button getStopButton(){
+        return stopButton;
     }
 
     /**
@@ -168,6 +195,18 @@ public class RegioVincoGame extends PointAndClickGame {
         addGUIButton(guiLayer, FLAG_TYPE, loadImage(FLAG_BUTTON_FILE_PATH), FLAG_X, FLAG_Y);
         addGUIButton(guiLayer, STOP_TYPE, loadImage(STOP_BUTTON_FILE_PATH), STOP_X, STOP_Y);
         
+        regionButton = guiButtons.get(REGION_TYPE);
+        regionButton.setDisable(true);
+        capitalButton = guiButtons.get(CAPITAL_TYPE);
+        capitalButton.setDisable(true);
+        leaderButton = guiButtons.get(LEADER_TYPE);
+        leaderButton.setDisable(true);
+        flagButton = guiButtons.get(FLAG_TYPE);
+        flagButton.setDisable(true);
+        stopButton = guiButtons.get(STOP_TYPE);
+        stopButton.setDisable(true);
+        
+        
         //uiLayer.getChildren().
 	
 	// NOTE THAT THE MAP IS ALSO AN IMAGE, BUT
@@ -185,6 +224,11 @@ public class RegioVincoGame extends PointAndClickGame {
 	// MAKE VISIBLE AND ENABLED AS NEEDED
 	ImageView winView = addGUIImage(guiLayer, WIN_DISPLAY_TYPE, loadImage(WIN_DISPLAY_FILE_PATH), WIN_X, WIN_Y);
 	winView.setVisible(false);
+        
+        addGUIButton(guiLayer, CLOSE_TYPE, loadImage(CLOSE_BUTTON_FILE_PATH), CLOSE_X, CLOSE_Y);
+        Button closeButton = guiButtons.get(CLOSE_TYPE);
+        closeButton.setBackground(Background.EMPTY);
+        closeButton.setVisible(false);
     }
     
     // HELPER METHOD FOR LOADING IMAGES
@@ -220,34 +264,42 @@ public class RegioVincoGame extends PointAndClickGame {
             controller.processHelpButtonRequest();
         });
         
-        Button regionButton = guiButtons.get(REGION_TYPE);
+        regionButton = guiButtons.get(REGION_TYPE);
         regionButton.setBackground(Background.EMPTY);
         regionButton.setOnAction(e ->{
             controller.processRegionButtonRequest();
         });
         
-        Button leaderButton = guiButtons.get(LEADER_TYPE);
+        leaderButton = guiButtons.get(LEADER_TYPE);
         leaderButton.setBackground(Background.EMPTY);
         leaderButton.setOnAction(e ->{
             controller.processLeaderButtonRequest();
         });
         
-        Button capitalButton = guiButtons.get(CAPITAL_TYPE);
+        capitalButton = guiButtons.get(CAPITAL_TYPE);
         capitalButton.setBackground(Background.EMPTY);
         capitalButton.setOnAction(e ->{
             controller.processCapitalButtonRequest();
         });
         
-        Button flagButton = guiButtons.get(FLAG_TYPE);
+        flagButton = guiButtons.get(FLAG_TYPE);
         flagButton.setBackground(Background.EMPTY);
         flagButton.setOnAction(e ->{
             controller.processFlagButtonRequest();
         });
         
-        Button stopButton = guiButtons.get(STOP_TYPE);
+        stopButton = guiButtons.get(STOP_TYPE);
         stopButton.setBackground(Background.EMPTY);
         stopButton.setOnAction(e ->{
             controller.processStopButtonRequest();
+        });
+        
+        Button closeButton = guiButtons.get(CLOSE_TYPE);
+        closeButton.setOnAction(e ->{
+            controller.processCloseButtonRequest();
+            closeButton.setVisible(false);
+            ImageView winView = guiImages.get(WIN_DISPLAY_TYPE);
+            winView.setVisible(false);
         });
         
         Button worldButton = guiButtons.get(WORLD_TYPE);
@@ -316,6 +368,8 @@ public class RegioVincoGame extends PointAndClickGame {
         
 	if (data.won()) {
 	    ImageView winImage = guiImages.get(WIN_DISPLAY_TYPE);
+            Button closeButton = guiButtons.get(CLOSE_TYPE);
+            closeButton.setVisible(true);
 	    winImage.setVisible(true);
 	}
     }

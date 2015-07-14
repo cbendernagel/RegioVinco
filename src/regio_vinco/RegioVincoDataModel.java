@@ -9,6 +9,8 @@ import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.beans.property.DoubleProperty;
+import javafx.beans.value.ObservableValue;
 import javafx.event.EventType;
 import javafx.scene.image.PixelReader;
 import javafx.scene.image.PixelWriter;
@@ -267,14 +269,21 @@ public class RegioVincoDataModel extends PointAndClickGameDataModel {
                 long score = 1000 - (totalTime) - (100 * incorrectGuessesInt); 
                 
                 //CREATE STATISTIC PANE
-                String statString = String.format("Region:  Afghanistan\nScore:  %d\nGame Duration:  %02d:%02d\nSub Regions:  %d\nIncorrect Guesses:  %d",score,totalTime/60,totalTime%60,totalSubRegions,incorrectGuessesInt);
+                String statString = String.format("Region:  " + regionName + "\nScore:  %d\nGame Duration:  %02d:%02d\nSub Regions:  %d\nIncorrect Guesses:  %d",score,totalTime/60,totalTime%60,totalSubRegions,incorrectGuessesInt);
                 fullStats = new Text(statString);
                 fullStats.setX(400);
                 fullStats.setY(350);
                 
+                
+                
                 game.getGuiLayer().getChildren().add(fullStats);
                 
 		this.endGameAsWin();
+                game.getRegionButton().setDisable(true);
+                game.getCapitalButton().setDisable(true);
+                game.getLeaderButton().setDisable(true);
+                game.getFlagButton().setDisable(true);
+                game.getStopButton().setDisable(true);
 		game.getAudio().stop(TRACKED_SONG);
 		game.getAudio().play(AFGHAN_ANTHEM, false);  
 	    }
@@ -319,7 +328,14 @@ public class RegioVincoDataModel extends PointAndClickGameDataModel {
      */
     @Override
     public void reset(PointAndClickGame game) {
-
+        
+        RegioVincoGame thisGame = (RegioVincoGame)game;
+        thisGame.gameLayer.getChildren().clear();
+        thisGame.getCapitalButton().setDisable(true);
+        thisGame.getLeaderButton().setDisable(true);
+        thisGame.getFlagButton().setDisable(true);
+        thisGame.getStopButton().setDisable(true);
+        
         if(!mapTitle.getText().equals("")){
             ((RegioVincoGame) game).getGuiLayer().getChildren().remove(mapTitle);
             mapTitle.setText(regionName);
@@ -356,7 +372,7 @@ public class RegioVincoDataModel extends PointAndClickGameDataModel {
 
                 int numAttributes = attributes.getLength();
                 int red = 0,green = 0,blue = 0;
-                String name = "";
+                String name = "", capital = "", leader = "";
                 int x = 0;
 
 
@@ -378,10 +394,20 @@ public class RegioVincoDataModel extends PointAndClickGameDataModel {
                                 break;
                             case "name":
                                 name = value;
+                                thisGame.getRegionButton().setDisable(false);
                                 break;
                             case "blue":
                                 blue = (Integer.parseInt(value));
                                 break;
+                            case "capital":
+                                capital = value;
+                                thisGame.getCapitalButton().setDisable(false);
+                                break;
+                            case "leader":
+                                leader = value;
+                                thisGame.getLeaderButton().setDisable(false);
+                                break;
+                                
                         }
 
 
@@ -389,7 +415,18 @@ public class RegioVincoDataModel extends PointAndClickGameDataModel {
 
                     
                 }
-                colorToSubRegionMappings.put(makeColor(red,green,blue), name); 
+                switch(gameType){
+                    case 0: case 1:
+                        colorToSubRegionMappings.put(makeColor(red,green,blue), name); 
+                        break;
+                    case 3:
+                        colorToSubRegionMappings.put(makeColor(red,green,blue), capital);
+                        break;
+                    case 2:
+                        colorToSubRegionMappings.put(makeColor(red,green,blue), leader);
+                        break;
+                }
+                    
 
 
 
@@ -462,6 +499,8 @@ public class RegioVincoDataModel extends PointAndClickGameDataModel {
                     gameLayer.getChildren().add(subRegionText.getRectangle());
                     gameLayer.getChildren().add(textNode);
                 }
+                
+                
                 subRegionStack.add(subRegionText);
             }
             Collections.shuffle(subRegionStack);
@@ -557,6 +596,11 @@ public class RegioVincoDataModel extends PointAndClickGameDataModel {
         // LET'S GO
         beginGame();
         repeat = false;
+        
+        if(gameType != 0){
+            thisGame.getStopButton().setDisable(false);
+        }
+        
     }
    
     // HELPER METHOD FOR MAKING A COLOR OBJECT

@@ -34,6 +34,7 @@ public class RegioVinco extends Application {
     public static final String BACKGROUND_FILE_PATH = GUI_PATH + "RegioVincoBackground.png";
     public static final String TITLE_FILE_PATH = GUI_PATH + "RegioVincoTitle.png";
     public static final String ENTER_BUTTON_FILE_PATH = GUI_PATH + "RegioVincoEnterButton.png";
+    public static final String CLOSE_BUTTON_FILE_PATH = GUI_PATH + "RegioVincoCloseButton.png";
     public static final String START_BUTTON_FILE_PATH = GUI_PATH + "RegioVincoStartButton.png";
     public static final String START_BUTTON_MO_FILE_PATH = GUI_PATH + "RegioVincoStartButtonMouseOver.png";
     public static final String EXIT_BUTTON_FILE_PATH = GUI_PATH + "RegioVincoExitButton.png";
@@ -71,6 +72,11 @@ public class RegioVinco extends Application {
     public static final String ENTER_TYPE = "BEGIN_TYPE";
     public static final int ENTER_X = 515;
     public static final int ENTER_Y = 600;
+    
+    // Close Game Button
+    public static final String CLOSE_TYPE = "CLOSE_TYPE";
+    public static final int CLOSE_X = 515;
+    public static final int CLOSE_Y = 450;
     
     // SETTINGS BUTTON
     public static final String SETTINGS_TYPE = "SETTINGS_TYPE";
