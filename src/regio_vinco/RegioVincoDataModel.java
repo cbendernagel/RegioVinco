@@ -69,6 +69,9 @@ public class RegioVincoDataModel extends PointAndClickGameDataModel {
     private int totalSubRegions;
     private int prevTextLength;
     private int gameType;
+    private boolean capitals;
+    private boolean leaders;
+    private boolean flags;
     private boolean repeat = false;
     
     //START TIMER
@@ -94,7 +97,9 @@ public class RegioVincoDataModel extends PointAndClickGameDataModel {
         currentDirectory = MAPS_PATH;
         prevTextLength = 0;
         gameType = 0;
-        
+        capitals = false;
+        leaders = false;
+        flags = false;
     }
     
     public void setGameType(int gameType){
@@ -407,7 +412,6 @@ public class RegioVincoDataModel extends PointAndClickGameDataModel {
                                 leader = value;
                                 thisGame.getLeaderButton().setDisable(false);
                                 break;
-                                
                         }
 
 
