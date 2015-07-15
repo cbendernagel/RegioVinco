@@ -105,7 +105,10 @@ public class RegioVincoDataModel extends PointAndClickGameDataModel {
         capitals = false;
         leaders = false;
         flags = false;
+        
     }
+    
+
     
     public void setGameType(int gameType){
         this.gameType = gameType;
@@ -242,7 +245,8 @@ public class RegioVincoDataModel extends PointAndClickGameDataModel {
 	    
             
             // YAY, CORRECT ANSWER
-	    game.getAudio().play(SUCCESS, false);
+            if(((RegioVincoGame)game).getSound())
+                game.getAudio().play(SUCCESS, false);
             
             
 	    // TURN THE TERRITORY GREEN
@@ -299,24 +303,27 @@ public class RegioVincoDataModel extends PointAndClickGameDataModel {
                 
                 File nationalAnthem = new File(currentDirectory + regionName + " National Anthem.mid");
                 
-                if(nationalAnthem.exists()){
-                    
-                    try{
-                       game.getAudio().loadAudio(regionName, currentDirectory + regionName + " National Anthem.mid");
-                    }catch(Exception e){}
-                    
-                    game.getAudio().play(regionName,false);
-                }else{
-                    game.getAudio().play(AFGHAN_ANTHEM, false);
+                if(game.getMusic()){
+                    if(nationalAnthem.exists()){
+
+                        try{
+                           game.getAudio().loadAudio(regionName, currentDirectory + regionName + " National Anthem.mid");
+                        }catch(Exception e){}
+
+                        game.getAudio().play(regionName,false);
+                    }else{
+                        game.getAudio().play(AFGHAN_ANTHEM, false);
+                    }
                 }
-                
+
                 
 	    }
 	} else {
             incorrectGuessesInt++;
 	    if (!redSubRegions.contains(clickedSubRegion)) {
 		// BOO WRONG ANSWER
-		game.getAudio().play(FAILURE, false);
+                if(((RegioVincoGame)game).getSound())
+                    game.getAudio().play(FAILURE, false);
 
 		// TURN THE TERRITORY TEMPORARILY RED
 		changeSubRegionColorOnMap(game, clickedSubRegion, Color.RED);
@@ -614,8 +621,8 @@ public class RegioVincoDataModel extends PointAndClickGameDataModel {
         if(nationalAnthem.exists()){            
             audio.stop(regionName);
         }
-
-        if (!audio.isPlaying(TRACKED_SONG)) {
+        
+        if (!audio.isPlaying(TRACKED_SONG) && ((RegioVincoGame)game).getMusic()) {
             audio.play(TRACKED_SONG, true);
         }
         } catch (InvalidXMLFileFormatException ex) {

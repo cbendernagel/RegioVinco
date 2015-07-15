@@ -47,6 +47,7 @@ public class RegioVinco extends Application {
     public static final String REGION_BUTTON_FILE_PATH = GUI_PATH + "RegioVincoRegionButton.png";
     public static final String FLAG_BUTTON_FILE_PATH = GUI_PATH + "RegioVincoFlagButton.png";
     public static final String STOP_BUTTON_FILE_PATH = GUI_PATH + "RegioVincoStopButton.png";
+    public static final String PLAY_BUTTON_FILE_PATH = GUI_PATH + "RegioVincoPlayButton.png";
     public static final String SUB_REGION_FILE_PATH = GUI_PATH + "RegioVincoSubRegion.png";
     public static final String WIN_DISPLAY_FILE_PATH = GUI_PATH + "RegioVincoWinDisplay.png";
 
@@ -78,6 +79,12 @@ public class RegioVinco extends Application {
     public static final int CLOSE_X = 515;
     public static final int CLOSE_Y = 450;
     
+    // Mute Music Button
+    public static final String PLAY_TYPE = "PLAY_TYPE";
+    public static final String PLAY_TYPE2 = "PLAY_TYPE2";
+    public static final int PLAY_X = 300;
+    public static final int PLAY_Y = 450;
+   
     // SETTINGS BUTTON
     public static final String SETTINGS_TYPE = "SETTINGS_TYPE";
     public static final int SETTINGS_X = 850;
@@ -91,8 +98,8 @@ public class RegioVinco extends Application {
     // WORLD BUTTON
     public static final String WORLD_TYPE = "WORLD_TYPE";
     public static final String WORLD_TYPE2 = "WORLD_TYPE2";
-    public static final int WORLD_X = 450;
-    public static final int WORLD_Y = 300;
+    public static final int WORLD_X = 525;
+    public static final int WORLD_Y = 600;
     
     // REGION BUTTON
     public static final String REGION_TYPE = "REGION_TYPE";

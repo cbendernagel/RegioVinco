@@ -12,6 +12,7 @@ import javafx.scene.layout.Border;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import pacg.PointAndClickGame;
 import static regio_vinco.RegioVinco.*;
@@ -44,6 +45,11 @@ public class RegioVincoGame extends PointAndClickGame {
     Button capitalButton;
     Button flagButton;
     Button stopButton;
+    
+    // AUDIO SHIT
+    private boolean playEffects;
+    private boolean playMusic;
+
 
     /**
      * Get the game setup.
@@ -52,6 +58,24 @@ public class RegioVincoGame extends PointAndClickGame {
 	super(initWindow, APP_TITLE, TARGET_FRAME_RATE);
         window.setMaximized(false);
 	initAudio();
+        playEffects = true;
+        playMusic = true;
+    }
+    
+    public boolean getMusic(){
+        return playMusic;
+    }
+    
+    public boolean getSound(){
+        return playEffects;
+    }
+    
+    public void setMusic(boolean play){
+        playMusic = play;
+    }
+    
+    public void setSoundEffects(boolean play){
+        playEffects = play;
     }
     
     public AudioManager getAudio() {
@@ -125,6 +149,8 @@ public class RegioVincoGame extends PointAndClickGame {
      * Initializes the complete data model for this application, forcing the
      * setting of all game data, including all needed SpriteType objects.
      */
+    
+    
     @Override
     public void initData() {
 	// INIT OUR DATA MANAGER
@@ -164,9 +190,29 @@ public class RegioVincoGame extends PointAndClickGame {
         
         // THEN THE SETTINGS WINDOWPANE
         settingsLayer = new Pane();
+        Text settingsText = new Text("Settings");
+        settingsText.setX(500);
+        settingsText.setY(50);
+        settingsLayer.getChildren().add(settingsText);
+        settingsText.setStyle("-fx-font-size: 50px");
+        settingsText.setFill(Color.YELLOW);
+        Text muteMusic = new Text("Mute Music");
+        muteMusic.setX(PLAY_X - 25);
+        muteMusic.setY(PLAY_Y - 50);
+        muteMusic.setStyle("-fx-font-size: 30px");
+        muteMusic.setFill(Color.YELLOW);
+        settingsLayer.getChildren().add(muteMusic);
+        Text muteSound = new Text("Must Sound Effects");
+        muteSound.setX(PLAY_X + 375);
+        muteSound.setY(PLAY_Y - 50);
+        muteSound.setStyle("-fx-font-size: 30px");
+        muteSound.setFill(Color.YELLOW);
+        settingsLayer.getChildren().add(muteSound);
         addStackPaneLayer(settingsLayer);
         settingsLayer.setStyle("-fx-background-color: #3498db");
         addGUIButton(settingsLayer, WORLD_TYPE2, loadImage(WORLD_BUTTON_FILE_PATH), WORLD_X, WORLD_Y);
+        addGUIButton(settingsLayer, PLAY_TYPE, loadImage(PLAY_BUTTON_FILE_PATH), PLAY_X, PLAY_Y);
+        addGUIButton(settingsLayer, PLAY_TYPE2, loadImage(PLAY_BUTTON_FILE_PATH), PLAY_X + 450, PLAY_Y);
         settingsLayer.setVisible(false);
         
         // THEN THE HELP WINDOWPANE
@@ -292,6 +338,23 @@ public class RegioVincoGame extends PointAndClickGame {
         stopButton.setBackground(Background.EMPTY);
         stopButton.setOnAction(e ->{
             controller.processStopButtonRequest();
+        });
+        
+        Button musicButton = guiButtons.get(PLAY_TYPE);
+        musicButton.setBackground(Background.EMPTY);
+        musicButton.setOnAction(e ->{
+            playMusic = !playMusic;
+            if(!playMusic){
+                audio.stop(TRACKED_SONG);
+            }else{
+                audio.play(TRACKED_SONG,false);
+            }
+        });
+        
+        Button soundButton = guiButtons.get(PLAY_TYPE2);
+        soundButton.setBackground(Background.EMPTY);
+        soundButton.setOnAction(e ->{
+            playEffects = !playEffects;
         });
         
         Button closeButton = guiButtons.get(CLOSE_TYPE);
