@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<region name="Scotland">
+	<sub_region name="Aberdeen City" capital="Aberdeen City" red="160" blue="160" green="160" />
+	<sub_region name="Aberdeenshire" capital="Aberdeen City*" red="170" blue="170" green="170" />
+	<sub_region name="Moray" capital="Elgin" red="175" blue="175" green="175" />
+	<sub_region name="Highland" capital="Inverness" red="185" blue="185" green="185" />
+	<sub_region name="Na h-Eileanan" capital="Steornabhagh" red="200" blue="200" green="200" />
+	<sub_region name="Orkney" capital="Kirkwall" red="195" green="195" blue="195" />
+	<sub_region name="Shetland Islands" capital="Lerwick" red="190" blue="190" green="190" />
+	<sub_region name="Angus" capital="Forfar" red="150" green="150" blue="150" />
+	<sub_region name="Dundee" capital="Dundee City" red="147" green="147" blue="147" />
+	<sub_region name="Perth and Kinross" capital="Perth" red="165" green="165" blue="165" />
+	<sub_region name="Stirling" capital="Stirling" red="155" green="155" blue="155" />
+	<sub_region name="Argyll and Bute" capital="Lochgilphead" red="180" green="180" blue="180" />
+	<sub_region name="North Ayrshire" capital="Irvine" red="120" green="120" blue="120" />
+	<sub_region name="South Ayrshire" capital="Ayr" red="102" green="102" blue="102" />
+	<sub_region name="East Ayrshire" capital="Kilmamock" red="105" green="105" blue="105" />
+	<sub_region name="South Lanarkshire" capital="Hamilton" red="99" green="99" blue="99" />
+	<sub_region name="Scottish Borders" capital="Newtown St. Boswells" red="90" green="90" blue="90" />
+	<sub_region name="Dumfires and Galloway" capital="Dumfries" red="87" green="87" blue="87" />
+	<sub_region name="Clackmannanshire" capital="Alloa" red="141" green="141" blue="141" />
+	<sub_region name="Fife" capital="Glenrothes" red="144" green="144" blue="144" />
+	<sub_region name="Falkirk" capital="Falkirk" red="138" green="138" blue="138" />
+	<sub_region name="West Dunbartonshire" capital="Dumbarton" red="129" green="129" blue="129" />
+	<sub_region name="Inverclyde" capital="Greenock" red="123" green="123" blue="123" />
+	<sub_region name="Renfrewshire" capital="Paisley" red="126" green="126" blue="126" />
+	<sub_region name="East Renfrewshire" capital="Giffnock" red="108" green="108" blue="108" />
+	<sub_region name="Glasgow City" capital="Glasgow" red="117" green="117" blue="117" />
+	<sub_region name="East Dunbartonshire" capital="Kirkintilloch" red="132" green="132" blue="132" />
+	<sub_region name="North Lanarkshire" capital="Motherwell" red="135" green="135" blue="135" />
+	<sub_region name="West Lothian" capital="Livingston" red="114" green="114" blue="114" />
+	<sub_region name="City of Edinburgh" capital="Edinburgh" red="111" green="111" blue="111" />
+	<sub_region name="Midlothian" capital="Dalkeith" red="96" green="96" blue="96" />
+	<sub_region name="East Lothian" capital="Haddington" red="93" green="93" blue="93" />
+</region>

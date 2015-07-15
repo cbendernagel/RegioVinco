@@ -2,6 +2,7 @@ package regio_vinco;
 
 import audio_manager.AudioManager;
 import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.GregorianCalendar;
@@ -18,6 +19,10 @@ import javafx.scene.image.WritableImage;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
+import javax.sound.midi.InvalidMidiDataException;
+import javax.sound.midi.MidiUnavailableException;
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
 import org.w3c.dom.Document;
 import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.Node;
@@ -290,7 +295,22 @@ public class RegioVincoDataModel extends PointAndClickGameDataModel {
                 game.getFlagButton().setDisable(true);
                 game.getStopButton().setDisable(true);
 		game.getAudio().stop(TRACKED_SONG);
-		game.getAudio().play(AFGHAN_ANTHEM, false);  
+                
+                
+                File nationalAnthem = new File(currentDirectory + regionName + " National Anthem.mid");
+                
+                if(nationalAnthem.exists()){
+                    
+                    try{
+                       game.getAudio().loadAudio(regionName, currentDirectory + regionName + " National Anthem.mid");
+                    }catch(Exception e){}
+                    
+                    game.getAudio().play(regionName,false);
+                }else{
+                    game.getAudio().play(AFGHAN_ANTHEM, false);
+                }
+                
+                
 	    }
 	} else {
             incorrectGuessesInt++;
@@ -588,6 +608,12 @@ public class RegioVincoDataModel extends PointAndClickGameDataModel {
         // RESET THE AUDIO
         AudioManager audio = ((RegioVincoGame) game).getAudio();
         audio.stop(AFGHAN_ANTHEM);
+        
+        File nationalAnthem = new File(currentDirectory + regionName + " National Anthem.mid");
+                
+        if(nationalAnthem.exists()){            
+            audio.stop(regionName);
+        }
 
         if (!audio.isPlaying(TRACKED_SONG)) {
             audio.play(TRACKED_SONG, true);

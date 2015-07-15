@@ -6,6 +6,7 @@ import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import pacg.KeyPressHook;
+import static regio_vinco.RegioVinco.WIN_DISPLAY_TYPE;
 
 /**
  * This controller provides the apprpriate responses for all interactions.
@@ -79,6 +80,7 @@ public class RegioVincoController implements KeyPressHook {
         dataModel.setGameType(0);
         dataModel.setRepeat(true);
         dataModel.setCurrentDirectory(dataModel.getCurrentDirectory().replace(dataModel.getRegionName() + "/", ""));
+        ((RegioVincoGame)game).getGUIImages().get(WIN_DISPLAY_TYPE).setVisible(false);
         dataModel.reset(game);
     }
     
