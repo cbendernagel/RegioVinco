@@ -1,5 +1,9 @@
 package regio_vinco;
 
+import java.util.Optional;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.ButtonType;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Pane;
@@ -69,11 +73,23 @@ public class RegioVincoController implements KeyPressHook {
     }
     
     public void processStopButtonRequest(){
-        RegioVincoDataModel dataModel = ((RegioVincoDataModel)((RegioVincoGame)game).getDataModel());
-        dataModel.setGameType(0);
-        dataModel.setRepeat(true);
-        dataModel.setCurrentDirectory(dataModel.getCurrentDirectory().replace(dataModel.getRegionName() + "/", ""));
-        dataModel.reset(game);
+        Alert stopGame = new Alert(AlertType.CONFIRMATION);
+        stopGame.setTitle("Stop Game Confirmation");
+        stopGame.setHeaderText("Do you want to stop the game?");
+        ButtonType yesButton = new ButtonType("Yes");
+        ButtonType noButton = new ButtonType("No");
+        stopGame.getButtonTypes().setAll(yesButton,noButton);
+        
+        Optional<ButtonType> result = stopGame.showAndWait();
+        
+        
+        if(result.get() == yesButton){
+            RegioVincoDataModel dataModel = ((RegioVincoDataModel)((RegioVincoGame)game).getDataModel());
+            dataModel.setGameType(0);
+            dataModel.setRepeat(true);
+            dataModel.setCurrentDirectory(dataModel.getCurrentDirectory().replace(dataModel.getRegionName() + "/", ""));
+            dataModel.reset(game);
+        }
     }
     
     public void processCloseButtonRequest(){

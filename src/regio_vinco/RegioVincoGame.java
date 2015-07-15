@@ -219,6 +219,7 @@ public class RegioVincoGame extends PointAndClickGame {
         helpLayer = new Pane();
         addStackPaneLayer(helpLayer);
         helpLayer.setStyle("-fx-background-color: #3498db");
+        ImageView winView2 = addGUIImage(helpLayer, HELP_DISPLAY_TYPE, loadImage(HELP_DISPLAY_FILE_PATH), HELP_DISPLAY_X, HELP_DISPLAY_Y);
         addGUIButton(helpLayer, WORLD_TYPE, loadImage(WORLD_BUTTON_FILE_PATH), WORLD_X, WORLD_Y);
         helpLayer.setVisible(false);
         

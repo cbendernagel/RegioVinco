@@ -1,8 +1,13 @@
 package regio_vinco;
 
 import audio_manager.AudioManager;
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.FileReader;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.GregorianCalendar;
@@ -68,12 +73,16 @@ public class RegioVincoDataModel extends PointAndClickGameDataModel {
     private Text gameTimer;
     private Text fullStats;
     private Text mapTitle;
+    private Text currentMapScore;
     private int regionsFoundInt;
     private int regionsLeftInt;
     private int incorrectGuessesInt;
     private int totalSubRegions;
     private int prevTextLength;
     private int gameType;
+    private int highScore = 0;
+    private int bestTime = Integer.MAX_VALUE;
+    private int lowestGuesses = 0;
     private boolean capitals;
     private boolean leaders;
     private boolean flags;
@@ -95,6 +104,7 @@ public class RegioVincoDataModel extends PointAndClickGameDataModel {
         navigatedRegions = new LinkedList();
         xmlUtility = new XMLUtilities();
         mapTitle = new Text("");
+        currentMapScore = new Text("");
         mapTitle.setX(375);
         mapTitle.setY(50);
         mapTitle.setFill(REGION_NAME_COLOR);
@@ -288,6 +298,21 @@ public class RegioVincoDataModel extends PointAndClickGameDataModel {
                 fullStats.setX(400);
                 fullStats.setY(350);
                 
+                try {
+                    PrintWriter out = new PrintWriter(currentDirectory + regionName + " Statistics.txt"); 
+                    out.flush();
+                    if(highScore < score)
+                        out.println(score);
+                    else
+                        out.println(highScore);
+                    if(bestTime > totalTime)
+                        out.println(totalTime);
+                    else
+                        out.println(bestTime);
+                    
+                    out.close();
+                } catch (Exception e){  }
+                
                 
                 
                 game.getGuiLayer().getChildren().add(fullStats);
@@ -465,13 +490,36 @@ public class RegioVincoDataModel extends PointAndClickGameDataModel {
 
 
             currentDirectory += regionName + "/";
+            
+            File statistics = new File(currentDirectory + regionName + " Statistics.txt");
+            if(!statistics.exists()){
+                try {
+                    PrintWriter out = new PrintWriter(currentDirectory + regionName + " Statistics.txt");
+                    out.println(0);
+                    out.println(0);
+                    out.close();
+                } catch (Exception e){  }
+            }
+            
+            try {
+                BufferedReader fileReader = new BufferedReader(new FileReader(currentDirectory + regionName + " Statistics.txt"));
+                StringBuilder sb = new StringBuilder();
+                String line = fileReader.readLine();
+                highScore = Integer.parseInt(line);
+                String line2 = fileReader.readLine();
+                bestTime = Integer.parseInt(line2);
+                
+            } catch (Exception e) {}
 
-
-            // INIT THE MAPPINGS - NOTE THIS SHOULD
-            // BE DONE IN A FILE, WHICH WE'LL DO IN
-            // FUTURE HOMEWORK ASSIGNMENTS
-
-
+            if(gameType == 0){
+                ((RegioVincoGame)game).getGuiLayer().getChildren().remove(currentMapScore);
+                currentMapScore = new Text("High Score: " + highScore);
+                currentMapScore.setFill(Color.ORANGE);
+                currentMapScore.setStyle("-fx-font-size: 15px");
+                currentMapScore.setX(50);
+                currentMapScore.setY(50);
+                ((RegioVincoGame)game).getGuiLayer().getChildren().add(currentMapScore);
+            }
 
 
             /**

@@ -50,7 +50,8 @@ public class RegioVinco extends Application {
     public static final String PLAY_BUTTON_FILE_PATH = GUI_PATH + "RegioVincoPlayButton.png";
     public static final String SUB_REGION_FILE_PATH = GUI_PATH + "RegioVincoSubRegion.png";
     public static final String WIN_DISPLAY_FILE_PATH = GUI_PATH + "RegioVincoWinDisplay.png";
-
+    public static final String HELP_DISPLAY_FILE_PATH = GUI_PATH + "RegioVincoHelpScreen.png";
+    
     // HERE ARE SOME APP-LEVEL SETTINGS, LIKE THE FRAME RATE. ALSO,
     // WE WILL BE LOADING SpriteType DATA FROM A FILE, SO THAT FILE
     // LOCATION IS PROVIDED HERE AS WELL. NOTE THAT IT MIGHT BE A 
@@ -141,6 +142,11 @@ public class RegioVinco extends Application {
     public static final String WIN_DISPLAY_TYPE = "WIN_DISPLAY";
     public static final int WIN_X = 350;
     public static final int WIN_Y = 150;
+    
+    // THE HELP DIALOG
+    public static final String HELP_DISPLAY_TYPE = "WIN_DISPLAY";
+    public static final int HELP_DISPLAY_X = 400;
+    public static final int HELP_DISPLAY_Y = 0;
     
     // THIS IS THE X WHERE WE'LL DRAW ALL THE STACK NODES
     public static final int STACK_X = 900;
