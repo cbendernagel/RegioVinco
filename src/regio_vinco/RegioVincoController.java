@@ -40,7 +40,6 @@ public class RegioVincoController implements KeyPressHook {
     
     public void processRegionButtonRequest(){
         RegioVincoDataModel dataModel = ((RegioVincoDataModel)((RegioVincoGame)game).getDataModel());
-        ((RegioVincoGame)game).setMusic(false);
         dataModel.setGameType(1);
         dataModel.setRepeat(true);
         dataModel.setCurrentDirectory(dataModel.getCurrentDirectory().replace(dataModel.getRegionName() + "/", ""));
@@ -113,6 +112,10 @@ public class RegioVincoController implements KeyPressHook {
     
     public void processMapClickRequest(int x, int y) {
 	((RegioVincoDataModel)game.getDataModel()).respondToMapSelection(game, x, y);
+    }
+    
+    public void processMouseOverRequest(int x, int y){
+        ((RegioVincoDataModel)game.getDataModel()).respondToMouseOver(game, x, y);
     }
     
     @Override

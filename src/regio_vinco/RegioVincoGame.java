@@ -266,7 +266,9 @@ public class RegioVincoGame extends PointAndClickGame {
 	mapView.setY(MAP_Y);
 	guiImages.put(MAP_TYPE, mapView);
 	guiLayer.getChildren().add(mapView);
-
+        guiLayer.getChildren().add(((RegioVincoDataModel)data).getMouseText());
+        guiLayer.getChildren().add(((RegioVincoDataModel)data).getFlagImageView());
+        
 	// NOW LOAD THE WIN DISPLAY, WHICH WE'LL ONLY
 	// MAKE VISIBLE AND ENABLED AS NEEDED
 	ImageView winView = addGUIImage(guiLayer, WIN_DISPLAY_TYPE, loadImage(WIN_DISPLAY_FILE_PATH), WIN_X, WIN_Y);
@@ -386,6 +388,11 @@ public class RegioVincoGame extends PointAndClickGame {
 	mapView.setOnMousePressed(e -> {
 	    controller.processMapClickRequest((int) e.getX(), (int) e.getY());
 	});
+        
+        mapView.setOnMouseMoved(e -> {
+            controller.processMouseOverRequest((int) e.getX(), (int) e.getY());
+        });
+        
 	
 	// KILL THE APP IF THE USER CLOSES THE WINDOW
 	window.setOnCloseRequest(e->{

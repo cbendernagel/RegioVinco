@@ -18,6 +18,8 @@ import java.util.logging.Logger;
 import javafx.beans.property.DoubleProperty;
 import javafx.beans.value.ObservableValue;
 import javafx.event.EventType;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.image.PixelReader;
 import javafx.scene.image.PixelWriter;
 import javafx.scene.image.WritableImage;
@@ -74,6 +76,7 @@ public class RegioVincoDataModel extends PointAndClickGameDataModel {
     private Text fullStats;
     private Text mapTitle;
     private Text currentMapScore;
+    private Text mouseText;
     private int regionsFoundInt;
     private int regionsLeftInt;
     private int incorrectGuessesInt;
@@ -87,6 +90,8 @@ public class RegioVincoDataModel extends PointAndClickGameDataModel {
     private boolean leaders;
     private boolean flags;
     private boolean repeat = false;
+    private Image flagImage;
+    private ImageView flagImageView;
     
     //START TIMER
     private long startTimer;
@@ -105,6 +110,11 @@ public class RegioVincoDataModel extends PointAndClickGameDataModel {
         xmlUtility = new XMLUtilities();
         mapTitle = new Text("");
         currentMapScore = new Text("");
+        mouseText = new Text("");
+        mouseText.setX(900);
+        mouseText.setY(200);
+        mouseText.setFill(Color.YELLOW);
+        mouseText.setStyle("-fx-font-size: 20px");
         mapTitle.setX(375);
         mapTitle.setY(50);
         mapTitle.setFill(REGION_NAME_COLOR);
@@ -115,7 +125,10 @@ public class RegioVincoDataModel extends PointAndClickGameDataModel {
         capitals = false;
         leaders = false;
         flags = false;
-        
+        flagImage = null;
+        flagImageView = new ImageView("");
+        flagImageView.setX(900);
+        flagImageView.setY(500);
     }
     
 
@@ -156,6 +169,18 @@ public class RegioVincoDataModel extends PointAndClickGameDataModel {
     
     public String getRegionMapName(){
         return regionMapName;
+    }
+    
+    public Text getMouseText(){
+        return mouseText;
+    }
+    
+    public Image getFlagImage(){
+        return flagImage;
+    }
+    
+    public ImageView getFlagImageView(){
+        return flagImageView;
     }
     
     public void setRepeat(boolean repeat){
@@ -235,6 +260,36 @@ public class RegioVincoDataModel extends PointAndClickGameDataModel {
     public void addSubRegionToColorMappings(String subRegionName, Color colorKey) {
 	subRegionToColorMappings.put(subRegionName, colorKey);
     }
+    
+    public void respondToMouseOver(RegioVincoGame game, int x, int y){
+        Color pixelColor = mapPixelReader.getColor(x, y);
+        String mouseOverRegion = colorToSubRegionMappings.get(pixelColor);
+        File statsFile = new File(currentDirectory + mouseOverRegion + "/" + mouseOverRegion + " Statistics.txt");
+        if(mouseOverRegion == null){
+            mouseText.setText("");
+            return;
+        }
+        if(statsFile.exists()){
+            BufferedReader fileReader = null;
+            try {
+                fileReader = new BufferedReader(new FileReader(currentDirectory + regionName + " Statistics.txt"));
+                StringBuilder sb = new StringBuilder();
+                String line = fileReader.readLine();
+                highScore = Integer.parseInt(line);
+                String line2 = fileReader.readLine();
+                bestTime = Integer.parseInt(line2);
+                mouseText.setText("Region: " + mouseOverRegion + "\nHigh Score: " + line + "\nBest Time: " + line2);
+            } catch (Exception ex) {}
+        }else{
+            mouseText.setText("Region: " + mouseOverRegion + "\nHigh Score: 0\nBest Time: 0");
+        }
+        
+        File flagFile = new File(currentDirectory + mouseOverRegion + "/" + mouseOverRegion + " Flag.png");
+        if(flagFile.exists()){
+            flagImage = new Image(currentDirectory + mouseOverRegion + "/" + mouseOverRegion + " Flag.png");
+            flagImageView.setImage(flagImage);
+        }
+    }
 
     public void respondToMapSelection(RegioVincoGame game, int x, int y) {
         // THIS IS WHERE WE'LL CHECK TO SEE IF THE
@@ -295,8 +350,8 @@ public class RegioVincoDataModel extends PointAndClickGameDataModel {
                 //CREATE STATISTIC PANE
                 String statString = String.format("Region:  " + regionName + "\nScore:  %d\nGame Duration:  %02d:%02d\nSub Regions:  %d\nIncorrect Guesses:  %d",score,totalTime/60,totalTime%60,totalSubRegions,incorrectGuessesInt);
                 fullStats = new Text(statString);
-                fullStats.setX(400);
-                fullStats.setY(350);
+                fullStats.setX(525);
+                fullStats.setY(325);
                 
                 try {
                     PrintWriter out = new PrintWriter(currentDirectory + regionName + " Statistics.txt"); 
@@ -660,6 +715,7 @@ public class RegioVincoDataModel extends PointAndClickGameDataModel {
             gameLayer.getChildren().add(incorrectGuesses);
             gameLayer.getChildren().add(gameTimer);
         }
+        
         // RESET THE AUDIO
         AudioManager audio = ((RegioVincoGame) game).getAudio();
         audio.stop(AFGHAN_ANTHEM);
