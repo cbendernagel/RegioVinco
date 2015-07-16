@@ -269,6 +269,7 @@ public class RegioVincoGame extends PointAndClickGame {
         guiLayer.getChildren().add(((RegioVincoDataModel)data).getMouseText());
         guiLayer.getChildren().add(((RegioVincoDataModel)data).getFlagImageView());
         
+        
 	// NOW LOAD THE WIN DISPLAY, WHICH WE'LL ONLY
 	// MAKE VISIBLE AND ENABLED AS NEEDED
 	ImageView winView = addGUIImage(guiLayer, WIN_DISPLAY_TYPE, loadImage(WIN_DISPLAY_FILE_PATH), WIN_X, WIN_Y);

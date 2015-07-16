@@ -1,5 +1,6 @@
 package regio_vinco;
 
+import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
@@ -11,6 +12,7 @@ import javafx.scene.text.Text;
 public class MovableText {
     // A JAVAFX TEXT NODE IN THE SCENE GRAPH
     protected Text text;
+    protected ImageView imageView;
     protected Rectangle  rectangle;
     
     // USED FOR MANAGING NODE MOVEMENT
@@ -32,6 +34,16 @@ public class MovableText {
         //rectangle.setOpacity(0);
     }
     
+    public MovableText(){}
+  
+    public MovableText(ImageView initImageView){
+        imageView = initImageView;
+        rectangle = new Rectangle();
+        rectangle.setWidth(300);
+        rectangle.setHeight(160);
+        rectangle.setFill(Color.BLUE);
+    }
+    
     // ACCESSOR AND MUTATOR METHODS
     
     public Text getText() {
@@ -40,6 +52,14 @@ public class MovableText {
     
     public void setText(Text initText) {
 	text = initText;
+    }
+    
+    public ImageView getImageView(){
+        return imageView;
+    }
+    
+    public void getImageView(ImageView initImageView){
+        imageView = initImageView;
     }
     
     public Rectangle getRectangle(){

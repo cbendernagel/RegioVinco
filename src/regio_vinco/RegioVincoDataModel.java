@@ -83,7 +83,7 @@ public class RegioVincoDataModel extends PointAndClickGameDataModel {
     private int totalSubRegions;
     private int prevTextLength;
     private int gameType;
-    private int highScore = 0;
+    private int highScore = Integer.MIN_VALUE;
     private int bestTime = Integer.MAX_VALUE;
     private int lowestGuesses = 0;
     private boolean capitals;
@@ -126,9 +126,9 @@ public class RegioVincoDataModel extends PointAndClickGameDataModel {
         leaders = false;
         flags = false;
         flagImage = null;
-        flagImageView = new ImageView("");
+        flagImageView = new ImageView(flagImage);
         flagImageView.setX(900);
-        flagImageView.setY(500);
+        flagImageView.setY(400);
     }
     
 
@@ -181,6 +181,10 @@ public class RegioVincoDataModel extends PointAndClickGameDataModel {
     
     public ImageView getFlagImageView(){
         return flagImageView;
+    }
+    
+    public int getGameType(){
+        return gameType;
     }
     
     public void setRepeat(boolean repeat){
@@ -262,32 +266,50 @@ public class RegioVincoDataModel extends PointAndClickGameDataModel {
     }
     
     public void respondToMouseOver(RegioVincoGame game, int x, int y){
-        Color pixelColor = mapPixelReader.getColor(x, y);
-        String mouseOverRegion = colorToSubRegionMappings.get(pixelColor);
-        File statsFile = new File(currentDirectory + mouseOverRegion + "/" + mouseOverRegion + " Statistics.txt");
-        if(mouseOverRegion == null){
-            mouseText.setText("");
-            return;
-        }
-        if(statsFile.exists()){
-            BufferedReader fileReader = null;
-            try {
-                fileReader = new BufferedReader(new FileReader(currentDirectory + regionName + " Statistics.txt"));
+        flagImageView.setVisible(false);
+        if(gameType == 0){
+            Color pixelColor = mapPixelReader.getColor(x, y);
+            String mouseOverRegion = colorToSubRegionMappings.get(pixelColor);
+            File statsFile = new File(currentDirectory + mouseOverRegion + "/" + mouseOverRegion + " Statistics.txt");
+            if(mouseOverRegion == null){
+                mouseText.setText("");
+                return;
+            }
+            if(statsFile.exists()){
+                BufferedReader fileReader = null;
+                try {
+                    fileReader = new BufferedReader(new FileReader(currentDirectory + mouseOverRegion + "/" + mouseOverRegion + " Statistics.txt"));
+                    StringBuilder sb = new StringBuilder();
+                    String line = fileReader.readLine();
+                    int tempHighScore = Integer.parseInt(line);
+                    String line2 = fileReader.readLine();
+                    int tempBestTime = Integer.parseInt(line2);
+                    mouseText.setText("Region: " + mouseOverRegion + "\nHigh Score: " + tempHighScore + "\nBest Time: " + tempBestTime);
+                    fileReader.close();
+                    
+                    
+                    /**
+                     *  BufferedReader fileReader = new BufferedReader(new FileReader(currentDirectory + regionName + " Statistics.txt"));
                 StringBuilder sb = new StringBuilder();
                 String line = fileReader.readLine();
                 highScore = Integer.parseInt(line);
                 String line2 = fileReader.readLine();
                 bestTime = Integer.parseInt(line2);
-                mouseText.setText("Region: " + mouseOverRegion + "\nHigh Score: " + line + "\nBest Time: " + line2);
-            } catch (Exception ex) {}
-        }else{
-            mouseText.setText("Region: " + mouseOverRegion + "\nHigh Score: 0\nBest Time: 0");
-        }
-        
-        File flagFile = new File(currentDirectory + mouseOverRegion + "/" + mouseOverRegion + " Flag.png");
-        if(flagFile.exists()){
-            flagImage = new Image(currentDirectory + mouseOverRegion + "/" + mouseOverRegion + " Flag.png");
-            flagImageView.setImage(flagImage);
+               fileReader.close();
+                     */
+                    
+                    
+                } catch (Exception ex) {}
+            }else{
+                mouseText.setText("Region: " + mouseOverRegion + "\nHigh Score: 0\nBest Time: 0");
+            }
+
+            File flagFile = new File(currentDirectory + mouseOverRegion + "/" + mouseOverRegion + " Flag.png");
+            if(flagFile.exists()){
+                flagImage = new Image("file:" + currentDirectory + mouseOverRegion + "/" + mouseOverRegion + " Flag.png");
+                flagImageView.setImage(flagImage);
+            }
+            flagImageView.setVisible(true);
         }
     }
 
@@ -360,8 +382,9 @@ public class RegioVincoDataModel extends PointAndClickGameDataModel {
                         out.println(score);
                     else
                         out.println(highScore);
-                    if(bestTime > totalTime)
+                    if(bestTime > totalTime  || bestTime == 0){
                         out.println(totalTime);
+                    }
                     else
                         out.println(bestTime);
                     
@@ -440,7 +463,7 @@ public class RegioVincoDataModel extends PointAndClickGameDataModel {
      */
     @Override
     public void reset(PointAndClickGame game) {
-        
+        highScore = 1000;
         RegioVincoGame thisGame = (RegioVincoGame)game;
         thisGame.gameLayer.getChildren().clear();
         thisGame.getCapitalButton().setDisable(true);
@@ -563,10 +586,11 @@ public class RegioVincoDataModel extends PointAndClickGameDataModel {
                 highScore = Integer.parseInt(line);
                 String line2 = fileReader.readLine();
                 bestTime = Integer.parseInt(line2);
+               fileReader.close();
+
                 
             } catch (Exception e) {}
 
-            if(gameType == 0){
                 ((RegioVincoGame)game).getGuiLayer().getChildren().remove(currentMapScore);
                 currentMapScore = new Text("High Score: " + highScore);
                 currentMapScore.setFill(Color.ORANGE);
@@ -574,7 +598,6 @@ public class RegioVincoDataModel extends PointAndClickGameDataModel {
                 currentMapScore.setX(50);
                 currentMapScore.setY(50);
                 ((RegioVincoGame)game).getGuiLayer().getChildren().add(currentMapScore);
-            }
 
 
             /**
@@ -619,14 +642,15 @@ public class RegioVincoDataModel extends PointAndClickGameDataModel {
 
             for (Color c : colorToSubRegionMappings.keySet()) {
                 String subRegion = colorToSubRegionMappings.get(c);
-
+               
                 subRegionToColorMappings.put(subRegion, c);
-                Text textNode = new Text(subRegion);
-                textNode.setStyle("-fx-font: 25px Calibri");
-                textNode.setFill(Color.NAVY);
-                MovableText subRegionText = new MovableText(textNode);
-                subRegionText.getText().setFill(Color.YELLOW);
-                textNode.setX(STACK_X);
+                
+                    Text textNode = new Text(subRegion);
+                    textNode.setStyle("-fx-font: 25px Calibri");
+                    textNode.setFill(Color.NAVY);
+                    MovableText subRegionText = new MovableText(textNode);
+                    subRegionText.getText().setFill(Color.YELLOW);
+                    textNode.setX(STACK_X);
                 subRegionText.getRectangle().setFill(c);
                 
                 if(gameType!=0){
@@ -636,7 +660,9 @@ public class RegioVincoDataModel extends PointAndClickGameDataModel {
                 
                 
                 subRegionStack.add(subRegionText);
+               
             }
+            
             Collections.shuffle(subRegionStack);
             int y = STACK_INIT_Y;
             // NOW FIX THEIR Y LOCATIONS

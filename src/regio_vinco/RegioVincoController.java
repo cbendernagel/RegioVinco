@@ -121,13 +121,13 @@ public class RegioVincoController implements KeyPressHook {
     @Override
     public void processKeyPressHook(KeyEvent ke)
     {
+        RegioVincoDataModel dataModel = ((RegioVincoDataModel)((RegioVincoGame)game).getDataModel());
         KeyCode keyCode = ke.getCode();
-        if (keyCode == KeyCode.C)
+        if (keyCode == KeyCode.C && dataModel.getGameType ()!= 0)
         {
             try
             {   
                 game.beginUsingData();
-                RegioVincoDataModel dataModel = (RegioVincoDataModel)(game.getDataModel());
                 dataModel.removeAllButOneFromeStack(game);         
             }
             finally
