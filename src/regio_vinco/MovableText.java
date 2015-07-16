@@ -36,12 +36,13 @@ public class MovableText {
     
     public MovableText(){}
   
-    public MovableText(ImageView initImageView){
+    public MovableText(ImageView initImageView, Text initText){
         imageView = initImageView;
         rectangle = new Rectangle();
         rectangle.setWidth(300);
-        rectangle.setHeight(160);
+        rectangle.setHeight(imageView.getImage().getHeight());
         rectangle.setFill(Color.BLUE);
+        text = initText;
     }
     
     // ACCESSOR AND MUTATOR METHODS
@@ -109,6 +110,12 @@ public class MovableText {
 	text.translateXProperty().setValue(x + (velocity[0] * percentage));
 	double y = text.translateYProperty().doubleValue();
 	text.translateYProperty().setValue(y + (velocity[1] * percentage));
+        
+        // UPDATE POSITION
+	double ix = imageView.translateXProperty().doubleValue();
+	imageView.translateXProperty().setValue(ix + (velocity[0] * percentage));
+	double iy = imageView.translateYProperty().doubleValue();
+	imageView.translateYProperty().setValue(iy + (velocity[1] * percentage));
 	
         double rX = rectangle.translateXProperty().doubleValue();
         rectangle.translateXProperty().setValue(x + (velocity[0] * percentage));

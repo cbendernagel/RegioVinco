@@ -154,6 +154,8 @@ public class RegioVincoDataModel extends PointAndClickGameDataModel {
 	    MovableText text = subRegionStack.removeFirst();
             gameLayer.getChildren().remove(text.getRectangle());
             gameLayer.getChildren().remove(text.getText());
+            if(gameType == 4)
+                gameLayer.getChildren().remove(text.getImageView());
 	    String subRegionName = text.getText().getText();
             
 	    // TURN THE TERRITORY GREEN
@@ -342,6 +344,8 @@ public class RegioVincoDataModel extends PointAndClickGameDataModel {
 	    // REMOVE THE BOTTOM ELEMENT FROM THE STACK
 	    MovableText removed = subRegionStack.removeFirst();
             gameLayer.getChildren().remove(removed.getText());
+            if(gameType == 4)
+                gameLayer.getChildren().remove(removed.getImageView());
             gameLayer.getChildren().remove(removed.getRectangle());
 
 	    // AND LET'S CHANGE THE RED ONES BACK TO THEIR PROPER COLORS
@@ -468,8 +472,9 @@ public class RegioVincoDataModel extends PointAndClickGameDataModel {
         thisGame.gameLayer.getChildren().clear();
         thisGame.getCapitalButton().setDisable(true);
         thisGame.getLeaderButton().setDisable(true);
-        thisGame.getFlagButton().setDisable(true);
+        thisGame.getFlagButton().setDisable(false);
         thisGame.getStopButton().setDisable(true);
+        
         
         if(!mapTitle.getText().equals("")){
             ((RegioVincoGame) game).getGuiLayer().getChildren().remove(mapTitle);
@@ -550,7 +555,7 @@ public class RegioVincoDataModel extends PointAndClickGameDataModel {
                     
                 }
                 switch(gameType){
-                    case 0: case 1:
+                    case 0: case 1: case 4:
                         colorToSubRegionMappings.put(makeColor(red,green,blue), name); 
                         break;
                     case 3:
@@ -648,14 +653,34 @@ public class RegioVincoDataModel extends PointAndClickGameDataModel {
                     Text textNode = new Text(subRegion);
                     textNode.setStyle("-fx-font: 25px Calibri");
                     textNode.setFill(Color.NAVY);
-                    MovableText subRegionText = new MovableText(textNode);
+                    MovableText subRegionText = new MovableText(new Text(""));
+                    if(gameType < 4){
+                        //System.out.println("region");
+                        subRegionText = new MovableText(textNode);
+                        }
+                    else if(gameType == 4){
+                        //System.out.println("defewmoewmmkofewmklfwe");
+                        File flagFile = new File(currentDirectory + subRegion + "/" + subRegion + " Flag.png");
+                        if(flagFile.exists()){
+                        flagImage = new Image("file:" + currentDirectory + subRegion + "/" + subRegion + " Flag.png");
+                        ImageView flagImageView2 = new ImageView(flagImage);
+                        subRegionText = new MovableText(flagImageView2, textNode);
+                        flagImageView2.setX(STACK_X + 50);
+                        flagImageView2.setVisible(true); 
+                        }else{
+                            subRegionText = new MovableText(textNode);
+                        }
+                    }
                     subRegionText.getText().setFill(Color.YELLOW);
                     textNode.setX(STACK_X);
                 subRegionText.getRectangle().setFill(c);
                 
-                if(gameType!=0){
+                if(gameType!=0 && gameType <4){
                     gameLayer.getChildren().add(subRegionText.getRectangle());
                     gameLayer.getChildren().add(textNode);
+                }else if(gameType == 4){
+                    gameLayer.getChildren().add(subRegionText.getRectangle());
+                    gameLayer.getChildren().add(subRegionText.getImageView());
                 }
                 
                 
@@ -664,13 +689,28 @@ public class RegioVincoDataModel extends PointAndClickGameDataModel {
             }
             
             Collections.shuffle(subRegionStack);
-            int y = STACK_INIT_Y;
+            int y = 0;
+            if(gameType < 4)
+                y = STACK_INIT_Y;
+            if(gameType == 4)
+                y = STACK_INIT_Y - 160;
+            
             // NOW FIX THEIR Y LOCATIONS
             for (MovableText mT : subRegionStack) {
-                mT.getText().setY(y);
-                y -= STACK_INIT_Y_INC;
-                mT.getRectangle().setY(y + 20);
-                mT.getRectangle().setX(mT.getText().getX());
+                if(gameType < 4){
+                    mT.getText().setY(y);
+                    y -= STACK_INIT_Y_INC;
+                    mT.getRectangle().setY(y + 20);
+                    mT.getRectangle().setX(mT.getText().getX());
+                }else if(gameType == 4){
+                    //mT.getText().setY(y);
+                    mT.getImageView().setY(y);
+                    y-=mT.getImageView().getImage().getHeight();
+                    mT.getRectangle().setY(y + mT.getImageView().getImage().getHeight());
+                    mT.getRectangle().setX(mT.getText().getX());
+                    //mT.getImageView().setY(mT.getImageView().translateYProperty().doubleValue());
+                }
+                
             }
 
             // LET'S RECORD ALL THE PIXELS
@@ -792,22 +832,39 @@ public class RegioVincoDataModel extends PointAndClickGameDataModel {
         long seconds = ((GregorianCalendar.getInstance().getTimeInMillis()/1000) - startTimer)%60;
         String time = String.format("Time Elapsed: %02d:%02d",minutes,seconds);
         for (MovableText mT : subRegionStack) {
-            mT.getText().setY(mT.getText().getY() + mT.getVelocityY());
-            mT.getRectangle().setY(mT.getRectangle().getY() + mT.getVelocityY());
-	    mT.update(percentage);
+            if(gameType < 0){
+                mT.getText().setY(mT.getText().getY() + mT.getVelocityY());
+                mT.getRectangle().setY(mT.getRectangle().getY() + mT.getVelocityY());
+                mT.update(percentage);
+            }else if (gameType == 4){
+                mT.getImageView().setY(mT.getImageView().getY() + mT.getVelocityY());
+                mT.getRectangle().setY(mT.getRectangle().getY() + mT.getVelocityY());
+                mT.update(percentage);
+            }
 	}
 
 	if (!subRegionStack.isEmpty()) {
 	    MovableText bottomOfStack = subRegionStack.get(0);
             bottomOfStack.getText().setFill(Color.RED);
             bottomOfStack.getRectangle().setFill(Color.GREEN);
-            double bottomY = bottomOfStack.getText().getY() + bottomOfStack.getText().translateYProperty().doubleValue();
-	    if (bottomY >= FIRST_REGION_Y_IN_STACK) {
-		double diffY = bottomY - FIRST_REGION_Y_IN_STACK;
-		for (MovableText mT : subRegionStack) {
-		    mT.getText().setY(mT.getText().getY() - diffY);
-		    mT.setVelocityY(0);
-		}
+            if(gameType < 4){
+                double bottomY = bottomOfStack.getText().getY() + bottomOfStack.getText().translateYProperty().doubleValue();
+                if (bottomY >= FIRST_REGION_Y_IN_STACK) {
+                    double diffY = bottomY - FIRST_REGION_Y_IN_STACK;
+                    for (MovableText mT : subRegionStack) {
+                        mT.getText().setY(mT.getText().getY() - diffY);
+                        mT.setVelocityY(0);
+                    }
+                }
+            }else if(gameType == 4){
+                double bottomY = bottomOfStack.getImageView().getY() + bottomOfStack.getImageView().translateYProperty().doubleValue();
+                //if (bottomY >= FIRST_REGION_Y_IN_STACK + 160) {
+                  //  double diffY = bottomY - FIRST_REGION_Y_IN_STACK;
+                    //for (MovableText mT : subRegionStack) {
+                      //  mT.getImageView().setY(mT.getImageView().getY() - diffY);
+                        //mT.setVelocityY(0);
+                    //}
+                //}
             }
 	}
         

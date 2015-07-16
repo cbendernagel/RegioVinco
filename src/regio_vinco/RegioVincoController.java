@@ -115,7 +115,8 @@ public class RegioVincoController implements KeyPressHook {
     }
     
     public void processMouseOverRequest(int x, int y){
-        ((RegioVincoDataModel)game.getDataModel()).respondToMouseOver(game, x, y);
+        if(((RegioVincoDataModel)game.getDataModel()).getGameType() == 0)
+            ((RegioVincoDataModel)game.getDataModel()).respondToMouseOver(game, x, y);
     }
     
     @Override
