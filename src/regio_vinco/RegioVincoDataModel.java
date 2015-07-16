@@ -693,7 +693,7 @@ public class RegioVincoDataModel extends PointAndClickGameDataModel {
             if(gameType < 4)
                 y = STACK_INIT_Y;
             if(gameType == 4)
-                y = STACK_INIT_Y - 160;
+                y = STACK_INIT_Y;
             
             // NOW FIX THEIR Y LOCATIONS
             for (MovableText mT : subRegionStack) {
@@ -703,10 +703,10 @@ public class RegioVincoDataModel extends PointAndClickGameDataModel {
                     mT.getRectangle().setY(y + 20);
                     mT.getRectangle().setX(mT.getText().getX());
                 }else if(gameType == 4){
+                    y-=mT.getImageView().getImage().getHeight();
                     //mT.getText().setY(y);
                     mT.getImageView().setY(y);
-                    y-=mT.getImageView().getImage().getHeight();
-                    mT.getRectangle().setY(y + mT.getImageView().getImage().getHeight());
+                    mT.getRectangle().setY(y);
                     mT.getRectangle().setX(mT.getText().getX());
                     //mT.getImageView().setY(mT.getImageView().translateYProperty().doubleValue());
                 }
@@ -857,14 +857,7 @@ public class RegioVincoDataModel extends PointAndClickGameDataModel {
                     }
                 }
             }else if(gameType == 4){
-                double bottomY = bottomOfStack.getImageView().getY() + bottomOfStack.getImageView().translateYProperty().doubleValue();
-                //if (bottomY >= FIRST_REGION_Y_IN_STACK + 160) {
-                  //  double diffY = bottomY - FIRST_REGION_Y_IN_STACK;
-                    //for (MovableText mT : subRegionStack) {
-                      //  mT.getImageView().setY(mT.getImageView().getY() - diffY);
-                        //mT.setVelocityY(0);
-                    //}
-                //}
+                
             }
 	}
         
