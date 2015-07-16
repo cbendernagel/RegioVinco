@@ -9,6 +9,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Collections;
 import java.util.GregorianCalendar;
 import java.util.HashMap;
@@ -467,12 +468,13 @@ public class RegioVincoDataModel extends PointAndClickGameDataModel {
      */
     @Override
     public void reset(PointAndClickGame game) {
+        int numRegions = 0;
         highScore = 1000;
         RegioVincoGame thisGame = (RegioVincoGame)game;
         thisGame.gameLayer.getChildren().clear();
         thisGame.getCapitalButton().setDisable(true);
         thisGame.getLeaderButton().setDisable(true);
-        thisGame.getFlagButton().setDisable(false);
+        thisGame.getFlagButton().setDisable(true);
         thisGame.getStopButton().setDisable(true);
         
         
@@ -574,6 +576,10 @@ public class RegioVincoDataModel extends PointAndClickGameDataModel {
 
             currentDirectory += regionName + "/";
             
+            
+            
+            
+            
             File statistics = new File(currentDirectory + regionName + " Statistics.txt");
             if(!statistics.exists()){
                 try {
@@ -647,32 +653,33 @@ public class RegioVincoDataModel extends PointAndClickGameDataModel {
 
             for (Color c : colorToSubRegionMappings.keySet()) {
                 String subRegion = colorToSubRegionMappings.get(c);
-               
-                subRegionToColorMappings.put(subRegion, c);
-                
-                    Text textNode = new Text(subRegion);
-                    textNode.setStyle("-fx-font: 25px Calibri");
-                    textNode.setFill(Color.NAVY);
-                    MovableText subRegionText = new MovableText(new Text(""));
-                    if(gameType < 4){
-                        //System.out.println("region");
-                        subRegionText = new MovableText(textNode);
-                        }
-                    else if(gameType == 4){
-                        //System.out.println("defewmoewmmkofewmklfwe");
-                        File flagFile = new File(currentDirectory + subRegion + "/" + subRegion + " Flag.png");
-                        if(flagFile.exists()){
-                        flagImage = new Image("file:" + currentDirectory + subRegion + "/" + subRegion + " Flag.png");
-                        ImageView flagImageView2 = new ImageView(flagImage);
-                        subRegionText = new MovableText(flagImageView2, textNode);
-                        flagImageView2.setX(STACK_X + 50);
-                        flagImageView2.setVisible(true); 
-                        }else{
-                            subRegionText = new MovableText(textNode);
-                        }
+                File file = new File(currentDirectory + subRegion + "/" + subRegion + " Flag.png");
+                if(file.exists())
+                    thisGame.getFlagButton().setDisable(false);
+                subRegionToColorMappings.put(subRegion, c);    
+                Text textNode = new Text(subRegion);
+                textNode.setStyle("-fx-font: 25px Calibri");
+                textNode.setFill(Color.NAVY);
+                MovableText subRegionText = new MovableText(new Text(""));
+                if(gameType < 4){
+                    //System.out.println("region");
+                    subRegionText = new MovableText(textNode);
                     }
-                    subRegionText.getText().setFill(Color.YELLOW);
-                    textNode.setX(STACK_X);
+                else if(gameType == 4){
+                    //System.out.println("defewmoewmmkofewmklfwe");
+                    File flagFile = new File(currentDirectory + subRegion + "/" + subRegion + " Flag.png");
+                    if(flagFile.exists()){
+                    flagImage = new Image("file:" + currentDirectory + subRegion + "/" + subRegion + " Flag.png");
+                    ImageView flagImageView2 = new ImageView(flagImage);
+                    subRegionText = new MovableText(flagImageView2, textNode);
+                    flagImageView2.setX(STACK_X + 50);
+                    flagImageView2.setVisible(true); 
+                    }else{
+                        subRegionText = new MovableText(textNode);
+                    }
+                }
+                subRegionText.getText().setFill(Color.YELLOW);
+                textNode.setX(STACK_X);
                 subRegionText.getRectangle().setFill(c);
                 
                 if(gameType!=0 && gameType <4){
@@ -857,7 +864,15 @@ public class RegioVincoDataModel extends PointAndClickGameDataModel {
                     }
                 }
             }else if(gameType == 4){
-                
+                double bottomY = bottomOfStack.getImageView().getY() + bottomOfStack.getImageView().translateYProperty().doubleValue();
+                if (bottomY >= FIRST_REGION_Y_IN_STACK - bottomOfStack.getImageView().getImage().getHeight()) {
+                    double diffY = bottomY - FIRST_REGION_Y_IN_STACK + bottomOfStack.getImageView().getImage().getHeight();
+                    for (MovableText mT : subRegionStack) {
+                        mT.getImageView().setY(mT.getImageView().getY() - diffY);
+                        mT.getRectangle().setY(mT.getRectangle().getY() - diffY);
+                        mT.setVelocityY(0);
+                    }
+                }
             }
 	}
         
